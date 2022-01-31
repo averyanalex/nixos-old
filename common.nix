@@ -25,8 +25,8 @@
   nixpkgs.overlays = [
     (final: prev: {
       stdenv = prev.stdenvAdapters.addAttrsToDerivation {
-        NIX_CFLAGS_COMPILE = toString (args.NIX_CFLAGS_COMPILE or "") + " -march=tigerlake";
-        NIX_CXXFLAGS_COMPILE = toString (args.NIX_CFXXLAGS_COMPILE or "") + " -march=tigerlake";
+        NIX_CFLAGS_COMPILE = " -march=native";
+        NIX_CXXFLAGS_COMPILE = " -march=native";
         NIX_ENFORCE_NO_NATIVE = false;
         preferLocalBuild = true;
       } prev.stdenv;
