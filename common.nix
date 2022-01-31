@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ args, config, lib, pkgs, ... }: {
   nix = {
     package = pkgs.nixFlakes;
     useSandbox = true;
