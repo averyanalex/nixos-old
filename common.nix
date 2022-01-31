@@ -32,6 +32,8 @@
     };
   };
 
+  environment.systemPackages = [ pkgs.compsize ];
+
   virtualisation.docker.enable = true;
 
   users = {
