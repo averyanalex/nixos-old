@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   nix = {
     package = pkgs.nixFlakes;
     useSandbox = true;
@@ -21,6 +21,14 @@
       dates = [ "weekly" ];
     };
   };
+
+  nixpkgs.overlays = [
+    (final: prev: {
+      stdenv = prev.stdenvAdapters.addAttrsToDerivations {
+        NIX_CFLAGS_COMPILE = "-march=x86-64-v3";
+      } prev.stdenv;
+    })
+  ];
 
   system = {
     stateVersion = "21.11";
