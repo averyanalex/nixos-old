@@ -11,7 +11,7 @@
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager }:
     let
       overlay-unstable = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+        unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
       };
     in {
       nixosConfigurations = {

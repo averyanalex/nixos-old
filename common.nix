@@ -47,4 +47,19 @@
       ];
     };
   };
+
+  services.openssh.enable = true;
+  networking.firewall.enable = false;
+
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+
+  time.timeZone = "Europe/Moscow";
+
+  hardware.enableRedistributableFirmware = true;
 }
