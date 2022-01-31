@@ -22,7 +22,7 @@
               nixpkgs.overlays = [ overlay-unstable ];
             })
             ./common.nix
-            ./xhs.nis
+            ./xhs.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
