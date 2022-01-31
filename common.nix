@@ -24,7 +24,7 @@
 
   nixpkgs.overlays = [
     (final: prev: {
-      stdenv = prev.stdenvAdapters.addAttrsToDerivations {
+      stdenv = prev.stdenvAdapters.addAttrsToDerivation {
         NIX_CFLAGS_COMPILE = "-march=x86-64-v3";
       } prev.stdenv;
     })
