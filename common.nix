@@ -22,17 +22,6 @@
     };
   };
 
-  nixpkgs.overlays = [
-    (final: prev: {
-      stdenv = prev.stdenvAdapters.addAttrsToDerivation {
-        NIX_CFLAGS_COMPILE = " -march=native";
-        NIX_CXXFLAGS_COMPILE = " -march=native";
-        NIX_ENFORCE_NO_NATIVE = false;
-        preferLocalBuild = true;
-      } prev.stdenv;
-    })
-  ];
-
   system = {
     stateVersion = "21.11";
     autoUpgrade = {
