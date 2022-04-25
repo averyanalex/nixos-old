@@ -62,6 +62,4 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   time.timeZone = "Europe/Moscow";
-
-  hardware.enableRedistributableFirmware = true;
 }

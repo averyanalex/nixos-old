@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./xhs-hardware.nix ];
+  imports = [ ./hardware/whale.nix ];
 
-  networking.hostName = "xeon-homeserver";
+  networking.hostName = "whale";
 
   networking.useDHCP = false;
   networking.interfaces.enp1s0.useDHCP = true;

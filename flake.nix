@@ -1,5 +1,5 @@
 {
-  description = "Averyanalex's NixOS configurations";
+  description = "AveryanAlex's NixOS configurations";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-21.11";
@@ -15,14 +15,14 @@
       };
     in {
       nixosConfigurations = {
-        xeon-homeserver = nixpkgs.lib.nixosSystem {
+        whale = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ({ config, pkgs, ... }: {
               nixpkgs.overlays = [ overlay-unstable ];
             })
             ./common.nix
-            ./xhs.nix
+            ./whale.nix
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
