@@ -1,6 +1,5 @@
 { args, config, lib, pkgs, ... }: {
   nix = {
-    package = pkgs.nixFlakes;
     useSandbox = true;
     autoOptimiseStore = true;
     readOnlyStore = true;
@@ -23,7 +22,7 @@
   };
 
   system = {
-    stateVersion = "21.11";
+    stateVersion = "22.05";
     autoUpgrade = {
       enable = true;
       allowReboot = true;
@@ -40,8 +39,8 @@
     mutableUsers = false;
     users.alex = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "docker" ];
-      # shell = pkgs.fish;
+      description = "Alexander Averyanov";
+      extraGroups = [ "wheel" ];
       hashedPassword =
         "$6$VCoEIErVjk.8YIeB$.xxUkrQgIK68aIWEWIqPulsD1T6a7QjepQqWRqWAZTtY20qxYH2gzl95KmCyzpeu3YeFf7sT3uu91oYoGswTX1";
       openssh.authorizedKeys.keys = [
