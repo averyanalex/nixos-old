@@ -3,6 +3,8 @@
 {
   imports = [ ./hardware/router.nix ./common.nix ./lang/en.nix ];
 
+  services.qemuGuest.enable = true;
+
   networking = {
     hostName = "router";
 
