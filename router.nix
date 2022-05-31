@@ -5,10 +5,12 @@
 
   services.qemuGuest.enable = true;
 
+  services.resolved.enable = true;
+  networking.nameservers = [ "8.8.8.8" "9.9.9.9" ];
+
   networking = {
     hostName = "router";
 
-    nameservers = [ "8.8.8.8" "9.9.9.9" ];
     defaultGateway = {
       address = "192.168.1.1";
       interface = "enp6s18";
