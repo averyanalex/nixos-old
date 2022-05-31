@@ -13,21 +13,36 @@
 
     defaultGateway = {
       address = "192.168.1.1";
-      interface = "enp6s18";
+      interface = "wan";
     };
 
-    interfaces.enp6s18 = {
-      ipv4 = {
-        addresses = [
-          {
+    vlans = {
+      wan = {
+        id = 1;
+        interface = "enp6s18";
+      };
+      lan = {
+        id = 30;
+        interface = "enp6s18";
+      };
+    };
+
+    interfaces = {
+      wan = {
+        ipv4 = {
+          addresses = [{
             address = "192.168.1.84";
             prefixLength = 24;
-          }
-          {
+          }];
+        };
+      };
+      lan = {
+        ipv4 = {
+          addresses = [{
             address = "192.168.3.1";
             prefixLength = 24;
-          }
-        ];
+          }];
+        };
       };
     };
   };
