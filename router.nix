@@ -17,10 +17,6 @@
     };
 
     vlans = {
-      wan = {
-        id = 1;
-        interface = "enp6s18";
-      };
       lan = {
         id = 30;
         interface = "enp6s18";
@@ -28,7 +24,7 @@
     };
 
     interfaces = {
-      wan = {
+      enp6s18 = {
         ipv4 = {
           addresses = [{
             address = "192.168.1.84";
