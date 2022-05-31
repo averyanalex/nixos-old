@@ -9,7 +9,10 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager }:
-    let overlay-unstable = final: prev: { };
+    let
+      overlay-unstable = final: prev: {
+        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
+      };
     in {
       nixosConfigurations = {
         whale = nixpkgs.lib.nixosSystem {
@@ -24,6 +27,21 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.alex = import ./home/alex.nix;
+            }
+          ];
+        };
+        ferret = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ({ config, pkgs, ... }: {
+              nixpkgs.overlays = [ overlay-unstable ];
+            })
+            ./ferret.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alexey = import ./home/alexey.nix;
             }
           ];
         };

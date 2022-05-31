@@ -1,4 +1,6 @@
-{ args, config, lib, pkgs, ... }: {
+{ args, config, lib, pkgs, ... }:
+
+{
   nix = {
     useSandbox = true;
     autoOptimiseStore = true;
@@ -30,6 +32,8 @@
       dates = "daily";
     };
   };
+
+  hardware.enableRedistributableFirmware = true;
 
   users = {
     mutableUsers = false;
