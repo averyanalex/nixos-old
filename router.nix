@@ -13,7 +13,7 @@
 
     defaultGateway = {
       address = "192.168.1.1";
-      interface = "wan";
+      interface = "enp6s18";
     };
 
     vlans = {
