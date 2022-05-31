@@ -25,15 +25,11 @@
     stateVersion = "22.05";
     autoUpgrade = {
       enable = true;
-      allowReboot = true;
+      allowReboot = false;
       flake = "github:averyanalex/nixos";
       dates = "daily";
     };
   };
-
-  environment.systemPackages = [ pkgs.compsize ];
-
-  virtualisation.docker.enable = true;
 
   users = {
     mutableUsers = false;
@@ -41,6 +37,7 @@
       isNormalUser = true;
       description = "Alexander Averyanov";
       extraGroups = [ "wheel" ];
+      uid = 1000;
       hashedPassword =
         "$6$VCoEIErVjk.8YIeB$.xxUkrQgIK68aIWEWIqPulsD1T6a7QjepQqWRqWAZTtY20qxYH2gzl95KmCyzpeu3YeFf7sT3uu91oYoGswTX1";
       openssh.authorizedKeys.keys = [

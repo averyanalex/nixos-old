@@ -9,9 +9,7 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, home-manager }:
-    let
-      overlay-unstable = final: prev: {
-      };
+    let overlay-unstable = final: prev: { };
     in {
       nixosConfigurations = {
         whale = nixpkgs.lib.nixosSystem {
@@ -20,7 +18,6 @@
             ({ config, pkgs, ... }: {
               nixpkgs.overlays = [ overlay-unstable ];
             })
-            ./common.nix
             ./whale.nix
             home-manager.nixosModules.home-manager
             {

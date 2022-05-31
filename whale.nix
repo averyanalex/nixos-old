@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware/whale.nix ];
+  imports = [ ./hardware/whale.nix ./common.nix ./lang/en.nix ];
 
   networking.hostName = "whale";
 
