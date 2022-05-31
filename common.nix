@@ -33,6 +33,8 @@
     };
   };
 
+  environment.systemPackages = [ pkgs.htop ];
+
   hardware.enableRedistributableFirmware = true;
 
   users = {
