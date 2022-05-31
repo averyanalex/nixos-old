@@ -5,7 +5,6 @@
 
   networking = {
     hostName = "ferret";
-    useDHCP = false;
     networkmanager.enable = true;
   };
 

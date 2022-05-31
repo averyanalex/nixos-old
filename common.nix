@@ -52,6 +52,7 @@
 
   services.openssh.enable = true;
   networking.firewall.enable = false;
+  networking.useDHCP = false;
 
   programs.gnupg.agent = {
     enable = true;
