@@ -22,7 +22,7 @@
   security.acme = {
     acceptTerms = true;
     defaults = {
-      emails = "averyanalex@gmail.com";
+      email = "averyanalex@gmail.com";
       dnsProvider = "cloudflare";
       credentialsFile = "/etc/cloudflare-creds";
     };
