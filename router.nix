@@ -21,7 +21,7 @@
 
   services.dhcpd4 = {
     enable = true;
-    interfaces = [ "lan" ];
+    interfaces = [ "enp6s19" ];
     extraConfig = ''
       option domain-name-servers 8.8.8.8, 1.1.1.1;
       option subnet-mask 255.255.255.0;
@@ -29,7 +29,7 @@
       subnet 192.168.3.0 netmask 255.255.255.0 {
         option broadcast-address 192.168.3.255;
         option routers 192.168.3.1;
-        interface lan;
+        interface enp6s19;
         range 192.168.3.100 192.168.3.254;
       }
     '';
@@ -93,11 +93,11 @@
 
             # allow access from lan
             iifname {
-              "lan",
+              "enp6s19",
             } accept
 
             # accept traffic originated from us
-            ct state {established, related} accept
+            ct state { established, related } accept
 
             # count and drop any other traffic
             counter drop
@@ -111,17 +111,17 @@
 
             # allow trusted network WAN access
             iifname {
-                    "lan",
+                    "enp6s19",
             } oifname {
                     "enp6s18",
             } counter accept comment "Allow trusted LAN to WAN"
 
-            # Allow established WAN to return
+            # allow established WAN to return
             iifname {
                     "enp6s18",
             } oifname {
-                    "lan",
-            } ct state { established, related } counter accept comment "Allow established back to LANs"
+                    "enp6s19",
+            } ct state { established, related } counter accept comment "allow established back to LANs"
 
             # count and drop any other traffic
             counter drop
@@ -133,7 +133,7 @@
             type nat hook prerouting priority 0; policy accept;
           }
 
-          # Setup NAT masquerading on the ppp0 interface
+          # setup NAT masquerading on the enp6s18 interface
           chain postrouting {
             type nat hook postrouting priority 100; policy accept;
             oifname "enp6s18" masquerade
@@ -142,12 +142,12 @@
       '';
     };
 
-    vlans = {
-      lan = {
-        id = 30;
-        interface = "enp6s18";
-      };
-    };
+    # vlans = {
+    #   lan = {
+    #     id = 30;
+    #     interface = "enp6s18";
+    #   };
+    # };
 
     interfaces = {
       enp6s18 = {
@@ -158,7 +158,7 @@
           }];
         };
       };
-      lan = {
+      enp6s19 = {
         ipv4 = {
           addresses = [{
             address = "192.168.3.1";
