@@ -100,6 +100,10 @@
             # ssh
             tcp dport 22 accept
 
+            # web
+            tcp dport 80 accept
+            tcp dport 443 accept
+
             # allow access from lan
             iifname {
               "enp6s19",
