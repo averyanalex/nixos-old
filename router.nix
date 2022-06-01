@@ -19,22 +19,6 @@
     "net.ipv6.conf.all.use_tempaddr" = 0;
   };
 
-  services.dhcpd4 = {
-    enable = true;
-    interfaces = [ "enp6s19" ];
-    extraConfig = ''
-      option domain-name-servers 8.8.8.8, 1.1.1.1;
-      option subnet-mask 255.255.255.0;
-
-      subnet 192.168.3.0 netmask 255.255.255.0 {
-        option broadcast-address 192.168.3.255;
-        option routers 192.168.3.1;
-        interface enp6s19;
-        range 192.168.3.100 192.168.3.254;
-      }
-    '';
-  };
-
   networking = {
     hostName = "router";
 
