@@ -63,44 +63,7 @@
 
           chain input {
             type filter hook input priority 0;
-
-            # accept any localhost traffic
-            iifname lo accept
-
-            # ICMP
-            ip6 nexthdr icmpv6 icmpv6 type {
-              destination-unreachable,
-              packet-too-big,
-              time-exceeded,
-              parameter-problem,
-              nd-router-advert,
-              nd-neighbor-solicit,
-              nd-neighbor-advert
-            } accept
-            ip protocol icmp icmp type {
-              destination-unreachable,
-              router-advertisement,
-              time-exceeded,
-              parameter-problem
-            } accept
-
-            # ping
-            ip6 nexthdr icmpv6 icmpv6 type echo-request accept
-            ip protocol icmp icmp type echo-request accept
-
-            # ssh
-            tcp dport 22 accept
-
-            # allow access from lan
-            iifname {
-              "enp6s19",
-            } accept
-
-            # accept traffic originated from us
-            ct state { established, related } accept
-
-            # count and drop any other traffic
-            counter drop
+            accept
           }
 
           chain forward {
