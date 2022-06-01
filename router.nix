@@ -10,6 +10,7 @@
 
   boot.kernel.sysctl = {
     "net.ipv4.conf.all.forwarding" = true;
+    "net.ipv4.ip_forward" = true;
     "net.ipv6.conf.all.forwarding" = true;
 
     # By default, not automatically configure any IPv6 addresses.
@@ -49,14 +50,14 @@
       ruleset = ''
         table inet filter {
           # enable flow offloading for better throughput
-          flowtable f {
-            hook ingress priority 0;
-            devices = { enp6s18, lan };
-          }
+          # flowtable f {
+          #   hook ingress priority 0;
+          #   devices = { enp6s18, lan };
+          # }
 
           # allow all outgoing connections
           chain output {
-            type filter hook output priority 0;
+            type filter hook output priority 100;
             accept
           }
 
@@ -106,7 +107,7 @@
             type filter hook forward priority 0;
 
             # enable flow offloading for better throughput
-            ip protocol { tcp, udp } flow offload @f
+            # ip protocol { tcp, udp } flow offload @f
 
             # allow trusted network WAN access
             iifname {
@@ -120,7 +121,7 @@
                     "enp6s18",
             } oifname {
                     "lan",
-            } ct state {established, related} counter accept comment "Allow established back to LANs"
+            } ct state { established, related } counter accept comment "Allow established back to LANs"
 
             # count and drop any other traffic
             counter drop
@@ -129,12 +130,12 @@
 
         table ip nat {
           chain prerouting {
-            type nat hook output priority 0; policy accept;
+            type nat hook prerouting priority 0; policy accept;
           }
 
           # Setup NAT masquerading on the ppp0 interface
           chain postrouting {
-            type nat hook postrouting priority 0; policy accept;
+            type nat hook postrouting priority 100; policy accept;
             oifname "enp6s18" masquerade
           }
         }
