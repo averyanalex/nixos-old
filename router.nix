@@ -68,26 +68,7 @@
 
           chain forward {
             type filter hook forward priority 0;
-
-            # enable flow offloading for better throughput
-            # ip protocol { tcp, udp } flow offload @f
-
-            # allow trusted network WAN access
-            iifname {
-                    "enp6s19",
-            } oifname {
-                    "enp6s18",
-            } counter accept comment "Allow trusted LAN to WAN"
-
-            # allow established WAN to return
-            iifname {
-                    "enp6s18",
-            } oifname {
-                    "enp6s19",
-            } ct state { established, related } counter accept comment "allow established back to LANs"
-
-            # count and drop any other traffic
-            counter drop
+            accept
           }
         }
 
