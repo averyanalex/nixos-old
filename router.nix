@@ -29,6 +29,21 @@
     certs = { "averyan.ru" = { extraDomainNames = [ "*.averyan.ru" ]; }; };
   };
 
+  services.nginx = {
+    enable = true;
+    package = pkgs.nginxQuic;
+    virtualHosts = {
+      "pve.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "https://192.168.3.4:8006";
+        locations."/".proxyWebsockets = true;
+      };
+    };
+  };
+
+  users.users.nginx.extraGroups = [ "acme" ];
+
   networking = {
     hostName = "router";
 
