@@ -23,7 +23,7 @@
     hostName = "router";
 
     defaultGateway = {
-      address = "192.168.1.1";
+      address = "192.168.3.3";
       interface = "enp6s18";
     };
 
@@ -137,7 +137,7 @@
       enp6s18 = {
         ipv4 = {
           addresses = [{
-            address = "192.168.1.84";
+            address = "192.168.3.2";
             prefixLength = 24;
           }];
         };
