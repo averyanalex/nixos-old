@@ -19,6 +19,16 @@
     "net.ipv6.conf.all.use_tempaddr" = 0;
   };
 
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      emails = "averyanalex@gmail.com";
+      dnsProvider = "cloudflare";
+      credentialsFile = "/etc/cloudflare-creds";
+    };
+    certs = { "averyan.ru" = { extraDomainNames = [ "*.averyan.ru" ]; }; };
+  };
+
   networking = {
     hostName = "router";
 
