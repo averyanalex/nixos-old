@@ -35,7 +35,8 @@
 
   environment.systemPackages = [ pkgs.htop ];
   environment.shellAliases = {
-    nixupd = "sudo rm -rf /root/.cache && sudo nixos-rebuild switch --flake \"github:averyanalex/nixos\"";
+    nixupd = ''
+      sudo rm -rf /root/.cache && sudo nixos-rebuild switch --flake "github:averyanalex/nixos"'';
   };
 
   services.fstrim.enable = true;

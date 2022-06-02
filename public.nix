@@ -12,7 +12,9 @@
   virtualisation.docker.enable = true;
   virtualisation.docker.autoPrune.enable = true;
   virtualisation.docker.autoPrune.dates = "daily";
+
   environment.systemPackages = [ pkgs.docker-compose_2 ];
+  environment.shellAliases = { dc = "docker compose"; };
 
   networking = {
     hostName = "public";
