@@ -128,6 +128,8 @@
             # enable flow offloading for better throughput
             # ip protocol { tcp, udp } flow offload @f
 
+            ip daddr 192.168.40.2 tcp dport 22101 accept
+
             # allow trusted network WAN access
             iifname { "enp6s19", "vm40" } oifname "enp6s18" counter accept comment "Allow trusted LAN to WAN"
 
