@@ -48,12 +48,26 @@
   services.nginx = {
     enable = true;
     package = pkgs.nginxQuic;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
     virtualHosts = {
       "pve.averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
         locations."/".proxyPass = "https://192.168.3.4:8006";
         locations."/".proxyWebsockets = true;
+      };
+      "git.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://192.168.40.2:8095";
+        locations."/".proxyWebsockets = true;
+      };
+      "cr.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://192.168.40.2:5050";
       };
     };
   };
@@ -147,7 +161,7 @@
         table ip nat {
           chain prerouting {
             type nat hook prerouting priority dstnat; policy accept;
-            ip daddr 192.168.3.1 tcp dport 22101 dnat to 192.168.40.2
+            ip daddr 192.168.3.1 tcp dport { 22, 22101 } dnat to 192.168.40.2
           }
 
           # setup NAT masquerading on the enp6s18 interface
