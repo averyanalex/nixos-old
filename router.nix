@@ -148,7 +148,7 @@
         table ip nat {
           chain prerouting {
             type nat hook prerouting priority 0; policy accept;
-            tcp dport 222 dnat to 192.168.3.105
+            tcp dport 22 dnat to 192.168.3.105
           }
 
           # setup NAT masquerading on the enp6s18 interface
