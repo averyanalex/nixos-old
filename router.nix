@@ -84,8 +84,18 @@
           chain input {
             type filter hook input priority 0;
 
-            # accept any localhost traffic
-            iifname lo accept
+            ct state invalid counter drop comment "drop invalid packets"
+            ct state { established, related } accept comment "accept traffic originated from us"
+
+            iifname lo accept comment "accept any localhost traffic"
+
+            tcp dport 22100 counter accept comment "ssh"
+            tcp dport { 80, 443 } counter accept comment "http"
+            tcp dport 5353 counter accept comment "yggdrasil public peer"
+
+            iifname {
+              "enp6s19",
+            } counter accept comment "allow access from lan"
 
             # ICMP
             ip6 nexthdr icmpv6 icmpv6 type {
@@ -96,34 +106,17 @@
               nd-router-advert,
               nd-neighbor-solicit,
               nd-neighbor-advert
-            } accept
+            } counter accept comment "icmpv6"
             ip protocol icmp icmp type {
               destination-unreachable,
               router-advertisement,
               time-exceeded,
               parameter-problem
-            } accept
+            } counter accept comment "icmpv4"
 
             # ping
-            ip6 nexthdr icmpv6 icmpv6 type echo-request accept
-            ip protocol icmp icmp type echo-request accept
-
-            # ssh
-            tcp dport 22100 accept
-
-            # web
-            tcp dport 80 accept
-            tcp dport 443 accept
-
-            tcp dport 5353 counter accept comment "yggdrasil public peer"
-
-            # allow access from lan
-            iifname {
-              "enp6s19",
-            } accept
-
-            # accept traffic originated from us
-            ct state { established, related } accept
+            ip6 nexthdr icmpv6 icmpv6 type echo-request counter accept comment "pingv6"
+            ip protocol icmp icmp type echo-request counter accept comment "pingv4"
 
             # count and drop any other traffic
             counter drop
