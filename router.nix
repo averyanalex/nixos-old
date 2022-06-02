@@ -76,11 +76,11 @@
       "memefinder.ru" = {
         forceSSL = true;
         useACMEHost = "memefinder.ru";
-        locations."/".proxyPass = "http://192.168.40.2:3010";
-        locations."/api".proxyPass = "http://192.168.40.2:3020";
-        locations."/api/static".proxyPass = "http://192.168.40.2:3030";
+        locations."/".proxyPass = "http://192.168.40.2:3010/";
+        locations."/api/".proxyPass = "http://192.168.40.2:3020/";
+        locations."/api/static/".proxyPass = "http://192.168.40.2:3030/";
         locations."/".proxyWebsockets = true;
-        locations."/api".proxyWebsockets = true;
+        locations."/api/".proxyWebsockets = true;
       };
     };
   };
