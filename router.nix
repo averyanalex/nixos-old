@@ -137,6 +137,7 @@
             } oifname {
                     "enp6s19",
             } ct state { established, related } counter accept comment "allow established back to LANs"
+            accept
 
             # count and drop any other traffic
             counter drop
