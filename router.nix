@@ -141,13 +141,14 @@
 
         table ip nat {
           chain prerouting {
-            type nat hook prerouting priority 0; policy accept;
+            type nat hook prerouting priority dstnat; policy accept;
             tcp dport 22101 dnat to 192.168.40.2
           }
 
           # setup NAT masquerading on the enp6s18 interface
           chain postrouting {
-            type nat hook postrouting priority 100; policy accept;
+            type nat hook postrouting priority srcnat; policy accept;
+            ip daddr 192.168.40.2 masquerade
             oifname "enp6s18" masquerade
           }
         }
