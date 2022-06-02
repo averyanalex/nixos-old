@@ -75,9 +75,6 @@
           chain input {
             type filter hook input priority 0;
 
-            # ct state invalid counter drop comment "drop invalid packages"
-            ct state { established, related } counter accept comment "accept traffic originated from us"
-
             # accept any localhost traffic
             iifname lo accept
 
@@ -114,6 +111,9 @@
               "enp6s19",
             } accept
 
+            # accept traffic originated from us
+            ct state { established, related } accept
+
             # count and drop any other traffic
             counter drop
           }
@@ -138,8 +138,6 @@
                     "enp6s19",
             } ct state { established, related } counter accept comment "allow established back to LANs"
 
-            tcp dport 22 counter accept
-
             # count and drop any other traffic
             counter drop
           }
@@ -148,7 +146,6 @@
         table ip nat {
           chain prerouting {
             type nat hook prerouting priority 0; policy accept;
-            ip daddr 192.168.3.1 tcp dport 22 dnat to 192.168.3.105
           }
 
           # setup NAT masquerading on the enp6s18 interface
