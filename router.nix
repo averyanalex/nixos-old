@@ -75,6 +75,9 @@
           chain input {
             type filter hook input priority 0;
 
+            ct state invalid counter drop comment "drop invalid packages"
+            ct state { established, related } counter accept comment "accept traffic originated from us"
+
             # accept any localhost traffic
             iifname lo accept
 
@@ -110,9 +113,6 @@
             iifname {
               "enp6s19",
             } accept
-
-            # accept traffic originated from us
-            ct state { established, related } accept
 
             # count and drop any other traffic
             counter drop
