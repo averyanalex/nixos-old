@@ -100,7 +100,7 @@
             ip protocol icmp icmp type echo-request accept
 
             # ssh
-            tcp dport 22 accept
+            tcp dport 22100 accept
 
             # web
             tcp dport 80 accept
