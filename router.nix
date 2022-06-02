@@ -19,6 +19,8 @@
     "net.ipv6.conf.all.use_tempaddr" = 0;
   };
 
+  services.openssh.ports = [ 22100 ];
+
   security.acme = {
     acceptTerms = true;
     defaults = {

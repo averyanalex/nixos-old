@@ -52,7 +52,12 @@
     };
   };
 
-  services.openssh.enable = true;
+  services.openssh = {
+    enable = true;
+    permitRootLogin = "no";
+    passwordAuthentication = false;
+  };
+
   networking.firewall.enable = false;
   networking.useDHCP = false;
 
