@@ -9,6 +9,11 @@
 
   services.openssh.ports = [ 22101 ];
 
+  virtualisation.docker.enable = true;
+  virtualisation.docker.autoPrune.enable = true;
+  virtualisation.docker.autoPrune.dates = "daily";
+  environment.systemPackages = [ pkgs.docker-compose_2 ];
+
   networking = {
     hostName = "public";
 
