@@ -171,7 +171,7 @@
         ipv4 = {
           addresses = [{
             address = "192.168.3.2";
-            prefixLength = 24;
+            prefixLength = 32;
           }];
           routes = [{
             address = "192.168.3.3";
