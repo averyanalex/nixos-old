@@ -20,5 +20,6 @@
 
   swapDevices = [ ];
 
+  hardware.enableRedistributableFirmware = false;
   hardware.cpu.intel.updateMicrocode = false;
 }
