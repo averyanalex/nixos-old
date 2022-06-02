@@ -59,19 +59,25 @@
       "pve.averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
-        locations."/".proxyPass = "https://192.168.3.4:8006";
+        locations."/".proxyPass = "https://192.168.3.4:8006/";
         locations."/".proxyWebsockets = true;
       };
       "git.averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
-        locations."/".proxyPass = "http://192.168.40.2:8095";
+        locations."/".proxyPass = "http://192.168.40.2:8095/";
         locations."/".proxyWebsockets = true;
       };
       "cr.averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
-        locations."/".proxyPass = "http://192.168.40.2:5050";
+        locations."/".proxyPass = "http://192.168.40.2:5050/";
+      };
+      "bw.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://192.168.40.2:4038/";
+        locations."/".proxyWebsockets = true;
       };
       "memefinder.ru" = {
         forceSSL = true;
