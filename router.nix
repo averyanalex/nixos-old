@@ -1,9 +1,8 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware/router.nix ./common.nix ./lang/en.nix ];
-
-  services.qemuGuest.enable = true;
+  imports =
+    [ ./hardware/qemu.nix ./mounts/router.nix ./common.nix ./lang/en.nix ];
 
   services.resolved.enable = true;
   networking.nameservers = [ "8.8.8.8" "9.9.9.9" ];
