@@ -173,6 +173,10 @@
             address = "192.168.3.2";
             prefixLength = 24;
           }];
+          routes = [{
+            address = "192.168.3.3";
+            prefixLength = 32;
+          }];
         };
       };
       enp6s19 = {
