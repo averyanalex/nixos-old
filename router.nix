@@ -154,7 +154,7 @@
           # setup NAT masquerading on the enp6s18 interface
           chain postrouting {
             type nat hook postrouting priority 100; policy accept;
-            masquerade
+            oifname "enp6s18" masquerade
           }
         }
       '';
