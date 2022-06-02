@@ -38,7 +38,6 @@
     nixupd = "sudo rm -rf /root/.cache && sudo nixos-rebuild switch - -flake \"github:averyanalex/nixos\"";
   };
 
-  hardware.enableRedistributableFirmware = true;
   services.fstrim.enable = true;
 
   users = {
