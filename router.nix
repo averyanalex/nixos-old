@@ -143,6 +143,7 @@
             iifname "enp6s18" oifname { "enp6s19", "vm40" } ct state { established, related } counter accept comment "allow established back to LANs"
 
             # count and drop any other traffic
+            log
             counter drop
           }
         }
