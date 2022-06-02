@@ -75,7 +75,7 @@
           chain input {
             type filter hook input priority 0;
 
-            ct state invalid counter drop comment "drop invalid packages"
+            # ct state invalid counter drop comment "drop invalid packages"
             ct state { established, related } counter accept comment "accept traffic originated from us"
 
             # accept any localhost traffic
