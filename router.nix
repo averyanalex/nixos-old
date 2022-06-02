@@ -30,7 +30,6 @@
     certs = {
       "averyan.ru" = { extraDomainNames = [ "*.averyan.ru" ]; };
       "memefinder.ru" = { extraDomainNames = [ "*.memefinder.ru" ]; };
-      "highterum.ru" = { extraDomainNames = [ "*.highterum.ru" ]; };
     };
   };
 
