@@ -27,7 +27,11 @@
       dnsProvider = "cloudflare";
       credentialsFile = "/etc/cloudflare-creds";
     };
-    certs = { "averyan.ru" = { extraDomainNames = [ "*.averyan.ru" ]; }; };
+    certs = {
+      "averyan.ru" = { extraDomainNames = [ "*.averyan.ru" ]; };
+      "memefinder.ru" = { extraDomainNames = [ "*.memefinder.ru" ]; };
+      "highterum.ru" = { extraDomainNames = [ "*.highterum.ru" ]; };
+    };
   };
 
   services.yggdrasil = {
