@@ -85,7 +85,6 @@
             type filter hook input priority 0;
 
             ct state invalid counter drop comment "drop invalid packets"
-            ct state { established, related } accept comment "accept traffic originated from us"
 
             iifname lo accept comment "accept any localhost traffic"
 
@@ -117,6 +116,8 @@
             # ping
             ip6 nexthdr icmpv6 icmpv6 type echo-request counter accept comment "pingv6"
             ip protocol icmp icmp type echo-request counter accept comment "pingv4"
+
+            ct state { established, related } accept comment "accept traffic originated from us"
 
             # count and drop any other traffic
             counter drop
