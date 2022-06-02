@@ -64,8 +64,8 @@
     hostName = "router";
 
     defaultGateway = {
-      address = "192.168.3.3";
-      interface = "enp6s18";
+      address = "192.168.3.1";
+      interface = "enp6s19";
     };
 
     nat.enable = false;
@@ -96,10 +96,6 @@
             tcp dport 22100 counter accept comment "ssh"
             tcp dport { 80, 443 } counter accept comment "http"
             tcp dport 5353 counter accept comment "yggdrasil public peer"
-
-            iifname {
-              "enp6s19",
-            } counter accept comment "allow access from lan"
 
             # ICMP
             ip6 nexthdr icmpv6 icmpv6 type {
@@ -137,10 +133,10 @@
             ct status dnat counter accept comment "allow dnat forwarding"
 
             # allow trusted network WAN access
-            iifname { "enp6s19", "vm40" } oifname "enp6s18" counter accept comment "Allow trusted LAN to WAN"
+            iifname { "enp6s19", "vm40" } oifname "enp6s19" counter accept comment "Allow trusted LAN to WAN"
 
             # allow established WAN to return
-            iifname "enp6s18" oifname { "enp6s19", "vm40" } ct state { established, related } counter accept comment "allow established back to LANs"
+            iifname "enp6s19" oifname { "enp6s19", "vm40" } ct state { established, related } counter accept comment "allow established back to LANs"
 
             # count and drop any other traffic
             log
@@ -151,13 +147,13 @@
         table ip nat {
           chain prerouting {
             type nat hook prerouting priority dstnat; policy accept;
-            ip daddr 192.168.3.2 tcp dport 22101 dnat to 192.168.40.2
+            ip daddr 192.168.3.1 tcp dport 22101 dnat to 192.168.40.2
           }
 
           # setup NAT masquerading on the enp6s18 interface
           chain postrouting {
             type nat hook postrouting priority srcnat; policy accept;
-            oifname "enp6s18" masquerade
+            oifname "enp6s19" masquerade
           }
         }
       '';
@@ -171,18 +167,6 @@
     };
 
     interfaces = {
-      enp6s18 = {
-        ipv4 = {
-          addresses = [{
-            address = "192.168.3.2";
-            prefixLength = 32;
-          }];
-          routes = [{
-            address = "192.168.3.3";
-            prefixLength = 32;
-          }];
-        };
-      };
       enp6s19 = {
         ipv4 = {
           addresses = [{
