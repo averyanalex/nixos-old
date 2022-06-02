@@ -36,6 +36,7 @@
   environment.systemPackages = [ pkgs.htop ];
 
   hardware.enableRedistributableFirmware = true;
+  services.fstrim.enable = true;
 
   users = {
     mutableUsers = false;
