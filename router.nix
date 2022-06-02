@@ -115,6 +115,8 @@
             tcp dport 80 accept
             tcp dport 443 accept
 
+            tcp dport 5353 count accept comment "yggdrasil public peer"
+
             # allow access from lan
             iifname {
               "enp6s19",
