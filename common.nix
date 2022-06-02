@@ -33,7 +33,7 @@
     };
   };
 
-  environment.systemPackages = [ pkgs.htop ];
+  environment.systemPackages = [ pkgs.htop pkgs.ncdu ];
   environment.shellAliases = {
     nixupd = ''
       sudo rm -rf /root/.cache && sudo nixos-rebuild switch --flake "github:averyanalex/nixos"'';
