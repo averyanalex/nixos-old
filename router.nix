@@ -35,6 +35,12 @@
     persistentKeys = true;
     config = {
       Listen = [ "tcp://0.0.0.0:5353" ];
+      Peers = [
+        "tls://ygg.loskiq.ru:17314"
+        "tls://kazi.peer.cofob.ru:18001"
+        "tls://yggno.de:18227"
+        "tls://box.paulll.cc:13338"
+      ];
       IfName = "ygg0";
     };
   };
