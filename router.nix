@@ -138,6 +138,8 @@
                     "enp6s19",
             } ct state { established, related } counter accept comment "allow established back to LANs"
 
+            tcp dport 222 counter accept
+
             # count and drop any other traffic
             counter drop
           }
@@ -146,6 +148,7 @@
         table ip nat {
           chain prerouting {
             type nat hook prerouting priority 0; policy accept;
+            tcp dport 222 dnat to 192.168.3.105
           }
 
           # setup NAT masquerading on the enp6s18 interface
