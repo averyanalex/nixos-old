@@ -150,7 +150,6 @@
           # setup NAT masquerading on the enp6s18 interface
           chain postrouting {
             type nat hook postrouting priority srcnat; policy accept;
-            ip daddr 192.168.40.2 masquerade
             oifname "enp6s18" masquerade
           }
         }
