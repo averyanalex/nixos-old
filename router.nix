@@ -130,18 +130,10 @@
             # ip protocol { tcp, udp } flow offload @f
 
             # allow trusted network WAN access
-            iifname {
-                    "enp6s19",
-            } oifname {
-                    "enp6s18",
-            } counter accept comment "Allow trusted LAN to WAN"
+            iifname { "enp6s19", "vm40" } oifname "enp6s18" counter accept comment "Allow trusted LAN to WAN"
 
             # allow established WAN to return
-            iifname {
-                    "enp6s18",
-            } oifname {
-                    "enp6s19",
-            } ct state { established, related } counter accept comment "allow established back to LANs"
+            iifname "enp6s18" oifname { "enp6s19", "vm40" } ct state { established, related } counter accept comment "allow established back to LANs"
 
             # count and drop any other traffic
             counter drop
@@ -162,12 +154,12 @@
       '';
     };
 
-    # vlans = {
-    #   lan = {
-    #     id = 30;
-    #     interface = "enp6s18";
-    #   };
-    # };
+    vlans = {
+      vm40 = {
+        id = 40;
+        interface = "enp6s20";
+      };
+    };
 
     interfaces = {
       enp6s18 = {
@@ -190,6 +182,29 @@
           }];
         };
       };
+      vm40 = {
+        ipv4 = {
+          addresses = [{
+            address = "192.168.40.1";
+            prefixLength = 24;
+          }];
+        };
+      };
     };
+  };
+
+  services.dhcpd4 = {
+    enable = true;
+    interfaces = [ "vm40" ];
+    extraConfig = ''
+      option domain-name-servers 8.8.8.8, 1.1.1.1;
+      option subnet-mask 255.255.255.0;
+      subnet 192.168.40.0 netmask 255.255.255.0 {
+        option broadcast-address 192.168.40.255;
+        option routers 192.168.40.1;
+        interface vm40;
+        range 192.168.40.100 192.168.40.254;
+      }
+    '';
   };
 }
