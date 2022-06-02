@@ -31,6 +31,15 @@
     certs = { "averyan.ru" = { extraDomainNames = [ "*.averyan.ru" ]; }; };
   };
 
+  services.yggdrasil = {
+    enable = true;
+    persistentKeys = true;
+    config = {
+      Listen = [ "tcp://0.0.0.0:5353" ];
+      IfName = "ygg0";
+    };
+  };
+
   services.nginx = {
     enable = true;
     package = pkgs.nginxQuic;
@@ -163,15 +172,6 @@
     #     interface = "enp6s18";
     #   };
     # };
-
-    services.yggdrasil = {
-      enable = true;
-      persistentKeys = true;
-      config = {
-        Listen = [ "tcp://0.0.0.0:5353" ];
-        IfName = "ygg0";
-      };
-    };
 
     interfaces = {
       enp6s18 = {
