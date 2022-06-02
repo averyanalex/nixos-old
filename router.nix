@@ -64,7 +64,7 @@
     hostName = "router";
 
     defaultGateway = {
-      address = "192.168.3.1";
+      address = "192.168.3.3";
       interface = "enp6s19";
     };
 
