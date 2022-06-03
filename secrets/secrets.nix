@@ -11,4 +11,6 @@ let
 in {
   "router-wg-key.age".publicKeys = users ++ [ router ];
   "cloudflare-credentials.age".publicKeys = users ++ [ router public ];
+
+  "passwords/alex.age".publicKeys = users ++ systems;
 }

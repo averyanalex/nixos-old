@@ -41,6 +41,7 @@
 
   services.fstrim.enable = true;
 
+  age.secrets.password-alex.file = ./secrets/password/alex.age;
   users = {
     mutableUsers = false;
     users.alex = {
@@ -48,8 +49,7 @@
       description = "Alexander Averyanov";
       extraGroups = [ "wheel" ];
       uid = 1000;
-      hashedPassword =
-        "$6$VCoEIErVjk.8YIeB$.xxUkrQgIK68aIWEWIqPulsD1T6a7QjepQqWRqWAZTtY20qxYH2gzl95KmCyzpeu3YeFf7sT3uu91oYoGswTX1";
+      passwordFile = config.age.secrets.password-alex.path;
       openssh.authorizedKeys.keys = [
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINF5KDy1T6Z+RlDb+Io3g1uSZ46rhBxhNE39YlG3GPFM averyanalex@gmail.com"
       ];
