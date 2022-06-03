@@ -20,12 +20,14 @@
 
   services.openssh.ports = [ 22100 ];
 
+  age.secrets.cloudflare-credentials.file =
+    ./secrets/cloudflare-credentials.age;
   security.acme = {
     acceptTerms = true;
     defaults = {
       email = "averyanalex@gmail.com";
       dnsProvider = "cloudflare";
-      credentialsFile = "/etc/cloudflare-creds";
+      credentialsFile = config.age.secrets.cloudflare-credentials.path;
     };
     certs = {
       "averyan.ru" = { extraDomainNames = [ "*.averyan.ru" ]; };

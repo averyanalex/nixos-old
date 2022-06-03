@@ -16,6 +16,18 @@
   environment.systemPackages = [ pkgs.docker-compose_2 ];
   environment.shellAliases = { dc = "docker compose"; };
 
+  age.secrets.cloudflare-credentials.file =
+    ./secrets/cloudflare-credentials.age;
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      email = "averyanalex@gmail.com";
+      dnsProvider = "cloudflare";
+      credentialsFile = config.age.secrets.cloudflare-credentials.path;
+    };
+    certs."averyan.ru".extraDomainNames = [ "*.averyan.ru" ];
+  };
+
   networking = {
     hostName = "public";
 
