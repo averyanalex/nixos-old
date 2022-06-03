@@ -100,7 +100,7 @@
       privateKeyFile = config.age.secrets.wg-key.path;
       peers = [{ # hamster
         publicKey = "NEUT4NBFv+P2EmJmr59IneMpsbma4UpUwu9QsI4jGzE=";
-        allowedIPs = [ "192.168.32.10/24" ];
+        allowedIPs = [ "192.168.32.10/32" ];
       }];
     };
   };
