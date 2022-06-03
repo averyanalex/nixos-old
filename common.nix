@@ -41,7 +41,7 @@
 
   services.fstrim.enable = true;
 
-  age.secrets.password-alex.file = ./secrets/password/alex.age;
+  age.secrets.password-alex.file = ./secrets/passwords/alex.age;
   users = {
     mutableUsers = false;
     users.alex = {
