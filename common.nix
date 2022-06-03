@@ -29,7 +29,7 @@
       enable = true;
       allowReboot = false;
       flake = "github:averyanalex/nixos";
-      dates = "daily";
+      dates = "4:45";
     };
   };
 
