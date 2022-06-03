@@ -92,7 +92,7 @@
 
   users.users.nginx.extraGroups = [ "acme" ];
 
-  age.secrets.wg-key.file = ../secrets/router-wg-key.age;
+  age.secrets.wg-key.file = ./secrets/router-wg-key.age;
   networking.wireguard.interfaces = {
     wg0 = {
       ips = [ "192.168.32.1/24" ];
