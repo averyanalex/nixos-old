@@ -42,6 +42,7 @@
               nixpkgs.overlays = [ overlay-unstable ];
             })
             ./public.nix
+            agenix.nixosModule
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
