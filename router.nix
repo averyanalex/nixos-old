@@ -92,6 +92,19 @@
 
   users.users.nginx.extraGroups = [ "acme" ];
 
+  age.secrets.wg-key.file = ../secrets/router-wg-key.age;
+  networking.wireguard.interfaces = {
+    wg0 = {
+      ips = [ "192.168.32.1/24" ];
+      listenPort = 51820;
+      privateKeyFile = config.age.secrets.wg-key.path;
+      peers = [{ # hamster
+        publicKey = "NEUT4NBFv+P2EmJmr59IneMpsbma4UpUwu9QsI4jGzE=";
+        allowedIPs = [ "192.168.32.10/24" ];
+      }];
+    };
+  };
+
   networking = {
     hostName = "router";
 
@@ -128,6 +141,7 @@
             tcp dport 22100 counter accept comment "ssh"
             tcp dport { 80, 443 } counter accept comment "http"
             tcp dport 5353 counter accept comment "yggdrasil public peer"
+            udp dport 51820 counter accept comment "wireguard"
 
             # ICMP
             ip6 nexthdr icmpv6 icmpv6 type {
