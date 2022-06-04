@@ -4,9 +4,6 @@
   imports =
     [ ./hardware/qemu.nix ./mounts/router.nix ./common.nix ./lang/en.nix ];
 
-  services.resolved.enable = true;
-  networking.nameservers = [ "8.8.8.8" "9.9.9.9" ];
-
   boot.kernel.sysctl = {
     "net.ipv4.conf.all.forwarding" = true;
     "net.ipv4.ip_forward" = true;
@@ -196,6 +193,7 @@
             type nat hook prerouting priority dstnat; policy accept;
             ip daddr 192.168.3.1 tcp dport { 22, 22101 } dnat to 192.168.40.2
             ip daddr 192.168.3.1 tcp dport { 25, 143, 465, 587, 993 } dnat to 192.168.40.2
+            ip daddr 192.168.3.1 tcp dport 22103 dnat to 192.168.43.2
           }
 
           # setup NAT masquerading on the enp6s18 interface

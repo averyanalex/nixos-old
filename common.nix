@@ -62,6 +62,9 @@
     passwordAuthentication = false;
   };
 
+  services.resolved.enable = true;
+  networking.nameservers = [ "8.8.8.8" "9.9.9.9" ];
+
   networking.firewall.enable = false;
   networking.useDHCP = false;
 

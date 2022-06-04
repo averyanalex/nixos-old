@@ -4,9 +4,6 @@
   imports =
     [ ./hardware/qemu.nix ./mounts/public.nix ./common.nix ./lang/en.nix ];
 
-  services.resolved.enable = true;
-  networking.nameservers = [ "8.8.8.8" "9.9.9.9" ];
-
   services.openssh.ports = [ 22101 ];
 
   virtualisation.docker.enable = true;
