@@ -185,10 +185,10 @@
             ct status dnat counter accept comment "allow dnat forwarding"
 
             # allow trusted network WAN access
-            iifname { "enp6s19", "vm40", "vm43" } oifname "enp6s19" counter accept comment "Allow trusted LAN to WAN"
+            iifname { "enp6s19", "vm40", "vm43", "vm44" } oifname "enp6s19" counter accept comment "Allow trusted LAN to WAN"
 
             # allow established WAN to return
-            iifname "enp6s19" oifname { "enp6s19", "vm40", "vm43" } ct state { established, related } counter accept comment "allow established back to LANs"
+            iifname "enp6s19" oifname { "enp6s19", "vm40", "vm43", "vm44" } ct state { established, related } counter accept comment "allow established back to LANs"
 
             # count and drop any other traffic
             counter drop
@@ -201,6 +201,7 @@
             ip daddr 192.168.3.1 tcp dport { 22, 22101 } dnat to 192.168.40.2
             ip daddr 192.168.3.1 tcp dport { 25, 143, 465, 587, 993 } dnat to 192.168.40.2
             ip daddr 192.168.3.1 tcp dport 22103 dnat to 192.168.43.2
+            ip daddr 192.168.3.1 tcp dport 22104 dnat to 192.168.44.2
           }
 
           # setup NAT masquerading on the enp6s18 interface
@@ -219,6 +220,10 @@
       };
       vm43 = {
         id = 43;
+        interface = "enp6s20";
+      };
+      vm44 = {
+        id = 44;
         interface = "enp6s20";
       };
     };
@@ -248,12 +253,20 @@
           }];
         };
       };
+      vm44 = {
+        ipv4 = {
+          addresses = [{
+            address = "192.168.44.1";
+            prefixLength = 24;
+          }];
+        };
+      };
     };
   };
 
   services.dhcpd4 = {
     enable = true;
-    interfaces = [ "vm40" "vm43" ];
+    interfaces = [ "vm40" "vm43" "vm44" ];
     extraConfig = ''
       option domain-name-servers 8.8.8.8, 1.1.1.1;
       option subnet-mask 255.255.255.0;
@@ -268,6 +281,12 @@
         option routers 192.168.43.1;
         interface vm43;
         range 192.168.43.100 192.168.43.254;
+      }
+      subnet 192.168.44.0 netmask 255.255.255.0 {
+        option broadcast-address 192.168.44.255;
+        option routers 192.168.44.1;
+        interface vm44;
+        range 192.168.44.100 192.168.44.254;
       }
     '';
   };

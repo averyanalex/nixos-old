@@ -67,6 +67,22 @@
             }
           ];
         };
+        highterum = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ({ config, pkgs, ... }: {
+              nixpkgs.overlays = [ overlay-unstable ];
+            })
+            ./highterum.nix
+            agenix.nixosModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/alex.nix;
+            }
+          ];
+        };
         ferret = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
