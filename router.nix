@@ -23,6 +23,8 @@
     acceptTerms = true;
     defaults = {
       email = "averyanalex@gmail.com";
+      dnsResolver = "1.1.1.1:53";
+      enableDebugLogs = true;
       dnsProvider = "cloudflare";
       credentialsFile = config.age.secrets.cloudflare-credentials.path;
     };
@@ -30,6 +32,7 @@
       "averyan.ru" = { extraDomainNames = [ "*.averyan.ru" ]; };
       "memefinder.ru" = { extraDomainNames = [ "*.memefinder.ru" ]; };
       "linuxguides.ru" = { extraDomainNames = [ "*.linuxguides.ru" ]; };
+      "highterum.ru" = { extraDomainNames = [ "*.highterum.ru" ]; };
     };
   };
 
