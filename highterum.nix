@@ -34,6 +34,15 @@
         passwordFile = config.age.secrets.crsrv-token.path;
       };
     };
+    ht-cabinet-frontend = {
+      image = "cr.averyan.ru/highterum/simple-cabinet/frontend-2";
+      ports = [ "8086:80" ];
+      login = {
+        registry = "https://cr.averyan.ru";
+        username = "averyanalex";
+        passwordFile = config.age.secrets.crsrv-token.path;
+      };
+    };
   };
 
   networking = {
