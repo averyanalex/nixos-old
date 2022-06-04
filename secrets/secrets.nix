@@ -7,7 +7,7 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHoe/I5CQ++Vr+4EXURrh3dphT/wGbCWSClu7FOB8zbs";
   public =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILV6UQMKSSpnmPstQTXD54Q4OiOun2hIbp25Nh8whGoF";
-  runner = 
+  runner =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEt5lXWlcNxeS/dZtKiJDyzHXnLlVFUe9iC0LPHPly6X";
   systems = [ router public runner ];
 in {
@@ -15,4 +15,6 @@ in {
   "cloudflare-credentials.age".publicKeys = users ++ [ router public ];
 
   "passwords/alex.age".publicKeys = users ++ systems;
+
+  "gitsrv-runner-token.age".publicKeys = users ++ [ runner ];
 }

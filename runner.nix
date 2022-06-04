@@ -10,6 +10,22 @@
   virtualisation.docker.autoPrune.enable = true;
   virtualisation.docker.autoPrune.dates = "daily";
 
+  age.secrets.gitsrv-runner-token.file = ./secrets/gitsrv-runner-token.age;
+
+  services.gitlab-runner = {
+    gracefulTermination = true;
+    services = {
+      averyanalex-whale-docker = {
+        registrationConfigFile = config.age.secrets.gitsrv-runner-token.path;
+        tagList = [ "averyanalex" "docker" ];
+        runUntagged = true;
+        limit = 4;
+        executor = "docker";
+        dockerImage = "debian:11";
+      };
+    };
+  };
+
   networking = {
     hostName = "runner";
 
