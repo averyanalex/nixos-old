@@ -46,6 +46,20 @@
     };
   };
 
+  services.nginx = {
+    enable = true;
+    recommendedProxySettings = true;
+    recommendedOptimisation = true;
+    clientMaxBodySize = "8g";
+    virtualHosts = {
+      "assets" = {
+        serverName = "192.168.44.2:8087";
+        listen = [{ port = 8087; }];
+        locations."/".root = "/var/lib/ht-cabinet/assets";
+      };
+    };
+  };
+
   networking = {
     hostName = "highterum";
 

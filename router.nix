@@ -101,6 +101,7 @@
         useACMEHost = "highterum.ru";
         locations."/api/".proxyPass = "http://192.168.44.2:8085/";
         locations."/api/".proxyWebsockets = true;
+        locations."/assets/".proxyPass = "http://192.168.44.2:8087/";
         locations."/".proxyPass = "http://192.168.44.2:8086/";
         locations."/".proxyWebsockets = true;
       };
