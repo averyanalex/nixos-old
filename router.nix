@@ -78,6 +78,12 @@
         locations."/".proxyPass = "http://192.168.40.2:4038/";
         locations."/".proxyWebsockets = true;
       };
+      "ptero.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://192.168.40.2:8055/";
+        locations."/".proxyWebsockets = true;
+      };
       "memefinder.ru" = {
         forceSSL = true;
         useACMEHost = "memefinder.ru";
