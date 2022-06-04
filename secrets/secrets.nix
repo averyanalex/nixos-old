@@ -19,4 +19,6 @@ in {
   "passwords/alex.age".publicKeys = users ++ systems;
 
   "gitsrv-runner-token.age".publicKeys = users ++ [ runner ];
+
+  "highterum-pgsql.age".publicKeys = users ++ [ highterum ];
 }

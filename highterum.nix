@@ -10,6 +10,18 @@
   virtualisation.docker.autoPrune.enable = true;
   virtualisation.docker.autoPrune.dates = "daily";
 
+  age.secrets.highterum-pgsql.file = ./secrets/highterum-pgsql.age;
+
+  virtualisation.oci-containers.backend = "docker";
+  virtualisation.oci-containers.containers = {
+    ht-pgsql = {
+      image = "postgres:14";
+      ports = [ "5432:5432" ];
+      volumes = [ "/var/lib/ht-pgsql:/var/lib/postgresql/data" ];
+      environmentFiles = [ age.secrets.highterum-pgsql.path ];
+    };
+  };
+
   networking = {
     hostName = "highterum";
 
