@@ -54,7 +54,10 @@
     virtualHosts = {
       "assets" = {
         serverName = "192.168.44.2:8087";
-        listen = [{ port = 8087; }];
+        listen = [{
+          port = 8087;
+          addr = "192.168.44.2";
+        }];
         locations."/".root = "/var/lib/ht-cabinet/assets";
       };
     };
