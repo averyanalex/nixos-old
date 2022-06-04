@@ -53,6 +53,7 @@
     recommendedProxySettings = true;
     recommendedTlsSettings = true;
     recommendedOptimisation = true;
+    clientMaxBodySize = "8g";
     virtualHosts = {
       "pve.averyan.ru" = {
         forceSSL = true;
