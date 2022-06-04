@@ -14,7 +14,7 @@
   virtualisation.oci-containers.containers = {
     buildkit = {
       image = "moby/buildkit:buildx-stable-1";
-      extraOptions = "--privileged";
+      extraOptions = [ "--privileged" ];
       volumes =
         [ "/var/lib/buildkit:/var/lib/buildkit" "/run/buildkit:/run/buildkit" ];
     };
