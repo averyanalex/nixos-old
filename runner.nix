@@ -17,6 +17,7 @@
     gracefulTermination = true;
     services = {
       averyanalex-whale-docker = {
+        description = "averyanalex-whale-docker";
         registrationConfigFile = config.age.secrets.gitsrv-runner-token.path;
         tagList = [ "averyanalex" "docker" ];
         runUntagged = true;
