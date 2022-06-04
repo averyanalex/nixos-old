@@ -13,12 +13,12 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBioDhlj6H4xSK8K2sr9uxz1g9y6OD87mNrpQX0NL9OW";
   systems = [ router public runner highterum ];
 in {
-  "router-wg-key.age".publicKeys = users ++ [ router ];
-  "cloudflare-credentials.age".publicKeys = users ++ [ router public ];
-
   "passwords/alex.age".publicKeys = users ++ systems;
 
+  "router-wg-key.age".publicKeys = users ++ [ router ];
+  "cloudflare-credentials.age".publicKeys = users ++ [ router public ];
   "gitsrv-runner-token.age".publicKeys = users ++ [ runner ];
-
   "highterum-pgsql.age".publicKeys = users ++ [ highterum ];
+  "crsrv-token.age".publicKeys = users ++ [ public highterum ];
+  "ht-cabinet-api.age".publicKeys = users ++ [ highterum ];
 }
