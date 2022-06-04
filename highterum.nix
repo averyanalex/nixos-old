@@ -26,6 +26,7 @@
       image = "cr.averyan.ru/highterum/simple-cabinet/web-api";
       ports = [ "8085:8080" ];
       volumes = [
+        "/var/lib/ht-cabinet:/app/data"
         "${config.age.secrets.ht-cabinet-api.path}:/app/data/application.properties"
       ];
       login = {
