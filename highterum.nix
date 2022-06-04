@@ -18,7 +18,7 @@
       image = "postgres:14";
       ports = [ "5432:5432" ];
       volumes = [ "/var/lib/ht-pgsql:/var/lib/postgresql/data" ];
-      environmentFiles = [ age.secrets.highterum-pgsql.path ];
+      environmentFiles = [ config.age.secrets.highterum-pgsql.path ];
     };
   };
 
