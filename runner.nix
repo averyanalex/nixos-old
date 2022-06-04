@@ -10,6 +10,16 @@
   virtualisation.docker.autoPrune.enable = true;
   virtualisation.docker.autoPrune.dates = "daily";
 
+  virtualisation.oci-containers.backend = "docker";
+  virtualisation.oci-containers.containers = {
+    buildkit = {
+      image = "moby/buildkit:buildx-stable-1";
+      extraOptions = "--privileged";
+      volumes =
+        [ "/var/lib/buildkit:/var/lib/buildkit" "/run/buildkit:/run/buildkit" ];
+    };
+  };
+
   age.secrets.gitsrv-runner-token.file = ./secrets/gitsrv-runner-token.age;
 
   services.gitlab-runner = {
@@ -24,6 +34,15 @@
         limit = 4;
         executor = "docker";
         dockerImage = "debian:11";
+      };
+      averyanalex-whale-buildkit = {
+        description = "averyanalex-whale-buildkit";
+        registrationConfigFile = config.age.secrets.gitsrv-runner-token.path;
+        tagList = [ "averyanalex" "buildkit" ];
+        limit = 1;
+        executor = "docker";
+        dockerImage = "moby/buildkit:buildx-stable-1";
+        dockerVolumes = [ "/run/buildkit:/run/buildkit" ];
       };
     };
   };
