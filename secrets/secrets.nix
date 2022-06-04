@@ -11,7 +11,7 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEt5lXWlcNxeS/dZtKiJDyzHXnLlVFUe9iC0LPHPly6X";
   highterum =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBioDhlj6H4xSK8K2sr9uxz1g9y6OD87mNrpQX0NL9OW";
-  systems = [ router public runner ];
+  systems = [ router public runner highterum ];
 in {
   "router-wg-key.age".publicKeys = users ++ [ router ];
   "cloudflare-credentials.age".publicKeys = users ++ [ router public ];
