@@ -24,7 +24,6 @@
     defaults = {
       email = "averyanalex@gmail.com";
       dnsResolver = "1.1.1.1:53";
-      enableDebugLogs = true;
       dnsProvider = "cloudflare";
       credentialsFile = config.age.secrets.cloudflare-credentials.path;
     };
