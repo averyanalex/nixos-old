@@ -13,6 +13,7 @@
   age.secrets.gitsrv-runner-token.file = ./secrets/gitsrv-runner-token.age;
 
   services.gitlab-runner = {
+    enable = true;
     gracefulTermination = true;
     services = {
       averyanalex-whale-docker = {
