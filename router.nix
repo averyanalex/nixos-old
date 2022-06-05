@@ -108,7 +108,7 @@
       "node.highterum.ru" = {
         forceSSL = true;
         useACMEHost = "highterum.ru";
-        locations."/".proxyPass = "http://192.168.44.2:443/";
+        locations."/".proxyPass = "http://192.168.44.2:8443/";
         locations."/".proxyWebsockets = true;
       };
     };
