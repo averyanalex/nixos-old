@@ -219,7 +219,7 @@
             ip daddr 192.168.3.1 tcp dport { 22, 22101 } dnat to 192.168.40.2
             ip daddr 192.168.3.1 tcp dport { 25, 143, 465, 587, 993 } dnat to 192.168.40.2
             ip daddr 192.168.3.1 tcp dport 22103 dnat to 192.168.43.2
-            ip daddr 192.168.3.1 tcp dport { 22104, 5432 } dnat to 192.168.44.2
+            ip daddr 192.168.3.1 tcp dport { 22104, 5432, 3306 } dnat to 192.168.44.2
           }
 
           # setup NAT masquerading on the enp6s18 interface
