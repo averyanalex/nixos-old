@@ -17,9 +17,13 @@
 
   age.secrets.highterum-pgsql.file = ./secrets/highterum-pgsql.age;
   age.secrets.ht-cabinet-api.file = ./secrets/ht-cabinet-api.age;
-  age.secrets.docker-registries = {
+  age.secrets.docker-registries-root = {
     file = ./secrets/docker-registries-ro.age;
     path = "/root/.docker/config.json";
+  };
+  age.secrets.docker-registries-alex = {
+    file = ./secrets/docker-registries-ro.age;
+    path = "/alex/.docker/config.json";
   };
 
   virtualisation.oci-containers.backend = "docker";
