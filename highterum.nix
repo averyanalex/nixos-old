@@ -24,6 +24,7 @@
   age.secrets.docker-registries-alex = {
     file = ./secrets/docker-registries-ro.age;
     path = "/home/alex/.docker/config.json";
+    owner = "alex";
   };
 
   virtualisation.oci-containers.backend = "docker";
