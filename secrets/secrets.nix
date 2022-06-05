@@ -21,4 +21,6 @@ in {
   "highterum-pgsql.age".publicKeys = users ++ [ highterum ];
   "crsrv-token.age".publicKeys = users ++ [ public highterum ];
   "ht-cabinet-api.age".publicKeys = users ++ [ highterum ];
+
+  "docker-registries-ro.age".publicKeys = users ++ [ public highterum ];
 }

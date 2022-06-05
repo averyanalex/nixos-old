@@ -12,7 +12,10 @@
 
   age.secrets.highterum-pgsql.file = ./secrets/highterum-pgsql.age;
   age.secrets.ht-cabinet-api.file = ./secrets/ht-cabinet-api.age;
-  age.secrets.crsrv-token.file = ./secrets/crsrv-token.age;
+  age.secrets.docker-registries = {
+    file = ./secrets/docker-registries-ro.age;
+    path = "/root/.docker/config.json";
+  };
 
   virtualisation.oci-containers.backend = "docker";
   virtualisation.oci-containers.containers = {
@@ -29,20 +32,10 @@
         "/var/lib/ht-cabinet:/app/data"
         "${config.age.secrets.ht-cabinet-api.path}:/app/data/application.properties"
       ];
-      login = {
-        registry = "https://cr.averyan.ru";
-        username = "averyanalex";
-        passwordFile = config.age.secrets.crsrv-token.path;
-      };
     };
     ht-cabinet-frontend = {
       image = "cr.averyan.ru/highterum/simple-cabinet/frontend-2";
       ports = [ "8086:80" ];
-      login = {
-        registry = "https://cr.averyan.ru";
-        username = "averyanalex";
-        passwordFile = config.age.secrets.crsrv-token.path;
-      };
     };
   };
 
