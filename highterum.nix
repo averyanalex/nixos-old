@@ -23,7 +23,7 @@
   };
   age.secrets.docker-registries-alex = {
     file = ./secrets/docker-registries-ro.age;
-    path = "/alex/.docker/config.json";
+    path = "/home/alex/.docker/config.json";
   };
 
   virtualisation.oci-containers.backend = "docker";
