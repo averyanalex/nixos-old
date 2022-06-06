@@ -184,6 +184,7 @@
 
             tcp dport 22100 counter accept comment "ssh"
             tcp dport { 80, 443 } counter accept comment "http"
+            tcp dport 8448 counter accept comment "matrix"
             tcp dport 5353 counter accept comment "yggdrasil public peer"
             udp dport 51820 counter accept comment "wireguard"
 
