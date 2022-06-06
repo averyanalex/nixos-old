@@ -58,6 +58,25 @@
     recommendedOptimisation = true;
     clientMaxBodySize = "8g";
     virtualHosts = {
+      "matrix-federation.averyan.ru" = {
+        serverName = "averyan.ru";
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        listen = [{
+          port = 8448;
+          ssl = true;
+        }];
+        locations."/".proxyPass = "http://192.168.40.2:5056";
+        locations."/".proxyWebsockets = true;
+      };
+      "averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/_matrix/".proxyPass = "http://192.168.40.2:5056";
+        locations."/_matrix/".proxyWebsockets = true;
+        locations."/_synapse/client/".proxyPass = "http://192.168.40.2:5056";
+        locations."/_synapse/client/".proxyWebsockets = true;
+      };
       "pve.averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
