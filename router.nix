@@ -75,8 +75,8 @@
         useACMEHost = "averyan.ru";
         locations."/_matrix/".proxyPass = "http://192.168.40.2:5056";
         locations."/_matrix/".proxyWebsockets = true;
-        locations."/_synapse/client/".proxyPass = "http://192.168.40.2:5056";
-        locations."/_synapse/client/".proxyWebsockets = true;
+        locations."/_synapse/".proxyPass = "http://192.168.40.2:5056";
+        locations."/_synapse/".proxyWebsockets = true;
       };
       "pve.averyan.ru" = {
         forceSSL = true;
