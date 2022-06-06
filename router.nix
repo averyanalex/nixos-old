@@ -70,12 +70,32 @@
         locations."/".proxyPass = "http://192.168.40.2:5056";
         locations."/".proxyWebsockets = true;
       };
+      "matrix-federation.highterum.ru" = {
+        serverName = "highterum.ru";
+        onlySSL = true;
+        useACMEHost = "highterum.ru";
+        listen = [{
+          addr = "192.168.3.1";
+          port = 8448;
+          ssl = true;
+        }];
+        locations."/".proxyPass = "http://192.168.40.2:5057";
+        locations."/".proxyWebsockets = true;
+      };
       "averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
         locations."/_matrix/".proxyPass = "http://192.168.40.2:5056";
         locations."/_matrix/".proxyWebsockets = true;
         locations."/_synapse/".proxyPass = "http://192.168.40.2:5056";
+        locations."/_synapse/".proxyWebsockets = true;
+      };
+      "highterum.ru" = {
+        forceSSL = true;
+        useACMEHost = "highterum.ru";
+        locations."/_matrix/".proxyPass = "http://192.168.40.2:5057";
+        locations."/_matrix/".proxyWebsockets = true;
+        locations."/_synapse/".proxyPass = "http://192.168.40.2:5057";
         locations."/_synapse/".proxyWebsockets = true;
       };
       "pve.averyan.ru" = {
