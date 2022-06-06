@@ -10,6 +10,16 @@
   virtualisation.docker.autoPrune.enable = true;
   virtualisation.docker.autoPrune.dates = "daily";
 
+  age.secrets.docker-registries-root = {
+    file = ./secrets/docker-registries-ro.age;
+    path = "/root/.docker/config.json";
+  };
+  age.secrets.docker-registries-alex = {
+    file = ./secrets/docker-registries-ro.age;
+    path = "/home/alex/.docker/config.json";
+    owner = "alex";
+  };
+
   environment.systemPackages = [ pkgs.docker-compose_2 ];
   environment.shellAliases = { dc = "docker compose"; };
 
