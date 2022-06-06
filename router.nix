@@ -60,7 +60,7 @@
     virtualHosts = {
       "matrix-federation.averyan.ru" = {
         serverName = "averyan.ru";
-        forceSSL = true;
+        onlySSL = true;
         useACMEHost = "averyan.ru";
         listen = [{
           addr = "192.168.3.1";
