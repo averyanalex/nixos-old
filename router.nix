@@ -93,10 +93,16 @@
       "highterum.ru" = {
         forceSSL = true;
         useACMEHost = "highterum.ru";
+        locations."/api/".proxyPass = "http://192.168.44.2:8085/";
+        locations."/api/".proxyWebsockets = true;
+
         locations."/_matrix/".proxyPass = "http://192.168.40.2:5057";
         locations."/_matrix/".proxyWebsockets = true;
         locations."/_synapse/".proxyPass = "http://192.168.40.2:5057";
         locations."/_synapse/".proxyWebsockets = true;
+
+        locations."/".proxyPass = "http://192.168.44.2:8086/";
+        locations."/".proxyWebsockets = true;
       };
       "pve.averyan.ru" = {
         forceSSL = true;
@@ -135,15 +141,6 @@
         locations."/api/static/".proxyPass = "http://192.168.40.2:3030/";
         locations."/".proxyWebsockets = true;
         locations."/api/".proxyWebsockets = true;
-      };
-      "lk.highterum.ru" = {
-        forceSSL = true;
-        useACMEHost = "highterum.ru";
-        locations."/api/".proxyPass = "http://192.168.44.2:8085/";
-        locations."/api/".proxyWebsockets = true;
-        locations."/assets/".proxyPass = "http://192.168.44.2:8087/";
-        locations."/".proxyPass = "http://192.168.44.2:8086/";
-        locations."/".proxyWebsockets = true;
       };
       "node.highterum.ru" = {
         forceSSL = true;
