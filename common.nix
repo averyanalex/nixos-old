@@ -39,6 +39,9 @@
       sudo rm -rf /root/.cache && sudo nixos-rebuild switch --flake "github:averyanalex/nixos"'';
   };
 
+  boot.cleanTmpDir = true;
+  boot.tmpOnTmpfs = true;
+
   services.fstrim.enable = true;
 
   age.secrets.password-alex.file = ./secrets/passwords/alex.age;
