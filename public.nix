@@ -23,6 +23,8 @@
   environment.systemPackages = [ pkgs.docker-compose_2 ];
   environment.shellAliases = { dc = "docker compose"; };
 
+  users.users.alex.extraGroups = [ "docker" ];
+
   age.secrets.cloudflare-credentials.file =
     ./secrets/cloudflare-credentials.age;
   security.acme = {
