@@ -90,6 +90,11 @@
         locations."/_synapse/".proxyPass = "http://192.168.40.2:5056";
         locations."/_synapse/".proxyWebsockets = true;
       };
+      "ipfs.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://192.168.40.2:8386";
+      };
       "highterum.ru" = {
         forceSSL = true;
         useACMEHost = "highterum.ru";
