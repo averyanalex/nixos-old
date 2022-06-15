@@ -353,4 +353,16 @@
       }
     '';
   };
+
+  systemd.services.ping-cofob = {
+    serviceConfig.Type = "oneshot";
+    script =
+      "${pkgs.curl} https://status.frsqr.xyz/api/push/gfpM7BB8iI?status=up&msg=OK&ping=";
+  };
+
+  systemd.timers.ping-cofob = {
+    wantedBy = [ "timers.target" ];
+    partOf = [ "ping-cofob.service" ];
+    timerConfig.OnCalendar = [ "*-*-* *:*:00" ];
+  };
 }
