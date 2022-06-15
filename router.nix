@@ -357,7 +357,7 @@
   services.cron = {
     enable = true;
     systemCronJobs = [
-      "* * * * * ${pkgs.curl} https://status.frsqr.xyz/api/push/gfpM7BB8iI?status=up&msg=OK&ping="
+      "* * * * * ${pkgs.curl}/bin/curl https://status.frsqr.xyz/api/push/gfpM7BB8iI?status=up&msg=OK&ping="
     ];
   };
 }
