@@ -357,7 +357,7 @@
   systemd.services.ping-cofob = {
     serviceConfig.Type = "oneshot";
     script =
-      "${pkgs.curl}/bin/curl https://status.frsqr.xyz/api/push/gfpM7BB8iI?status=up&msg=OK&ping=";
+      "${pkgs.curl}/bin/curl -s -S https://status.frsqr.xyz/api/push/gfpM7BB8iI?status=up&msg=OK&ping= > /dev/null";
   };
 
   systemd.timers.ping-cofob = {
