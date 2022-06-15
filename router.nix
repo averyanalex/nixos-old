@@ -364,5 +364,6 @@
     wantedBy = [ "timers.target" ];
     partOf = [ "ping-cofob.service" ];
     timerConfig.OnCalendar = [ "*-*-* *:*:00" ];
+    timerConfig.Unit = "ping-cofob.service";
   };
 }
