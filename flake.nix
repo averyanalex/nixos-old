@@ -35,6 +35,22 @@
             }
           ];
         };
+        mole = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ({ config, pkgs, ... }: {
+              nixpkgs.overlays = [ overlay-unstable ];
+            })
+            ./mole.nix
+            agenix.nixosModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/alex.nix;
+            }
+          ];
+        };
         public = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [

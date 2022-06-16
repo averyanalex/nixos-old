@@ -22,4 +22,7 @@
 
   hardware.enableRedistributableFirmware = false;
   hardware.cpu.intel.updateMicrocode = false;
+
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
 }

@@ -59,6 +59,8 @@
     };
   };
 
+  security.sudo.wheelNeedsPassword = false; # вопросы?
+
   services.openssh = {
     enable = true;
     permitRootLogin = "no";
@@ -74,9 +76,6 @@
     enable = true;
     enableSSHSupport = true;
   };
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
 
   time.timeZone = "Europe/Moscow";
 }
