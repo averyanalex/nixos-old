@@ -63,7 +63,7 @@
         onlySSL = true;
         useACMEHost = "averyan.ru";
         listen = [{
-          addr = "[::]";
+          addr = "192.168.3.1";
           port = 8448;
           ssl = true;
         }];
