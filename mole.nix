@@ -5,7 +5,7 @@
     [ ./hardware/aeza.nix ./mounts/mole.nix ./common.nix ./lang/en.nix ];
 
   virtualisation.oci-containers.containers = {
-    hackagecompare = {
+    uptime-kuma = {
       image = "louislam/uptime-kuma:1";
       ports = [ "3001:3001" ];
       volumes = [ "/var/lib/uptime-kuma:/app/data" ];
