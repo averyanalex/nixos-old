@@ -12,6 +12,24 @@
     };
   };
 
+  age.secrets.cloudflare-credentials.file =
+    ./secrets/cloudflare-credentials.age;
+  security.acme = {
+    acceptTerms = true;
+    defaults = {
+      email = "averyanalex@gmail.com";
+      dnsResolver = "1.1.1.1:53";
+      dnsProvider = "cloudflare";
+      credentialsFile = config.age.secrets.cloudflare-credentials.path;
+    };
+    certs = {
+      "averyan.ru" = { extraDomainNames = [ "*.averyan.ru" ]; };
+      "memefinder.ru" = { extraDomainNames = [ "*.memefinder.ru" ]; };
+      "linuxguides.ru" = { extraDomainNames = [ "*.linuxguides.ru" ]; };
+      "highterum.ru" = { extraDomainNames = [ "*.highterum.ru" ]; };
+    };
+  };
+
   boot.kernel.sysctl = {
     # By default, not automatically configure any IPv6 addresses.
     "net.ipv6.conf.all.accept_ra" = 0;
