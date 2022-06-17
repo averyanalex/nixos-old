@@ -12,6 +12,25 @@
     };
   };
 
+  services.nginx = {
+    enable = true;
+    package = pkgs.nginxQuic;
+    recommendedProxySettings = true;
+    recommendedTlsSettings = true;
+    recommendedOptimisation = true;
+    clientMaxBodySize = "8g";
+    virtualHosts = {
+      "status.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://localhost:3001";
+        locations."/".proxyWebsockets = true;
+      };
+    };
+  };
+
+  users.users.nginx.extraGroups = [ "acme" ];
+
   age.secrets.cloudflare-credentials.file =
     ./secrets/cloudflare-credentials.age;
   security.acme = {
