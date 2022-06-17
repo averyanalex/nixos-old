@@ -35,13 +35,13 @@
             }
           ];
         };
-        mole = nixpkgs.lib.nixosSystem {
+        hawk = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
             ({ config, pkgs, ... }: {
               nixpkgs.overlays = [ overlay-unstable ];
             })
-            ./mole.nix
+            ./hawk.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
             {

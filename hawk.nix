@@ -2,7 +2,7 @@
 
 {
   imports =
-    [ ./hardware/aeza.nix ./mounts/mole.nix ./common.nix ./lang/en.nix ];
+    [ ./hardware/aeza.nix ./mounts/hawk.nix ./common.nix ./lang/en.nix ];
 
   virtualisation.oci-containers.containers = {
     uptime-kuma = {
@@ -22,7 +22,7 @@
   services.openssh.ports = [ 22200 ];
 
   networking = {
-    hostName = "mole";
+    hostName = "hawk";
 
     defaultGateway = {
       address = "10.0.0.1";
