@@ -39,12 +39,12 @@
       privateKeyFile = config.age.secrets.wg-key.path;
       peers = [
         {
-          publicKey = "sSec5CDR9rgAcgcg16iAnNT/zbktZFKPMjEOuuXv7l0=";
-          allowedIPs = [ "10.8.7.16/32" ];
-        }
-        {
           publicKey = "b4dRf61Z5XhVXFMjd1Vzhshwc5J4WlNEZJo2+ZKpslM=";
           allowedIPs = [ "10.8.7.2/32" ];
+        }
+        {
+          publicKey = "MoMpwHx57KWsy44DAdiRxW75x+R+gRo3SJlEI3gzN0Q=";
+          allowedIPs = [ "10.8.7.101/32" ];
         }
       ];
     };
