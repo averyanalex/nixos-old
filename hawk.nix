@@ -170,7 +170,7 @@
 
             tcp dport 22200 counter accept comment "ssh"
             udp dport 443 counter accept comment "quic"
-            tcp dport { 80, 443 } counter accept comment "http"
+            tcp dport { 80, 443, 8448 } counter accept comment "http"
             udp dport 51820 counter accept comment "wireguard"
 
             # ICMP
