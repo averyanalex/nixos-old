@@ -140,7 +140,7 @@
             ct state { established, related } counter accept comment "accept traffic originated from us"
 
             # count and drop any other traffic
-            counter log drop
+            counter drop
           }
 
           chain forward {
