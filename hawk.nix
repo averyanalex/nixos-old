@@ -32,7 +32,7 @@
   age.secrets.wg-key.file = ./secrets/hawk-wg-key.age;
   networking.wireguard.interfaces = {
     wg0 = {
-      ips = [ "10.8.7.1/24" ];
+      ips = [ "10.8.7.1/32" ];
       listenPort = 51820;
       privateKeyFile = config.age.secrets.wg-key.path;
       peers = [{
