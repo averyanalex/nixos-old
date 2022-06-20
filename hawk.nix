@@ -224,8 +224,8 @@
         }
 
         table ip nat {
-          chain postrouting {
-            type nat hook postrouting priority 100; policy accept;
+          chain prerouting {
+            type nat hook prerouting priority dstnat; policy accept;
             ip daddr 185.112.83.20 tcp dport { 22, 22101 } dnat to 10.8.7.101
             ip daddr 185.112.83.20 tcp dport { 25, 143, 465, 587, 993 } dnat to 10.8.7.101
             ip daddr 185.112.83.20 tcp dport 22103 dnat to 10.8.7.2
