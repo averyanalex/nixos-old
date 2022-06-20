@@ -159,6 +159,12 @@
         table ip nat {
           chain prerouting {
             type nat hook prerouting priority dstnat; policy accept;
+            ip daddr 185.112.83.20 tcp dport { 22, 22101 } dnat to 10.8.7.2
+            ip daddr 185.112.83.20 tcp dport { 25, 143, 465, 587, 993 } dnat to 10.8.7.2
+            ip daddr 185.112.83.20 tcp dport 22103 dnat to 10.8.7.2
+            ip daddr 185.112.83.20 tcp dport { 22104, 5432, 3306 } dnat to 10.8.7.2
+            ip daddr 185.112.83.20 tcp dport { 4001, 9096 } dnat to 10.8.7.2
+            ip daddr 185.112.83.20 udp dport { 4001, 9096 } dnat to 10.8.7.2
           }
 
           # setup NAT masquerading on the ens3 interface
