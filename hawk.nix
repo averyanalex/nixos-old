@@ -72,11 +72,18 @@
         serverName = "averyan.ru";
         onlySSL = true;
         useACMEHost = "averyan.ru";
-        listen = [{
-          addr = "[::0]";
-          port = 8448;
-          ssl = true;
-        }];
+        listen = [
+          {
+            addr = "[::0]";
+            port = 8448;
+            ssl = true;
+          }
+          {
+            addr = "0.0.0.0";
+            port = 8448;
+            ssl = true;
+          }
+        ];
         locations."/".proxyPass = "http://10.8.7.101:5056";
         locations."/".proxyWebsockets = true;
       };
