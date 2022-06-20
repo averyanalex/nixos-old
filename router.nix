@@ -233,10 +233,10 @@
             ct status dnat counter accept comment "allow dnat forwarding"
 
             # allow trusted network WAN access
-            iifname { "enp6s19", "vm40", "vm43", "vm44" } oifname "wg0" counter accept comment "Allow trusted LAN to WAN"
+            iifname { "enp6s19", "vm40", "vm43", "vm44" } oifname { "wg0", "enp6s19" } counter accept comment "Allow trusted LAN to WAN"
 
             # allow established WAN to return
-            iifname "wg0" oifname { "enp6s19", "vm40", "vm43", "vm44" } ct state { established, related } counter accept comment "allow established back to LANs"
+            iifname { "wg0", "enp6s19" } oifname { "enp6s19", "vm40", "vm43", "vm44" } ct state { established, related } counter accept comment "allow established back to LANs"
 
             # count and drop any other traffic
             counter drop
@@ -257,8 +257,12 @@
           # setup NAT masquerading on the enp6s18 interface
           chain postrouting {
             type nat hook postrouting priority srcnat; policy accept;
-            oifname "wg0" masquerade
+            oifname { "wg0", "enp6s19" } masquerade
           }
+        }
+
+        table ip mangle {
+          chain 
         }
       '';
     };
