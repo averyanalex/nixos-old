@@ -165,7 +165,6 @@
           # allow all outgoing connections
           chain output {
             type filter hook output priority 100;
-            ip daddr 185.112.83.20 tcp dport { 25, 143, 465, 587, 993 } dnat to 10.8.7.101
             accept
           }
 
