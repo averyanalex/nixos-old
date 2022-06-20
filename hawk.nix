@@ -111,8 +111,8 @@
             iifname lo counter accept comment "accept any localhost traffic"
 
             tcp dport 22200 counter accept comment "ssh"
-            tcp dport { 80, 443 } counter accept comment "http"
             udp dport 443 counter accept comment "quic"
+            tcp dport { 80, 443 } counter accept comment "http"
             udp dport 51820 counter accept comment "wireguard"
 
             # ICMP
