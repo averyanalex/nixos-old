@@ -77,6 +77,83 @@
 
     nat.enable = false;
     firewall.enable = false;
+    nftables = {
+      enable = true;
+      ruleset = ''
+        table inet filter {
+          # allow all outgoing connections
+          chain output {
+            type filter hook output priority 100;
+            accept
+          }
+
+          chain input {
+            type filter hook input priority 0;
+
+            ct state invalid counter drop comment "drop invalid packets"
+
+            iifname lo counter accept comment "accept any localhost traffic"
+
+            tcp dport 22200 counter accept comment "ssh"
+            tcp dport { 80, 443 } counter accept comment "http"
+            udp dport 51820 counter accept comment "wireguard"
+
+            # ICMP
+            ip6 nexthdr icmpv6 icmpv6 type {
+              destination-unreachable,
+              packet-too-big,
+              time-exceeded,
+              parameter-problem,
+              nd-router-advert,
+              nd-neighbor-solicit,
+              nd-neighbor-advert
+            } counter accept comment "icmpv6"
+            ip protocol icmp icmp type {
+              destination-unreachable,
+              router-advertisement,
+              time-exceeded,
+              parameter-problem
+            } counter accept comment "icmpv4"
+
+            # ping
+            ip6 nexthdr icmpv6 icmpv6 type echo-request counter accept comment "pingv6"
+            ip protocol icmp icmp type echo-request counter accept comment "pingv4"
+
+            ct state { established, related } counter accept comment "accept traffic originated from us"
+
+            # count and drop any other traffic
+            counter drop
+          }
+
+          chain forward {
+            type filter hook forward priority 0;
+
+            ct status dnat counter accept comment "allow dnat forwarding"
+
+            # allow trusted network WAN access
+            iifname "wg0" oifname "ens3" counter accept comment "lan to wan"
+
+            # allow established WAN to return
+            iifname "ens3" oifname "wg0" ct state { established, related } counter accept comment "allow established back to LANs"
+
+            # count and drop any other traffic
+            counter drop
+          }
+        }
+
+        table ip nat {
+          chain prerouting {
+            type nat hook prerouting priority dstnat; policy accept;
+          }
+
+          # setup NAT masquerading on the ens3 interface
+          chain postrouting {
+            type nat hook postrouting priority srcnat; policy accept;
+            oifname "ens3" masquerade
+          }
+        }
+      '';
+    };
 
     interfaces = {
       ens3 = {
