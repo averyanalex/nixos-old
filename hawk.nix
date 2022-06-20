@@ -22,6 +22,7 @@
     virtualHosts = {
       "status.averyan.ru" = {
         forceSSL = true;
+        http3 = true;
         useACMEHost = "averyan.ru";
         locations."/".proxyPass = "http://localhost:3001";
         locations."/".proxyWebsockets = true;
@@ -111,6 +112,7 @@
 
             tcp dport 22200 counter accept comment "ssh"
             tcp dport { 80, 443 } counter accept comment "http"
+            udp dport 443 counter accept comment "quic"
             udp dport 51820 counter accept comment "wireguard"
 
             # ICMP
