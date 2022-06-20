@@ -181,12 +181,6 @@
       enable = true;
       ruleset = ''
         table inet filter {
-          # enable flow offloading for better throughput
-          # flowtable f {
-          #   hook ingress priority 0;
-          #   devices = { enp6s18, lan };
-          # }
-
           # allow all outgoing connections
           chain output {
             type filter hook output priority 100;
@@ -236,16 +230,13 @@
           chain forward {
             type filter hook forward priority 0;
 
-            # enable flow offloading for better throughput
-            # ip protocol { tcp, udp } flow offload @f
-
             ct status dnat counter accept comment "allow dnat forwarding"
 
             # allow trusted network WAN access
-            iifname { "enp6s19", "vm40", "vm43", "vm44" } oifname "enp6s19" counter accept comment "Allow trusted LAN to WAN"
+            iifname { "enp6s19", "vm40", "vm43", "vm44" } oifname "wg0" counter accept comment "Allow trusted LAN to WAN"
 
             # allow established WAN to return
-            iifname "enp6s19" oifname { "enp6s19", "vm40", "vm43", "vm44" } ct state { established, related } counter accept comment "allow established back to LANs"
+            iifname "wg0" oifname { "enp6s19", "vm40", "vm43", "vm44" } ct state { established, related } counter accept comment "allow established back to LANs"
 
             # count and drop any other traffic
             counter drop
@@ -266,7 +257,7 @@
           # setup NAT masquerading on the enp6s18 interface
           chain postrouting {
             type nat hook postrouting priority srcnat; policy accept;
-            oifname "enp6s19" masquerade
+            oifname "wg0" masquerade
           }
         }
       '';
