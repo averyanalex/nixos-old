@@ -164,7 +164,7 @@
       ips = [ "192.168.32.1/24" ];
       listenPort = 51820;
       privateKeyFile = config.age.secrets.wg-key.path;
-      peers = [{ # hamster
+      peers = [{
         publicKey = "NEUT4NBFv+P2EmJmr59IneMpsbma4UpUwu9QsI4jGzE=";
         allowedIPs = [ "192.168.32.10/32" ];
       }];

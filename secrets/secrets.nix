@@ -18,6 +18,9 @@ in {
   "passwords/alex.age".publicKeys = users ++ systems;
 
   "router-wg-key.age".publicKeys = users ++ [ router ];
+  "hawk-wg-key.age".publicKeys = users
+    ++ [ hawk ]; # DIdKXZJf6dfSLabXizF9omKelDCxRGERj6mSR2b2M34=
+
   "cloudflare-credentials.age".publicKeys = users ++ [ router public hawk ];
   "gitsrv-runner-token.age".publicKeys = users ++ [ runner ];
   "highterum-pgsql.age".publicKeys = users ++ [ highterum ];
