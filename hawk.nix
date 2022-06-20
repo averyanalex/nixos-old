@@ -35,10 +35,16 @@
       ips = [ "10.8.7.1/32" ];
       listenPort = 51820;
       privateKeyFile = config.age.secrets.wg-key.path;
-      peers = [{
-        publicKey = "sSec5CDR9rgAcgcg16iAnNT/zbktZFKPMjEOuuXv7l0=";
-        allowedIPs = [ "10.8.7.16/32" ];
-      }];
+      peers = [
+        {
+          publicKey = "sSec5CDR9rgAcgcg16iAnNT/zbktZFKPMjEOuuXv7l0=";
+          allowedIPs = [ "10.8.7.16/32" ];
+        }
+        {
+          publicKey = "b4dRf61Z5XhVXFMjd1Vzhshwc5J4WlNEZJo2+ZKpslM=";
+          allowedIPs = [ "10.8.7.2/32" ];
+        }
+      ];
     };
   };
 
@@ -63,6 +69,11 @@
   };
 
   boot.kernel.sysctl = {
+    # Enable forwarding
+    "net.ipv4.conf.all.forwarding" = true;
+    "net.ipv4.ip_forward" = true;
+    "net.ipv6.conf.all.forwarding" = true;
+
     # By default, not automatically configure any IPv6 addresses.
     "net.ipv6.conf.all.accept_ra" = 0;
     "net.ipv6.conf.all.autoconf" = 0;
