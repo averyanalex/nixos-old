@@ -155,6 +155,10 @@
       address = "10.0.0.1";
       interface = "ens3";
     };
+    defaultGateway6 = {
+      address = "2a0e:d606:0:d2::1";
+      interface = "ens3";
+    };
 
     nat.enable = false;
     firewall.enable = false;
@@ -259,6 +263,12 @@
           addresses = [{
             address = "185.112.83.20";
             prefixLength = 32;
+          }];
+        };
+        ipv6 = {
+          addresses = [{
+            address = "2a0e:d606:0:d2::200";
+            prefixLength = 64;
           }];
         };
       };
