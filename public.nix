@@ -40,6 +40,8 @@
   networking = {
     hostName = "public";
 
+    hosts = { "5.101.179.195" = [ "twinkle.lol" ]; };
+
     defaultGateway = {
       address = "192.168.40.1";
       interface = "enp6s18";
