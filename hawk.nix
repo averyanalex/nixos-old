@@ -23,6 +23,7 @@
       "status.averyan.ru" = {
         forceSSL = true;
         http3 = true;
+        kTLS = true;
         useACMEHost = "averyan.ru";
         locations."/".proxyPass = "http://localhost:3001";
         locations."/".proxyWebsockets = true;
