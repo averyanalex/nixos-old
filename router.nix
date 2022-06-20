@@ -260,10 +260,6 @@
             oifname { "wg0", "enp6s19" } masquerade
           }
         }
-
-        table ip mangle {
-          chain 
-        }
       '';
     };
 
