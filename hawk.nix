@@ -35,6 +35,10 @@
       ips = [ "10.8.7.1/24" ];
       listenPort = 51820;
       privateKeyFile = config.age.secrets.wg-key.path;
+      peers = [{
+        publicKey = "sSec5CDR9rgAcgcg16iAnNT/zbktZFKPMjEOuuXv7l0=";
+        allowedIPs = [ "10.8.7.16/32" ];
+      }];
     };
   };
 
