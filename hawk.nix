@@ -28,6 +28,63 @@
         locations."/".proxyPass = "http://localhost:3001";
         locations."/".proxyWebsockets = true;
       };
+      "memefinder.ru" = {
+        forceSSL = true;
+        useACMEHost = "memefinder.ru";
+        locations."/".proxyPass = "http://10.8.7.101:3010/";
+        locations."/api/".proxyPass = "http://10.8.7.101:3020/";
+        locations."/api/static/".proxyPass = "http://10.8.7.101:3030/";
+        locations."/".proxyWebsockets = true;
+        locations."/api/".proxyWebsockets = true;
+      };
+      "ptero.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://10.8.7.101:8055/";
+        locations."/".proxyWebsockets = true;
+      };
+      "git.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://10.8.7.101:8095/";
+        locations."/".proxyWebsockets = true;
+      };
+      "cr.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://10.8.7.101:5050/";
+      };
+      "bw.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://10.8.7.101:4038/";
+        locations."/".proxyWebsockets = true;
+      };
+      "averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/_matrix/".proxyPass = "http://10.8.7.101:5056";
+        locations."/_matrix/".proxyWebsockets = true;
+        locations."/_synapse/".proxyPass = "http://10.8.7.101:5056";
+        locations."/_synapse/".proxyWebsockets = true;
+      };
+      "matrix-federation.averyan.ru" = {
+        serverName = "averyan.ru";
+        onlySSL = true;
+        useACMEHost = "averyan.ru";
+        listen = [{
+          addr = "[::0]";
+          port = 8448;
+          ssl = true;
+        }];
+        locations."/".proxyPass = "http://10.8.7.101:5056";
+        locations."/".proxyWebsockets = true;
+      };
+      "ipfs.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://10.8.7.101:8386";
+      };
     };
   };
 
