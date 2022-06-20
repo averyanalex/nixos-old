@@ -175,11 +175,6 @@
   networking = {
     hostName = "router";
 
-    defaultGateway = {
-      address = "10.8.7.1";
-      interface = "wg0";
-    };
-
     nat.enable = false;
     firewall.enable = false;
     nftables = {
