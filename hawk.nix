@@ -107,6 +107,10 @@
           allowedIPs = [ "10.8.7.2/32" ];
         }
         {
+          publicKey = "eAW4jpiWQx08+9AqDZg2F6ca0vGfUdAWkhR7n3B3wXg=";
+          allowedIPs = [ "10.8.7.99/32" ];
+        }
+        {
           publicKey = "MoMpwHx57KWsy44DAdiRxW75x+R+gRo3SJlEI3gzN0Q=";
           allowedIPs = [ "10.8.7.101/32" ];
         }
