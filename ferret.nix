@@ -14,6 +14,7 @@
     networkmanager.enable = true;
   };
 
+  boot.plymouth.enable = true;
   services.xserver.displayManager.autoLogin.user = "alexey";
 
   users.users.alexey = {
