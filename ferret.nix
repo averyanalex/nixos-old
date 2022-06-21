@@ -14,6 +14,8 @@
     networkmanager.enable = true;
   };
 
+  services.xserver.displayManager.autoLogin.user = "alexey";
+
   users.users.alexey = {
     isNormalUser = true;
     description = "Alexey Averyanov";
