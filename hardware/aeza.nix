@@ -11,10 +11,7 @@
   boot.kernelModules = [ "kvm-amd" ];
   boot.extraModulePackages = [ ];
 
-  swapDevices = [ ];
-
   hardware.enableRedistributableFirmware = false;
-  hardware.cpu.amd.updateMicrocode = false;
 
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;

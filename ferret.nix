@@ -1,7 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./hardware/ferret.nix ./common.nix ./lang/ru.nix ./gnome.nix ];
+  imports = [
+    ./hardware/lenovo.nix
+    ./mounts/ferret.nix
+    ./common.nix
+    ./lang/ru.nix
+    ./gnome.nix
+  ];
 
   networking = {
     hostName = "ferret";
@@ -11,7 +17,7 @@
   users.users.alexey = {
     isNormalUser = true;
     description = "Alexey Averyanov";
-    extraGroups = [ "wheel" ];
+    extraGroups = [ ];
     uid = 1001;
     hashedPassword =
       "$6$VCoEIErVjk.8YIeB$.xxUkrQgIK68aIWEWIqPulsD1T6a7QjepQqWRqWAZTtY20qxYH2gzl95KmCyzpeu3YeFf7sT3uu91oYoGswTX1";

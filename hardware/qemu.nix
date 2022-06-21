@@ -18,10 +18,7 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
-  swapDevices = [ ];
-
   hardware.enableRedistributableFirmware = false;
-  hardware.cpu.intel.updateMicrocode = false;
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
