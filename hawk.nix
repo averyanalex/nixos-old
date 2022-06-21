@@ -10,6 +10,10 @@
       extraOptions = [ "--network=host" ];
       volumes = [ "/var/lib/uptime-kuma:/app/data" ];
     };
+    blog = {
+      image = "cr.averyan.ru/averyanalex/blog:edge";
+      extraOptions = [ "--network=host" ];
+    };
   };
 
   services.nginx = {
@@ -63,6 +67,7 @@
       "averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://localhost:9264";
         locations."/_matrix/".proxyPass = "http://10.8.7.101:5056";
         locations."/_matrix/".proxyWebsockets = true;
         locations."/_synapse/".proxyPass = "http://10.8.7.101:5056";
