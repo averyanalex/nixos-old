@@ -84,12 +84,6 @@
         locations."/".proxyPass = "http://192.168.44.2:8086/";
         locations."/".proxyWebsockets = true;
       };
-      "pve.averyan.ru" = {
-        forceSSL = true;
-        useACMEHost = "averyan.ru";
-        locations."/".proxyPass = "https://192.168.3.4:8006/";
-        locations."/".proxyWebsockets = true;
-      };
       "node.highterum.ru" = {
         forceSSL = true;
         useACMEHost = "highterum.ru";

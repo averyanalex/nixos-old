@@ -68,6 +68,12 @@
         locations."/_synapse/".proxyPass = "http://10.8.7.101:5056";
         locations."/_synapse/".proxyWebsockets = true;
       };
+      "pve.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "https://10.8.7.99:8006";
+        locations."/".proxyWebsockets = true;
+      };
       "matrix-federation.averyan.ru" = {
         serverName = "averyan.ru";
         onlySSL = true;
