@@ -110,6 +110,10 @@
           publicKey = "MoMpwHx57KWsy44DAdiRxW75x+R+gRo3SJlEI3gzN0Q=";
           allowedIPs = [ "10.8.7.101/32" ];
         }
+        {
+          publicKey = "JYXwHp+VhLPjEwgvDNjCE8fjxiaY4csdUeX7q3G4dxI=";
+          allowedIPs = [ "10.8.7.82/32" ];
+        }
       ];
     };
   };
