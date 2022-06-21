@@ -208,6 +208,7 @@
             udp dport 443 counter accept comment "quic"
             tcp dport { 80, 443, 8448 } counter accept comment "http"
             udp dport 51820 counter accept comment "wireguard"
+            tcp dport 8362 counter accept comment "yggdrasil"
 
             # ICMP
             ip6 nexthdr icmpv6 icmpv6 type {
