@@ -5,7 +5,7 @@
     useSandbox = true;
     autoOptimiseStore = true;
     readOnlyStore = true;
-    allowedUsers = [ "@wheel" ];
+    allowedUsers = [ "@wheel" "@users" ];
     trustedUsers = [ "@wheel" ];
     extraOptions = ''
       experimental-features = nix-command flakes
