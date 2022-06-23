@@ -7,7 +7,7 @@
     options = [ "discard" ];
   };
 
-  fileSystems."/" = {
+  fileSystems."/tank" = {
     device = "/dev/disk/by-uuid/d10cccd2-3bce-46ec-a3b6-faa93e76b03d";
     fsType = "ext4";
     options = [ "discard" ];
