@@ -126,6 +126,10 @@
           allowedIPs = [ "10.8.7.101/32" ];
         }
         {
+          publicKey = "uPn+dOrj6M0ebtGC5hlJY5FvBiiycqjfEEy6lsRJRRE=";
+          allowedIPs = [ "10.8.7.105/32" ];
+        }
+        {
           publicKey = "JYXwHp+VhLPjEwgvDNjCE8fjxiaY4csdUeX7q3G4dxI=";
           allowedIPs = [ "10.8.7.82/32" ];
         }
@@ -267,16 +271,7 @@
             ip daddr 185.112.83.20 tcp dport { 22104, 5432, 3306 } dnat to 10.8.7.2
             ip daddr 185.112.83.20 tcp dport { 4001, 9096, 9093 } dnat to 10.8.7.101
             ip daddr 185.112.83.20 udp dport { 4001, 9096, 9093 } dnat to 10.8.7.101
-          }
-
-          chain output {
-            type nat hook output priority -100; policy accept;
-            ip daddr 185.112.83.20 tcp dport { 22, 22101 } dnat to 10.8.7.101
-            ip daddr 185.112.83.20 tcp dport { 25, 143, 465, 587, 993 } dnat to 10.8.7.101
-            ip daddr 185.112.83.20 tcp dport 22103 dnat to 10.8.7.2
-            ip daddr 185.112.83.20 tcp dport { 22104, 5432, 3306 } dnat to 10.8.7.2
-            ip daddr 185.112.83.20 tcp dport { 4001, 9096 } dnat to 10.8.7.101
-            ip daddr 185.112.83.20 udp dport { 4001, 9096 } dnat to 10.8.7.101
+            ip daddr 185.112.83.20 tcp dport { 22105 } dnat to 10.8.7.105
           }
 
           # setup NAT masquerading on the ens3 interface

@@ -28,6 +28,7 @@ in {
   "router-wg-key.age".publicKeys = users ++ [ router ];
   "public-wg-key.age".publicKeys = users ++ [ public ];
   "hawk-wg-key.age".publicKeys = users ++ [ hawk ];
+  "personal-wg-key.age".publicKeys = users ++ [ personal ];
 
   "cloudflare-credentials.age".publicKeys = users ++ [ router public hawk ];
   "gitsrv-runner-token.age".publicKeys = users ++ [ runner ];
