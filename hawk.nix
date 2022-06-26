@@ -129,9 +129,20 @@
           publicKey = "uPn+dOrj6M0ebtGC5hlJY5FvBiiycqjfEEy6lsRJRRE=";
           allowedIPs = [ "10.8.7.105/32" ];
         }
+      ];
+    };
+    wg1 = {
+      ips = [ "10.17.1.1/32" ];
+      listenPort = 51821;
+      privateKeyFile = config.age.secrets.wg-key.path;
+      peers = [
         {
-          publicKey = "JYXwHp+VhLPjEwgvDNjCE8fjxiaY4csdUeX7q3G4dxI=";
-          allowedIPs = [ "10.8.7.82/32" ];
+          publicKey = "JYXwHp+VhLPjEwgvDNjCE8fjxiaY4csdUeX7q3G4dxI="; # pocof3
+          allowedIPs = [ "10.17.1.10/32" ];
+        }
+        {
+          publicKey = "ZrAj9S0OM0AeuomDy0D9V7YzX8bk+SVlioFmky+QanE="; # skordrey
+          allowedIPs = [ "10.17.2.81/32" ];
         }
       ];
     };
@@ -216,7 +227,8 @@
             tcp dport 22200 counter accept comment "ssh"
             udp dport 443 counter accept comment "quic"
             tcp dport { 80, 443, 8448 } counter accept comment "http"
-            udp dport 51820 counter accept comment "wireguard"
+            udp dport 51820 counter accept comment "wg0"
+            udp dport 51821 counter accept comment "wg1"
             tcp dport 8362 counter accept comment "yggdrasil"
 
             # ICMP
@@ -252,10 +264,10 @@
             ct status dnat counter accept comment "allow dnat forwarding"
 
             # allow trusted network WAN access
-            iifname "wg0" oifname "ens3" counter accept comment "lan to wan"
+            iifname { "wg0", "wg1" } oifname "ens3" counter accept comment "lan to wan"
 
             # allow established WAN to return
-            iifname "ens3" oifname "wg0" ct state { established, related } counter accept comment "allow established back to LANs"
+            iifname "ens3" oifname { "wg0", "wg1" } ct state { established, related } counter accept comment "allow established back to LANs"
 
             # count and drop any other traffic
             counter drop
