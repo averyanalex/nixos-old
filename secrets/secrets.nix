@@ -17,8 +17,10 @@ let
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEt5lXWlcNxeS/dZtKiJDyzHXnLlVFUe9iC0LPHPly6X";
   highterum =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBioDhlj6H4xSK8K2sr9uxz1g9y6OD87mNrpQX0NL9OW";
+  personal =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHYfrCDEFDQJBdL76VsAf1rFdGDuwrfDkd3fjHQNQgci";
 
-  systems = [ ferret hawk router public runner highterum ];
+  systems = [ ferret hawk router public runner highterum personal ];
 in {
   "passwords/alex.age".publicKeys = users ++ systems;
   "passwords/alexey.age".publicKeys = users ++ [ ferret ];
