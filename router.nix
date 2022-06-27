@@ -37,7 +37,7 @@
     defaultGateway = {
       address = "192.168.3.3";
       interface = "enp6s19";
-    }
+    };
 
     nat.enable = false;
     firewall.enable = false;
