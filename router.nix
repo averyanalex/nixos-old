@@ -17,69 +17,6 @@
 
   services.openssh.ports = [ 22100 ];
 
-  age.secrets.cloudflare-credentials.file =
-    ./secrets/cloudflare-credentials.age;
-  security.acme = {
-    acceptTerms = true;
-    defaults = {
-      email = "averyanalex@gmail.com";
-      dnsResolver = "1.1.1.1:53";
-      dnsProvider = "cloudflare";
-      credentialsFile = config.age.secrets.cloudflare-credentials.path;
-    };
-    certs = {
-      "averyan.ru" = { extraDomainNames = [ "*.averyan.ru" ]; };
-      "memefinder.ru" = { extraDomainNames = [ "*.memefinder.ru" ]; };
-      "linuxguides.ru" = { extraDomainNames = [ "*.linuxguides.ru" ]; };
-      "highterum.ru" = { extraDomainNames = [ "*.highterum.ru" ]; };
-    };
-  };
-
-  services.nginx = {
-    enable = true;
-    package = pkgs.nginxQuic;
-    recommendedProxySettings = true;
-    recommendedTlsSettings = true;
-    recommendedOptimisation = true;
-    clientMaxBodySize = "8g";
-    virtualHosts = {
-      "matrix-federation.highterum.ru" = {
-        serverName = "highterum.ru";
-        onlySSL = true;
-        useACMEHost = "highterum.ru";
-        listen = [{
-          addr = "192.168.3.1";
-          port = 8448;
-          ssl = true;
-        }];
-        locations."/".proxyPass = "http://192.168.40.2:5057";
-        locations."/".proxyWebsockets = true;
-      };
-      "highterum.ru" = {
-        forceSSL = true;
-        useACMEHost = "highterum.ru";
-        locations."/api/".proxyPass = "http://192.168.44.2:8085/";
-        locations."/api/".proxyWebsockets = true;
-
-        locations."/_matrix/".proxyPass = "http://192.168.40.2:5057";
-        locations."/_matrix/".proxyWebsockets = true;
-        locations."/_synapse/".proxyPass = "http://192.168.40.2:5057";
-        locations."/_synapse/".proxyWebsockets = true;
-
-        locations."/".proxyPass = "http://192.168.44.2:8086/";
-        locations."/".proxyWebsockets = true;
-      };
-      "node.highterum.ru" = {
-        forceSSL = true;
-        useACMEHost = "highterum.ru";
-        locations."/".proxyPass = "http://192.168.44.2:8443/";
-        locations."/".proxyWebsockets = true;
-      };
-    };
-  };
-
-  users.users.nginx.extraGroups = [ "acme" ];
-
   age.secrets.wg-key.file = ./secrets/router-wg-key.age;
   networking.wireguard.interfaces = {
     wg0 = {
@@ -89,13 +26,18 @@
         publicKey = "DIdKXZJf6dfSLabXizF9omKelDCxRGERj6mSR2b2M34=";
         endpoint = "185.112.83.20:51820";
         persistentKeepalive = 25;
-        allowedIPs = [ "10.8.7.1/32" "0.0.0.0/0" ];
+        allowedIPs = [ "10.8.7.1/32" ];
       }];
     };
   };
 
   networking = {
     hostName = "router";
+
+    defaultGateway = {
+      address = "192.168.3.3";
+      interface = "enp6s19";
+    }
 
     nat.enable = false;
     firewall.enable = false;
@@ -117,10 +59,6 @@
             iifname lo counter accept comment "accept any localhost traffic"
 
             tcp dport 22100 counter accept comment "ssh"
-            tcp dport { 80, 443 } counter accept comment "http"
-            tcp dport 8448 counter accept comment "matrix"
-            tcp dport 5353 counter accept comment "yggdrasil public peer"
-            udp dport 51820 counter accept comment "wireguard"
 
             # ICMP
             ip6 nexthdr icmpv6 icmpv6 type {
@@ -168,12 +106,6 @@
         table ip nat {
           chain prerouting {
             type nat hook prerouting priority dstnat; policy accept;
-            ip daddr { 192.168.3.1, 10.8.7.2 } tcp dport { 22, 22101 } dnat to 192.168.40.2
-            ip daddr { 192.168.3.1, 10.8.7.2 } tcp dport { 25, 143, 465, 587, 993 } dnat to 192.168.40.2
-            ip daddr { 192.168.3.1, 10.8.7.2 } tcp dport 22103 dnat to 192.168.43.2
-            ip daddr { 192.168.3.1, 10.8.7.2 } tcp dport { 22104, 5432, 3306 } dnat to 192.168.44.2
-            ip daddr { 192.168.3.1, 10.8.7.2 } tcp dport { 4001, 9096 } dnat to 192.168.40.2
-            ip daddr { 192.168.3.1, 10.8.7.2 } udp dport { 4001, 9096 } dnat to 192.168.40.2
           }
 
           # setup NAT masquerading on the enp6s18 interface
@@ -206,11 +138,6 @@
           addresses = [{
             address = "192.168.3.1";
             prefixLength = 24;
-          }];
-          routes = [{
-            address = "185.112.83.20";
-            prefixLength = 32;
-            via = "192.168.3.3";
           }];
         };
       };
