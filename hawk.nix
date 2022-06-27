@@ -64,6 +64,12 @@
         locations."/".proxyPass = "http://10.8.7.101:4038/";
         locations."/".proxyWebsockets = true;
       };
+      "prism.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/".proxyPass = "http://10.8.7.105:2342/";
+        locations."/".proxyWebsockets = true;
+      };
       "averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
