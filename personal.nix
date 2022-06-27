@@ -6,7 +6,7 @@
 
   services.nfs.server.enable = true;
   services.nfs.server.exports = ''
-    /tank 192.168.3.18(rw,sync,all_squash,root_squash,anonuid=1000,anongid=100)
+    /tank 192.168.3.18(rw,async,all_squash,root_squash,anonuid=1000,anongid=100)
   '';
 
   services.openssh.ports = [ 22105 ];
