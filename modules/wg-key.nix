@@ -12,6 +12,7 @@ with lib;
   };
 
   config = mkIf config.networking.wireguard.loadAgeKey {
-    age.secrets.wg-key.file = ../secrets/wireguard/${networking.hostname}.age;
+    age.secrets.wg-key.file =
+      ../secrets/wireguard/${config.networking.hostname}.age;
   };
 }
