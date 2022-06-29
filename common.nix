@@ -1,6 +1,7 @@
 { args, config, lib, pkgs, ... }:
 
 {
+  imports = [ ./modules/modules.nix ];
   nix = {
     useSandbox = true;
     autoOptimiseStore = true;

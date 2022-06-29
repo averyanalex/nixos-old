@@ -57,7 +57,6 @@
             ({ config, pkgs, ... }: {
               nixpkgs.overlays = [ overlay-unstable ];
             })
-            ./modules/modules.nix
             ./public.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
