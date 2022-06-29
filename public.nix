@@ -5,6 +5,7 @@
     [ ./hardware/qemu.nix ./mounts/public.nix ./common.nix ./lang/en.nix ];
 
   virtualisation.docker.enable = true;
+  virtualisation.docker.enableWatchtower = true;
 
   age.secrets.docker-registries-root = {
     file = ./secrets/docker-registries-ro.age;
