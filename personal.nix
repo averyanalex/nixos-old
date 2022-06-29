@@ -13,9 +13,9 @@
 
   virtualisation.docker.enable = true;
 
-
   networking = {
     hostName = "personal";
+    id = 105;
 
     nat.enable = false;
     firewall.enable = false;

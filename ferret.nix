@@ -11,6 +11,7 @@
 
   networking = {
     hostName = "ferret";
+    id = 51;
     networkmanager.enable = true;
   };
 

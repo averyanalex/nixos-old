@@ -33,6 +33,7 @@
 
   networking = {
     hostName = "router";
+    id = 100;
 
     defaultGateway = {
       address = "192.168.3.3";

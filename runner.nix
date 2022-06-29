@@ -47,6 +47,7 @@
 
   networking = {
     hostName = "runner";
+    id = 103;
 
     defaultGateway = {
       address = "192.168.43.1";

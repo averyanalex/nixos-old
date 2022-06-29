@@ -22,6 +22,7 @@
 
   networking = {
     hostName = "highterum";
+    id = 104;
 
     hawk-wg = {
       enable = true;

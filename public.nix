@@ -32,6 +32,7 @@
 
   networking = {
     hostName = "public";
+    id = 101;
 
     nat.enable = false;
     firewall.enable = false;

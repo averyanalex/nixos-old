@@ -209,6 +209,7 @@
 
   networking = {
     hostName = "hawk";
+    id = 200;
 
     defaultGateway = {
       address = "10.0.0.1";
