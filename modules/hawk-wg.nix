@@ -52,7 +52,7 @@ in {
           publicKey = "DIdKXZJf6dfSLabXizF9omKelDCxRGERj6mSR2b2M34=";
           endpoint = "185.112.83.20:51820";
           persistentKeepalive = 25;
-          allowedIPs = [ "10.8.7.1/24" (mkIf cfg.internet "0.0.0.0/0") ];
+          allowedIPs = [ "10.8.7.0/24" (mkIf cfg.internet "0.0.0.0/0") ];
         }];
       };
     };
