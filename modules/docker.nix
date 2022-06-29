@@ -34,8 +34,9 @@
     })
     {
       assertions = [{
-        assertion = config.virtualisation.docker.enableWatchtower;
-        message = "ID must be 1-999";
+        assertion = !(config.virtualisation.docker.enableWatchtower
+          && !config.virtualisation.docker.enable);
+        message = "Docker needed to use watchtower";
       }];
     }
   ];
