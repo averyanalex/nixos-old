@@ -7,8 +7,6 @@
   services.openssh.ports = [ 22103 ];
 
   virtualisation.docker.enable = true;
-  virtualisation.docker.autoPrune.enable = true;
-  virtualisation.docker.autoPrune.dates = "daily";
 
   virtualisation.oci-containers.backend = "docker";
   virtualisation.oci-containers.containers = {

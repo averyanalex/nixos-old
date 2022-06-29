@@ -7,8 +7,6 @@
   services.openssh.ports = [ 22101 ];
 
   virtualisation.docker.enable = true;
-  virtualisation.docker.autoPrune.enable = true;
-  virtualisation.docker.autoPrune.dates = "daily";
 
   age.secrets.docker-registries-root = {
     file = ./secrets/docker-registries-ro.age;
@@ -19,11 +17,6 @@
     path = "/home/alex/.docker/config.json";
     owner = "alex";
   };
-
-  environment.systemPackages = [ pkgs.docker-compose_2 ];
-  environment.shellAliases = { dc = "docker compose"; };
-
-  users.users.alex.extraGroups = [ "docker" ];
 
   age.secrets.cloudflare-credentials.file =
     ./secrets/cloudflare-credentials.age;

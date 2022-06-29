@@ -7,13 +7,6 @@
   services.openssh.ports = [ 22104 ];
 
   virtualisation.docker.enable = true;
-  virtualisation.docker.autoPrune.enable = true;
-  virtualisation.docker.autoPrune.dates = "daily";
-
-  environment.systemPackages = [ pkgs.docker-compose_2 ];
-  environment.shellAliases = { dc = "docker compose"; };
-
-  users.users.alex.extraGroups = [ "docker" ];
 
   age.secrets.highterum-pgsql.file = ./secrets/highterum-pgsql.age;
   age.secrets.ht-cabinet-api.file = ./secrets/ht-cabinet-api.age;
