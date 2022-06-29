@@ -8,7 +8,7 @@
     virtualisation.docker.autoPrune.flags = lib.mkDefault [ "--all" ];
 
     # access docker from normal user
-    users.users.alex.extraGroups = lib.mkDefault [ "docker" ];
+    users.users.alex.extraGroups = [ "docker" ];
 
     # docker-compose
     environment.systemPackages = lib.mkDefault [ pkgs.docker-compose_2 ];
