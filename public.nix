@@ -4,8 +4,6 @@
   imports =
     [ ./hardware/qemu.nix ./mounts/public.nix ./common.nix ./lang/en.nix ];
 
-  services.openssh.ports = [ 22101 ];
-
   virtualisation.docker.enable = true;
 
   age.secrets.docker-registries-root = {

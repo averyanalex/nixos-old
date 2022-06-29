@@ -205,8 +205,6 @@
     "net.ipv6.conf.all.use_tempaddr" = 0;
   };
 
-  services.openssh.ports = [ 22200 ];
-
   networking = {
     hostName = "hawk";
     id = 200;

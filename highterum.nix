@@ -4,8 +4,6 @@
   imports =
     [ ./hardware/qemu.nix ./mounts/highterum.nix ./common.nix ./lang/en.nix ];
 
-  services.openssh.ports = [ 22104 ];
-
   virtualisation.docker.enable = true;
 
   age.secrets.highterum-pgsql.file = ./secrets/highterum-pgsql.age;

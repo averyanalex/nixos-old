@@ -4,8 +4,6 @@
   imports =
     [ ./hardware/qemu.nix ./mounts/runner.nix ./common.nix ./lang/en.nix ];
 
-  services.openssh.ports = [ 22103 ];
-
   virtualisation.docker.enable = true;
 
   virtualisation.oci-containers.backend = "docker";

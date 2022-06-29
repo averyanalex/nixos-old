@@ -62,12 +62,6 @@
 
   security.sudo.wheelNeedsPassword = false; # вопросы?
 
-  services.openssh = {
-    enable = true;
-    permitRootLogin = "no";
-    passwordAuthentication = false;
-  };
-
   networking.nameservers = [ "8.8.8.8" "9.9.9.9" ];
 
   networking.firewall.enable = false;

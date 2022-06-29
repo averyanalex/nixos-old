@@ -15,8 +15,6 @@
     "net.ipv6.conf.all.use_tempaddr" = 0;
   };
 
-  services.openssh.ports = [ 22100 ];
-
   age.secrets.wg-key.file = ./secrets/router-wg-key.age;
   networking.wireguard.interfaces = {
     wg0 = {
