@@ -132,6 +132,10 @@
           allowedIPs = [ "10.8.7.101/32" ];
         }
         {
+          publicKey = "xvxr9tv5ou6UavXLAnIIhGo9rHwipgcz522ky5ainSg=";
+          allowedIPs = [ "10.8.7.104/32" ];
+        }
+        {
           publicKey = "uPn+dOrj6M0ebtGC5hlJY5FvBiiycqjfEEy6lsRJRRE=";
           allowedIPs = [ "10.8.7.105/32" ];
         }
