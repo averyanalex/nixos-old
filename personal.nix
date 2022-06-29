@@ -10,6 +10,7 @@
   '';
 
   virtualisation.docker.enable = true;
+  virtualisation.docker.enableWatchtower = true;
 
   networking = {
     hostName = "personal";
