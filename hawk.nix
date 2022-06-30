@@ -85,6 +85,12 @@
         locations."/".proxyPass = "https://10.8.7.99:8006";
         locations."/".proxyWebsockets = true;
       };
+      "highterum.ru" = {
+        forceSSL = true;
+        useACMEHost = "highterum.ru";
+        locations."/".proxyPass = "https://10.8.7.104:8086";
+        locations."/".proxyWebsockets = true;
+      };
       "matrix-federation.averyan.ru" = {
         serverName = "averyan.ru";
         onlySSL = true;
