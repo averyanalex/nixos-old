@@ -91,11 +91,9 @@
 
             ct status dnat counter accept comment "allow dnat forwarding"
 
-            # allow trusted network WAN access
-            iifname { "enp6s19", "vm40", "vm43", "vm44" } oifname { "wg0", "enp6s19" } counter accept comment "Allow trusted LAN to WAN"
+            iifname { "enp6s20", "enp6s19", "vm40", "vm43", "vm44" } oifname { "wg0", "enp6s19" } counter accept comment "Allow trusted LAN to WAN"
 
-            # allow established WAN to return
-            iifname { "wg0", "enp6s19" } oifname { "enp6s19", "vm40", "vm43", "vm44" } ct state { established, related } counter accept comment "allow established back to LANs"
+            iifname { "wg0", "enp6s19" } oifname { "enp6s20", "enp6s19", "vm40", "vm43", "vm44" } ct state { established, related } counter accept comment "allow established back to LANs"
 
             # count and drop any other traffic
             counter drop
@@ -140,6 +138,14 @@
           }];
         };
       };
+      enp6s20 = {
+        ipv4 = {
+          addresses = [{
+            address = "192.168.20.1";
+            prefixLength = 24;
+          }];
+        };
+      };
       vm40 = {
         ipv4 = {
           addresses = [{
@@ -169,7 +175,7 @@
 
   services.dhcpd4 = {
     enable = true;
-    interfaces = [ "vm40" "vm43" "vm44" ];
+    interfaces = [ "vm40" "vm43" "vm44" "enp6s20" ];
     extraConfig = ''
       option domain-name-servers 8.8.8.8, 1.1.1.1;
       option subnet-mask 255.255.255.0;
@@ -190,6 +196,12 @@
         option routers 192.168.44.1;
         interface vm44;
         range 192.168.44.100 192.168.44.254;
+      }
+      subnet 192.168.20.0 netmask 255.255.255.0 {
+        option broadcast-address 192.168.20.255;
+        option routers 192.168.20.1;
+        interface enp6s20;
+        range 192.168.20.100 192.168.20.254;
       }
     '';
   };
