@@ -7,6 +7,12 @@
     options = [ "discard" ];
   };
 
+  fileSystems."/tank" = {
+    device = "/dev/disk/by-uuid/003b90f5-6f00-4283-88bc-e06e1def62c2";
+    fsType = "ext4";
+    options = [ "discard" ];
+  };
+
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/F887-EE08";
     fsType = "vfat";
