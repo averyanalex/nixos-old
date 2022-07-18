@@ -283,8 +283,16 @@
             # allow established WAN to return
             iifname "ens3" oifname { "wg0", "wg1" } ct state { established, related } counter accept comment "allow established back to LANs"
 
+            mark 15 accept
+
             # count and drop any other traffic
             counter drop
+          }
+        }
+
+        table ip filter {
+          chain DOCKER-USER {
+            mark set 15
           }
         }
 
@@ -305,8 +313,6 @@
             type nat hook postrouting priority srcnat; policy accept;
             oifname "ens3" masquerade
           }
-
-          chain DOCKER {}
         }
       '';
     };
