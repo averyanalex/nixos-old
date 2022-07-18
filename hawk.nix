@@ -4,8 +4,17 @@
   imports =
     [ ./hardware/aeza.nix ./mounts/hawk.nix ./common.nix ./lang/en.nix ];
 
-  virtualisation.docker.enable = true;
-  virtualisation.docker.enableWatchtower = true;
+  virtualisation.oci-containers.containers = {
+    uptime-kuma = {
+      image = "louislam/uptime-kuma:1";
+      extraOptions = [ "--network=host" ];
+      volumes = [ "/var/lib/uptime-kuma:/app/data" ];
+    };
+    blog = {
+      image = "cr.averyan.ru/averyanalex/blog:edge";
+      extraOptions = [ "--network=host" ];
+    };
+  };
 
   services.nginx = {
     enable = true;
@@ -138,21 +147,21 @@
         }
       ];
     };
-    # wg1 = {
-    #   ips = [ "10.17.1.1/32" ];
-    #   listenPort = 51821;
-    #   privateKeyFile = config.age.secrets.wg-key.path;
-    #   peers = [
-    #     {
-    #       publicKey = "JYXwHp+VhLPjEwgvDNjCE8fjxiaY4csdUeX7q3G4dxI="; # pocof3
-    #       allowedIPs = [ "10.17.1.10/32" ];
-    #     }
-    #     {
-    #       publicKey = "ZrAj9S0OM0AeuomDy0D9V7YzX8bk+SVlioFmky+QanE="; # skordrey
-    #       allowedIPs = [ "10.17.2.81/32" ];
-    #     }
-    #   ];
-    # };
+    wg1 = {
+      ips = [ "10.17.1.1/32" ];
+      listenPort = 51821;
+      privateKeyFile = config.age.secrets.wg-key.path;
+      peers = [
+        {
+          publicKey = "JYXwHp+VhLPjEwgvDNjCE8fjxiaY4csdUeX7q3G4dxI="; # pocof3
+          allowedIPs = [ "10.17.1.10/32" ];
+        }
+        {
+          publicKey = "ZrAj9S0OM0AeuomDy0D9V7YzX8bk+SVlioFmky+QanE="; # skordrey
+          allowedIPs = [ "10.17.2.81/32" ];
+        }
+      ];
+    };
   };
 
   services.yggdrasil = {
@@ -223,7 +232,6 @@
       enable = true;
       ruleset = ''
         table inet filter {
-          # allow all outgoing connections
           chain output {
             type filter hook output priority 100;
             accept
@@ -240,8 +248,8 @@
             udp dport 443 counter accept comment "quic"
             tcp dport { 80, 443, 8448 } counter accept comment "http"
 
-            tcp dport 51821-51899 counter accept comment "netmaker"
             udp dport 51820 counter accept comment "wg0"
+            udp dport 51821 counter accept comment "wg1"
 
             tcp dport 8362 counter accept comment "yggdrasil"
 
@@ -283,16 +291,8 @@
             # allow established WAN to return
             iifname "ens3" oifname { "wg0", "wg1" } ct state { established, related } counter accept comment "allow established back to LANs"
 
-            mark 15 accept
-
             # count and drop any other traffic
             counter drop
-          }
-        }
-
-        table ip filter {
-          chain DOCKER-USER {
-            mark set 15
           }
         }
 
@@ -300,21 +300,22 @@
           chain prerouting {
             type nat hook prerouting priority dstnat; policy accept;
             ip daddr 185.112.83.20 tcp dport { 22, 22101 } dnat to 10.8.7.101
-            ip daddr 185.112.83.20 tcp dport { 25, 143, 465, 587, 993 } dnat to 10.8.7.101
+            ip daddr 185.112.83.20 tcp dport { 25, 143, 465, 587, 993 } dnat to 10.8.7.101 comment "mail"
+
             ip daddr 185.112.83.20 tcp dport 22103 dnat to 10.8.7.2
-            ip daddr 185.112.83.20 tcp dport { 22104 } dnat to 10.8.7.104
-            ip daddr 185.112.83.20 tcp dport { 4001, 9096, 9093 } dnat to 10.8.7.101
-            ip daddr 185.112.83.20 udp dport { 4001, 9096, 9093 } dnat to 10.8.7.101
-            ip daddr 185.112.83.20 tcp dport { 22105 } dnat to 10.8.7.105
+
+            ip daddr 185.112.83.20 tcp dport { 22104, 25565 } dnat to 10.8.7.104 comment "minecraft"
+
+            ip daddr 185.112.83.20 tcp dport { 4001, 9096, 9093 } dnat to 10.8.7.101 comment "ipfs tcp"
+            ip daddr 185.112.83.20 udp dport { 4001, 9096, 9093 } dnat to 10.8.7.101 comment "ipfs udp"
+
+            ip daddr 185.112.83.20 tcp dport { 22105 } dnat to 10.8.7.105 comment "personal"
           }
 
-          # setup NAT masquerading on the ens3 interface
           chain postrouting {
             type nat hook postrouting priority srcnat; policy accept;
             oifname "ens3" masquerade
           }
-
-          chain DOCKER {}
         }
       '';
     };
