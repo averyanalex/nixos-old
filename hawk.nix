@@ -242,7 +242,7 @@
 
             tcp dport 51821-51899 counter accept comment "netmaker"
             udp dport 51820 counter accept comment "wg0"
-            
+
             tcp dport 8362 counter accept comment "yggdrasil"
 
             # ICMP
@@ -305,6 +305,8 @@
             type nat hook postrouting priority srcnat; policy accept;
             oifname "ens3" masquerade
           }
+
+          chain DOCKER {}
         }
       '';
     };
