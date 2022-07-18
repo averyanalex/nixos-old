@@ -4,17 +4,8 @@
   imports =
     [ ./hardware/aeza.nix ./mounts/hawk.nix ./common.nix ./lang/en.nix ];
 
-  virtualisation.oci-containers.containers = {
-    uptime-kuma = {
-      image = "louislam/uptime-kuma:1";
-      extraOptions = [ "--network=host" ];
-      volumes = [ "/var/lib/uptime-kuma:/app/data" ];
-    };
-    blog = {
-      image = "cr.averyan.ru/averyanalex/blog:edge";
-      extraOptions = [ "--network=host" ];
-    };
-  };
+  virtualisation.docker.enable = true;
+  virtualisation.docker.enableWatchtower = true;
 
   services.nginx = {
     enable = true;
