@@ -138,21 +138,21 @@
         }
       ];
     };
-    wg1 = {
-      ips = [ "10.17.1.1/32" ];
-      listenPort = 51821;
-      privateKeyFile = config.age.secrets.wg-key.path;
-      peers = [
-        {
-          publicKey = "JYXwHp+VhLPjEwgvDNjCE8fjxiaY4csdUeX7q3G4dxI="; # pocof3
-          allowedIPs = [ "10.17.1.10/32" ];
-        }
-        {
-          publicKey = "ZrAj9S0OM0AeuomDy0D9V7YzX8bk+SVlioFmky+QanE="; # skordrey
-          allowedIPs = [ "10.17.2.81/32" ];
-        }
-      ];
-    };
+    # wg1 = {
+    #   ips = [ "10.17.1.1/32" ];
+    #   listenPort = 51821;
+    #   privateKeyFile = config.age.secrets.wg-key.path;
+    #   peers = [
+    #     {
+    #       publicKey = "JYXwHp+VhLPjEwgvDNjCE8fjxiaY4csdUeX7q3G4dxI="; # pocof3
+    #       allowedIPs = [ "10.17.1.10/32" ];
+    #     }
+    #     {
+    #       publicKey = "ZrAj9S0OM0AeuomDy0D9V7YzX8bk+SVlioFmky+QanE="; # skordrey
+    #       allowedIPs = [ "10.17.2.81/32" ];
+    #     }
+    #   ];
+    # };
   };
 
   services.yggdrasil = {
@@ -239,8 +239,10 @@
             tcp dport 22200 counter accept comment "ssh"
             udp dport 443 counter accept comment "quic"
             tcp dport { 80, 443, 8448 } counter accept comment "http"
+
+            tcp dport 51821-51899 counter accept comment "netmaker"
             udp dport 51820 counter accept comment "wg0"
-            udp dport 51821 counter accept comment "wg1"
+            
             tcp dport 8362 counter accept comment "yggdrasil"
 
             # ICMP
