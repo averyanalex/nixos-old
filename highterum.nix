@@ -18,6 +18,8 @@
     owner = "alex";
   };
 
+  services.zerotierone.enable = true;
+
   networking = {
     hostName = "highterum";
     id = 104;
