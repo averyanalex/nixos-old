@@ -35,11 +35,16 @@
     nat.enable = false;
     firewall.enable = false;
 
+    defaultGateway = {
+      address = "192.168.20.1";
+      interface = "enp6s18";
+    };
+
     interfaces = {
       enp6s18 = {
         ipv4 = {
           addresses = [{
-            address = "192.168.44.2";
+            address = "192.168.20.14";
             prefixLength = 24;
           }];
         };
