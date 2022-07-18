@@ -174,6 +174,8 @@
 
   age.secrets.cloudflare-credentials.file =
     ./secrets/cloudflare-credentials.age;
+  age.secrets.cf-creds-frsqr.file = ./secrets/cf-creds-frsqr.age;
+
   security.acme = {
     acceptTerms = true;
     defaults = {
@@ -185,8 +187,12 @@
     certs = {
       "averyan.ru" = { extraDomainNames = [ "*.averyan.ru" ]; };
       "memefinder.ru" = { extraDomainNames = [ "*.memefinder.ru" ]; };
-      "linuxguides.ru" = { extraDomainNames = [ "*.linuxguides.ru" ]; };
       "highterum.ru" = { extraDomainNames = [ "*.highterum.ru" ]; };
+      "frsqr.xyz" = {
+        extraDomainNames = [ "*.frsqr.xyz" ];
+        email = "cofob@riseup.net";
+        credentialsFile = config.age.secrets.cf-creds-frsqr.path;
+      };
     };
   };
 

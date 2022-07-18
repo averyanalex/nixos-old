@@ -32,6 +32,8 @@ in {
   "wireguard/highterum.age".publicKeys = users ++ [ highterum ];
 
   "cloudflare-credentials.age".publicKeys = users ++ [ router public hawk ];
+  "cf-creds-frsqr.age".publicKeys = users ++ [ public hawk ];
+
   "gitsrv-runner-token.age".publicKeys = users ++ [ runner ];
   "highterum-pgsql.age".publicKeys = users ++ [ highterum ];
   "crsrv-token.age".publicKeys = users ++ [ public highterum ];
