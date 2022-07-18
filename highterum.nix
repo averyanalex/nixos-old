@@ -26,19 +26,14 @@
     hostName = "highterum";
     id = 104;
 
-    # hawk-wg = {
-    #   enable = true;
-    #   gatewayIp = "192.168.44.1";
-    #   ipv4 = "10.8.7.104";
-    # };
+    hawk-wg = {
+      enable = true;
+      gatewayIp = "192.168.20.1";
+      ipv4 = "10.8.7.104";
+    };
 
     nat.enable = false;
     firewall.enable = false;
-
-    defaultGateway = {
-      address = "192.168.20.1";
-      interface = "enp6s18";
-    };
 
     interfaces = {
       enp6s18 = {
