@@ -313,6 +313,8 @@
             type nat hook postrouting priority srcnat; policy accept;
             oifname "ens3" masquerade
           }
+
+          chain DOCKER {}
         }
       '';
     };
