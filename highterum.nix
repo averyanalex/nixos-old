@@ -18,10 +18,6 @@
     owner = "alex";
   };
 
-  nixpkgs.config.allowUnfreePredicate = pkg:
-    builtins.elem (lib.getName pkg) [ "zerotierone" ];
-  services.zerotierone.enable = true;
-
   networking = {
     hostName = "highterum";
     id = 104;
