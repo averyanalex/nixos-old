@@ -5,6 +5,8 @@
 
   home.packages = with pkgs; [
     wl-clipboard
+    clipman
+
     bemenu
     mako
     alacritty
@@ -43,7 +45,7 @@
     };
     extraConfig = ''
       # clipboard
-      exec ${pkgs.clipman}/bin/clipman restore
+      exec clipman restore
       exec wl-paste -t text --watch clipman store
 
       exec ${pkgs.mako}/bin/mako # desktop notifications
