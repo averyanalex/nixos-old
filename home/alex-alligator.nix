@@ -38,13 +38,11 @@
         "DP-1" = { mode = "3440x1440@144Hz"; };
       };
       terminal = "alacritty";
-      menu = "${pkgs.wofi}/bin/wofi -c ~/.config/wofi/config -I";
+      menu = "${pkgs.sirula}/bin/sirula";
       modifier = "Mod4"; # Super
     };
   };
 
-  xdg.configFile."wofi/config".source = ./configs/wofi/config;
-  xdg.configFile."wofi/config.screenshot".source = ./configs/wofi/config.screenshot;
-  xdg.configFile."wofi/style.css".source = ./configs/wofi/style.css;
-  xdg.configFile."wofi/style.widgets.css".source = ./configs/wofi/style.widgets.css;
+  xdg.configFile."sirula/config.toml".source = ./configs/sirula/config.toml;
+  xdg.configFile."sirula/style.css".source = ./configs/sirula/style.css;
 }
