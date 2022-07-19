@@ -42,7 +42,7 @@
         let
           cfg = config.wayland.windowManager.sway.config;
         in
-        {
+        lib.mkOptionDefault {
           "${cfg.modifier}+h" = "exec clipman pick -t wofi";
         };
       output = {
