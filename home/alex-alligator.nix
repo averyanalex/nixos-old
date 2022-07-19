@@ -7,6 +7,8 @@
     wl-clipboard
     clipman
 
+    wofi
+
     bemenu
     mako
     alacritty
@@ -40,7 +42,7 @@
         "DP-1" = { mode = "3440x1440@144Hz"; };
       };
       terminal = "alacritty";
-      menu = "${pkgs.wofi}/bin/wofi -c ~/.config/wofi/config -I";
+      menu = "wofi -c ~/.config/wofi/config -I";
       modifier = "Mod4"; # Super
     };
     extraConfig = ''
