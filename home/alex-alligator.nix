@@ -42,6 +42,10 @@
       modifier = "Mod4"; # Super
     };
     extraConfig = ''
+      # clipboard
+      exec ${pkgs.clipman}/bin/clipman restore
+      exec wl-paste -t text --watch clipman store
+
       exec ${pkgs.mako}/bin/mako # desktop notifications
 
       # STYLING
