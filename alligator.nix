@@ -23,6 +23,11 @@
     NIXOS_OZONE_WL = "1";
   };
 
+  security.polkit.enable = true;
+  security.pam.services.swaylock = { };
+  fonts.enableDefaultFonts = true;
+  programs.dconf.enable = true;
+
   users.users.alex.extraGroups = [ "video" ];
   programs.light.enable = true;
 
