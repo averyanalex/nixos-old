@@ -63,7 +63,7 @@
       exec wl-paste -t text --watch clipman store
 
       exec ${pkgs.mako}/bin/mako # desktop notifications
-      exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh # secret service
+      # exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh # secret service
 
       # STYLING
       gaps inner 5
@@ -82,6 +82,8 @@
       client.urgent           #ebcb8b #ebcb8b #2e3440 #8fbcbb   #ebcb8b
     '';
   };
+
+  services.gnome-keyring.enable = true;
 
   xdg.configFile."alacritty/alacritty.yml".source = ./configs/alacritty.yml;
 
