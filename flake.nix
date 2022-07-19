@@ -138,7 +138,7 @@
             ({ config, pkgs, ... }: {
               nixpkgs.overlays = [ overlay-unstable ];
             })
-            ./ferret.nix
+            ./alligator.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
             {
