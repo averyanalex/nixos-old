@@ -43,7 +43,7 @@
           cfg = config.wayland.windowManager.sway.config;
         in
         {
-          "${cfg.config.modifier}+h" = "exec clipman pick -t wofi";
+          "${cfg.modifier}+h" = "exec clipman pick -t wofi";
         };
       output = {
         "DP-1" = { mode = "3440x1440@144Hz"; };
