@@ -9,6 +9,8 @@
     mako
     alacritty
     gnome3.adwaita-icon-theme
+
+    brave
   ];
 
   programs.bash.enable = true;
@@ -26,18 +28,23 @@
       export _JAVA_AWT_WM_NONREPARENTING=1
     '';
     config = {
-      input = {
-        # "1:1:AT_Translated_Set_2_keyboard" = {
-        #   xkb_layout = "us,ru";
-        #   xkb_options = "grp:alt_shift_toggle";
-        # };
-      };
+      # input = {
+      #   "1:1:AT_Translated_Set_2_keyboard" = {
+      #     xkb_layout = "us,ru";
+      #     xkb_options = "grp:alt_shift_toggle";
+      #   };
+      # };
       output = {
         "DP-1" = { mode = "3440x1440@144Hz"; };
       };
       terminal = "alacritty";
-      menu = "bemenu-run";
+      menu = "${pkgs.wofi}/bin/wofi -c ~/.config/wofi/config -I";
       modifier = "Mod4"; # Super
     };
   };
+
+  xdg.configFile."wofi/config".source = ./config/wofi/config;
+  xdg.configFile."wofi/config.screenshot".source = ./config/wofi/config.screenshot;
+  xdg.configFile."wofi/style.css".source = ./config/wofi/style.css;
+  xdg.configFile."wofi/style.widgets.css".source = ./config/wofi/style.widgets.css;
 }
