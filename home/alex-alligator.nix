@@ -44,6 +44,7 @@
         in
         lib.mkOptionDefault {
           "${cfg.modifier}+h" = "exec clipman pick -t wofi";
+          "${cfg.modifier}+q" = "kill";
         };
       output = {
         "DP-1" = { mode = "3440x1440@144Hz"; };
