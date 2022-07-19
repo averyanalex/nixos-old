@@ -43,8 +43,8 @@
     };
   };
 
-  xdg.configFile."wofi/config".source = ./config/wofi/config;
-  xdg.configFile."wofi/config.screenshot".source = ./config/wofi/config.screenshot;
-  xdg.configFile."wofi/style.css".source = ./config/wofi/style.css;
-  xdg.configFile."wofi/style.widgets.css".source = ./config/wofi/style.widgets.css;
+  xdg.configFile."wofi/config".source = ./configs/wofi/config;
+  xdg.configFile."wofi/config.screenshot".source = ./configs/wofi/config.screenshot;
+  xdg.configFile."wofi/style.css".source = ./configs/wofi/style.css;
+  xdg.configFile."wofi/style.widgets.css".source = ./configs/wofi/style.widgets.css;
 }
