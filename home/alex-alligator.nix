@@ -8,6 +8,7 @@
     bemenu
     mako
     alacritty
+    gnome3.adwaita-icon-theme
   ];
 
   wayland.windowManager.sway = {
