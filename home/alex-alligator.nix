@@ -38,9 +38,13 @@
       #     xkb_options = "grp:alt_shift_toggle";
       #   };
       # };
-      keybindings = {
-        "${cfg.config.modifier}+h" = "exec clipman pick -t wofi";
-      };
+      keybindings =
+        let
+          cfg = config.wayland.windowManager.sway.config;
+        in
+        {
+          "${cfg.config.modifier}+h" = "exec clipman pick -t wofi";
+        };
       output = {
         "DP-1" = { mode = "3440x1440@144Hz"; };
       };
