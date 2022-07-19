@@ -11,6 +11,12 @@
     gnome3.adwaita-icon-theme
   ];
 
+  programs.bash.profileExtra = ''
+    if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+      exec sway
+    fi
+  '';
+
   wayland.windowManager.sway = {
     enable = true;
     systemdIntegration = true;
