@@ -5,6 +5,8 @@ let
 
   ferret =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJCrSdgjm9hxyFMCVCW+SzgF7AThC+fZy8RBQoFqCWT2";
+  alligator =
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIE7y1Vw/aeF69RDccAB2BB1IATUvVEQ7sIgAO5fUZKyC";
 
   hawk =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIF2cUpFVFLAXnAq9wtc5DXYjUfjnegSmW8TpBjN+PrkA";
@@ -20,8 +22,9 @@ let
   personal =
     "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHYfrCDEFDQJBdL76VsAf1rFdGDuwrfDkd3fjHQNQgci";
 
-  systems = [ ferret hawk router public runner highterum personal ];
-in {
+  systems = [ alligator ferret hawk router public runner highterum personal ];
+in
+{
   "passwords/alex.age".publicKeys = users ++ systems;
   "passwords/alexey.age".publicKeys = users ++ [ ferret ];
 
