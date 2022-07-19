@@ -27,6 +27,9 @@
         #   xkb_options = "grp:alt_shift_toggle";
         # };
       };
+      output = {
+        "DP-1" = { mode = "3440x1440@144"; };
+      };
       terminal = "alacritty";
       menu = "bemenu-run";
       modifier = "Mod4"; # Super
