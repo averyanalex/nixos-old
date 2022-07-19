@@ -15,6 +15,7 @@
     gnome3.adwaita-icon-theme
 
     gnome.seahorse
+    gnome.gnome-keyring
 
     libreoffice-fresh
     brave
@@ -62,6 +63,7 @@
       exec wl-paste -t text --watch clipman store
 
       exec ${pkgs.mako}/bin/mako # desktop notifications
+      exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh # secret service
 
       # STYLING
       gaps inner 5
