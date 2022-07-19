@@ -14,6 +14,9 @@
     alacritty
     gnome3.adwaita-icon-theme
 
+    gnome.seahorse
+
+    libreoffice-fresh
     brave
   ];
 
