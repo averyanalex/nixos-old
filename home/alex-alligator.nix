@@ -4,8 +4,6 @@
   imports = [ ./alex.nix ];
 
   home.packages = with pkgs; [
-    egl-wayland
-
     wl-clipboard
     bemenu
     mako

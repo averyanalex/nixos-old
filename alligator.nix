@@ -10,6 +10,8 @@
     ./pipewire.nix
   ];
 
+  services.getty.autologinUser = "alex";
+
   services.dbus.enable = true;
   xdg.portal = {
     enable = true;
