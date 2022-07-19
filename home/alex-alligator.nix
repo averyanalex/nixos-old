@@ -78,6 +78,8 @@
     '';
   };
 
+  xdg.configFile."alacritty/alacritty.yml".source = ./configs/alacritty.yml;
+
   xdg.configFile."wofi/config".source = ./configs/wofi/config;
   xdg.configFile."wofi/config.screenshot".source = ./configs/wofi/config.screenshot;
   xdg.configFile."wofi/style.css".source = ./configs/wofi/style.css;
