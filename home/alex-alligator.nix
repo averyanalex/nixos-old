@@ -42,6 +42,9 @@
       modifier = "Mod4"; # Super
     };
     extraConfig = ''
+      exec ${pkgs.mako}/bin/mako # desktop notifications
+
+      # STYLING
       gaps inner 5
       gaps outer 5
       default_border pixel 1
