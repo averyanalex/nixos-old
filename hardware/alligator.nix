@@ -3,6 +3,10 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ./amdgpu.nix ];
 
+  boot.kernelParams = [
+    "video=DP-1:3440x1440@144"
+  ];
+
   boot.initrd.availableKernelModules = [
     "nvme"
     "xhci_pci"
