@@ -17,7 +17,8 @@
       overlay-unstable = final: prev: {
         unstable = nixpkgs-unstable.legacyPackages.${prev.system};
       };
-    in {
+    in
+    {
       nixosConfigurations = {
         router = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
@@ -128,6 +129,22 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.alexey = import ./home/alexey.nix;
+            }
+          ];
+        };
+        alligator = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ({ config, pkgs, ... }: {
+              nixpkgs.overlays = [ overlay-unstable ];
+            })
+            ./ferret.nix
+            agenix.nixosModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/alex.nix;
             }
           ];
         };
