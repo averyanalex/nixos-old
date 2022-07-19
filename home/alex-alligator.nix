@@ -7,6 +7,7 @@
     wl-clipboard
     bemenu
     mako
+    alacritty
   ];
 
   wayland.windowManager.sway = {
