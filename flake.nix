@@ -116,13 +116,10 @@
                 unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
               };
             in
-	            {
+	      {
                 nixpkgs.overlays = [ overlay-unstable ]; 
-                environment.systemPackages = with pkgs; [
-	                unstable.tdesktop
-	              ];
-	            }
-	          )
+	      }
+	    )
             ./alligator.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
