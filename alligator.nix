@@ -18,6 +18,8 @@
 
   programs.ssh.enableAskPassword = true;
 
+  virtualisation.docker.enable = true;
+
   services.dbus.enable = true;
   xdg.portal = {
     enable = true;
