@@ -16,6 +16,8 @@
     lm_sensors
   ];
 
+  programs.ssh.enableAskPassword = true;
+
   services.dbus.enable = true;
   xdg.portal = {
     enable = true;
