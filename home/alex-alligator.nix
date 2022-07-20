@@ -24,7 +24,7 @@
     # dev
     rnix-lsp
   ];
-  
+
   programs.vscode = {
     enable = true;
     package = pkgs.unstable.vscodium;
@@ -39,6 +39,13 @@
       #arrterian.nix-env-selector
       jnoortheen.nix-ide
       #ms-python.python
+    ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
+      {
+        name = "rust-analyzer";
+        publisher = "rust-lang";
+        version = "0.4.1133";
+        sha256 = "np7LfRHJqcctzSHLZQtVn3aUlzYZ3gfnsRX2w/iYASI=";
+      }
     ];
     userSettings = {
       "nix.enableLanguageServer" = true;
