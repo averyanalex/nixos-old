@@ -4,22 +4,25 @@
   imports = [ ./alex.nix ];
 
   home.packages = with pkgs; [
+    # sway
     wl-clipboard
     clipman
-
     wofi
-
     bemenu
     mako
-    alacritty
     gnome3.adwaita-icon-theme
+    alacritty
 
     gnome.seahorse
     gnome.gnome-keyring
 
+    # apps
     libreoffice-fresh
     unstable.brave
     unstable.tdesktop
+
+    # dev
+    rnix-lsp
   ];
   
   programs.vscode = {
