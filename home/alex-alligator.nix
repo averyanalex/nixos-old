@@ -45,6 +45,7 @@
       "files.autoSave" = "afterDelay";
       "diffEditor.ignoreTrimWhitespace" = false;
       "git.confirmSync" = false;
+      "git.enableSmartCommit" = true;
     };
   };
 
