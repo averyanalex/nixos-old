@@ -25,6 +25,7 @@
   programs.vscode = {
     enable = true;
     package = pkgs.vscodium;
+    mutableExtensionsDir = false;
     extensions = with pkgs.vscode-extensions; [
       #ms-toolsai.jupyter
       #usernamehw.errorlens
