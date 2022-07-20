@@ -23,7 +23,10 @@
 
     # dev
     rnix-lsp
+
+    # compilers
     rust-bin.stable.latest.default
+    gcc
   ];
 
   programs.vscode = {
@@ -39,14 +42,15 @@
       #tamasfe.even-better-toml
       #arrterian.nix-env-selector
       jnoortheen.nix-ide
+      matklad.rust-analyzer
       #ms-python.python
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
-      {
-        name = "rust-analyzer";
-        publisher = "rust-lang";
-        version = "0.4.1133";
-        sha256 = "np7LfRHJqcctzSHLZQtVn3aUlzYZ3gfnsRX2w/iYASI=";
-      }
+      # {
+      #   name = "rust-analyzer";
+      #   publisher = "rust-lang";
+      #   version = "0.4.1133";
+      #   sha256 = "np7LfRHJqcctzSHLZQtVn3aUlzYZ3gfnsRX2w/iYASI=";
+      # }
       {
         name = "even-better-toml";
         publisher = "tamasfe";
