@@ -35,6 +35,8 @@
     wrapperFeatures.gtk = true;
     extraSessionCommands = ''
       export _JAVA_AWT_WM_NONREPARENTING=1
+      export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+      export QT_QPA_PLATFORM=wayland
     '';
     config = {
       # input = {
