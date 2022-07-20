@@ -24,9 +24,17 @@
   
   programs.vscode = {
     enable = true;
-    package = pkgs.unstable.vscodium;
-    extensions = with pkgs.unstable.vscode-extensions; [
+    package = pkgs.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+      #ms-toolsai.jupyter
+      #usernamehw.errorlens
+      #asvetliakov.vscode-neovim
+      #vadimcn.vscode-lldb
+      #serayuzgur.crates
+      #tamasfe.even-better-toml
+      #arrterian.nix-env-selector
       jnoortheen.nix-ide
+      #ms-python.python
     ];
   };
 
