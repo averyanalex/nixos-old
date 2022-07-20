@@ -109,12 +109,12 @@
       export QT_QPA_PLATFORM=wayland
     '';
     config = {
-      # input = {
-      #   "1:1:AT_Translated_Set_2_keyboard" = {
-      #     xkb_layout = "us,ru";
-      #     xkb_options = "grp:alt_shift_toggle";
-      #   };
-      # };
+      input = {
+        "*" = {
+          xkb_layout = "us,ru";
+          xkb_options = "grp:alt_shift_toggle";
+        };
+      };
       keybindings =
         let
           cfg = config.wayland.windowManager.sway.config;
