@@ -8,11 +8,14 @@
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    rust-overlay.url = "github:oxalica/rust-overlay";
+    rust-overlay.inputs.nixpkgs.follows = "nixpkgs-unstable";
+
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, agenix, home-manager }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, rust-overlay, agenix }:
     {
       nixosConfigurations = {
         router = nixpkgs.lib.nixosSystem {
@@ -110,16 +113,19 @@
           system = "x86_64-linux";
           modules = [
             # ./unstable.nix
-            ({ config, pkgs, ... }: 
-            let
-              overlay-unstable = final: prev: {
-                unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
-              };
-            in
-	      {
-                nixpkgs.overlays = [ overlay-unstable ]; 
-	      }
-	    )
+            ({ config, pkgs, ... }:
+              let
+                overlay-unstable = final: prev: {
+                  unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+                };
+              in
+              {
+                nixpkgs.overlays = [ overlay-unstable ];
+              }
+            )
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            })
             ./alligator.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager

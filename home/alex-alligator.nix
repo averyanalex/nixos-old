@@ -23,6 +23,7 @@
 
     # dev
     rnix-lsp
+    rust-bin.stable.latest.default
   ];
 
   programs.vscode = {
@@ -34,7 +35,7 @@
       #usernamehw.errorlens
       #asvetliakov.vscode-neovim
       #vadimcn.vscode-lldb
-      #serayuzgur.crates
+      serayuzgur.crates
       #tamasfe.even-better-toml
       #arrterian.nix-env-selector
       jnoortheen.nix-ide
@@ -45,6 +46,12 @@
         publisher = "rust-lang";
         version = "0.4.1133";
         sha256 = "np7LfRHJqcctzSHLZQtVn3aUlzYZ3gfnsRX2w/iYASI=";
+      }
+      {
+        name = "even-better-toml";
+        publisher = "tamasfe";
+        version = "0.16.5";
+        sha256 = "pRUiXsZGhTIQx2Qx9NFQ7OGRros3KdzjUlq13nm4pAc=";
       }
     ];
     userSettings = {
