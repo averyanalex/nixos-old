@@ -133,12 +133,6 @@
       exec clipman restore
       exec wl-paste -t text --watch clipman store
 
-      # desktop notifications
-      exec ${pkgs.mako}/bin/mako
-      
-      # secret service
-      # exec gnome-keyring-daemon --daemonize --start --components=gpg,pkcs11,secrets,ssh
-
       # STYLING
       gaps inner 5
       gaps outer 5
@@ -147,13 +141,6 @@
 
       for_window [shell="xdg_shell"] title_format "%title (%app_id)"
       for_window [shell="x_wayland"] title_format "%class - %title"
-
-      ## window decoration
-      # class                 border  backgr. text    indicator child_border
-      client.focused          #88c0d0 #434c5e #eceff4 #8fbcbb   #88c0d0
-      client.focused_inactive #88c0d0 #2e3440 #d8dee9 #4c566a   #4c566a
-      client.unfocused        #88c0d0 #2e3440 #d8dee9 #4c566a   #4c566a
-      client.urgent           #ebcb8b #ebcb8b #2e3440 #8fbcbb   #ebcb8b
 
       # AUTOSTART
       exec telegram-desktop -startintray
