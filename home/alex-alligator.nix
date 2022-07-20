@@ -25,6 +25,7 @@
     libreoffice-fresh
     unstable.brave
     unstable.tdesktop
+    element-desktop
 
     # dev
     rnix-lsp
