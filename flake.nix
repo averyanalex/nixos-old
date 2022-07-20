@@ -109,7 +109,20 @@
         alligator = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ./unstable.nix
+            # ./unstable.nix
+            ({ config, pkgs, ... }: 
+            let
+              overlay-unstable = final: prev: {
+                unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+              };
+            in
+	            {
+                nixpkgs.overlays = [ overlay-unstable ]; 
+                environment.systemPackages = with pkgs; [
+	                unstable.tdesktop
+	              ];
+	            }
+	          )
             ./alligator.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
