@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, nixpkgs-unstable, lib, ... }:
 
 {
   imports = [ ./alex.nix ];
@@ -19,7 +19,7 @@
 
     libreoffice-fresh
     brave
-    # unstable.tdesktop
+    unstable.tdesktop
   ];
 
   programs.bash.enable = true;
