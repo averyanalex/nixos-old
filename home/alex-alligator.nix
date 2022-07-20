@@ -39,6 +39,7 @@
     ];
     userSettings = {
       "nix.enableLanguageServer" = true;
+      "files.autoSave" = "afterDelay";
     };
   };
 
