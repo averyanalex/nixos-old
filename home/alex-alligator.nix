@@ -43,6 +43,7 @@
     userSettings = {
       "nix.enableLanguageServer" = true;
       "files.autoSave" = "afterDelay";
+      "diffEditor.ignoreTrimWhitespace" = false;
     };
   };
 
