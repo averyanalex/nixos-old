@@ -27,7 +27,6 @@
     package = pkgs.unstable.vscodium;
     mutableExtensionsDir = false;
     extensions = with pkgs.unstable.vscode-extensions; [
-      ms-ceintl.vscode-language-pack-ru
       #ms-toolsai.jupyter
       #usernamehw.errorlens
       #asvetliakov.vscode-neovim
