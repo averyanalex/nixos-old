@@ -39,6 +39,15 @@
     ];
   };
 
+  git = {
+    enable = true;
+    userName = "averyanalex";
+    userEmail = "alex@averyan.ru";
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
+  };
+
   programs.bash.enable = true;
   programs.bash.profileExtra = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
