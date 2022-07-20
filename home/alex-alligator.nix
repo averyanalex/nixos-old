@@ -37,6 +37,9 @@
       jnoortheen.nix-ide
       #ms-python.python
     ];
+    userSettings = {
+      "nix.enableLanguageServer" = true;
+    };
   };
 
   programs.git = {
