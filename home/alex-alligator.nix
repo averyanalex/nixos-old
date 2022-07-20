@@ -25,7 +25,7 @@
   programs.bash.enable = true;
   programs.bash.profileExtra = ''
     if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-      exec sway
+      sway
     fi
   '';
 
