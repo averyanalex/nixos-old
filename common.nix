@@ -38,6 +38,7 @@
   environment.shellAliases = {
     nixupd = ''
       sudo rm -rf /root/.cache && sudo nixos-rebuild switch --flake "github:averyanalex/nixos"'';
+    tnixupd = "sudo nixos-rebuild switch --flake .";
   };
 
   boot.cleanTmpDir = true;
