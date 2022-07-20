@@ -13,7 +13,7 @@
   services.getty.autologinUser = "alex";
 
   environment.systemPackages = with pkgs; [
-    unstable.lm_sensors
+    lm_sensors
   ];
 
   services.dbus.enable = true;
