@@ -39,7 +39,7 @@
     ];
   };
 
-  git = {
+  programs.git = {
     enable = true;
     userName = "averyanalex";
     userEmail = "alex@averyan.ru";
