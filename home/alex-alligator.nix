@@ -25,8 +25,8 @@
   programs.vscode = {
     enable = true;
     package = pkgs.unstable.vscodium;
-    extensions = with pkgs.vscode-extensions; [
-      unstable.vscode-extensions.jnoortheen.nix-ide
+    extensions = with pkgs.unstable.vscode-extensions; [
+      jnoortheen.nix-ide
     ];
   };
 
