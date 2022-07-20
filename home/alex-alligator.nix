@@ -19,6 +19,7 @@
 
     gnome.seahorse
     gnome.gnome-keyring
+    gcr
 
     # apps
     libreoffice-fresh
