@@ -21,6 +21,14 @@
     unstable.brave
     unstable.tdesktop
   ];
+  
+  programs.vscode = {
+    enable = true;
+    package = pkgs.unstable.vscodium;
+    extensions = with pkgs.vscode-extensions; [
+      unstable.vscode-extensions.jnoortheen.nix-ide
+    ];
+  };
 
   programs.bash.enable = true;
   programs.bash.profileExtra = ''
