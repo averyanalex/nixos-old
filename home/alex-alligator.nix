@@ -3,6 +3,10 @@
 {
   imports = [ ./alex.nix ];
 
+  home.sessionVariables = {
+    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
+  };
+
   home.packages = with pkgs; [
     # sway
     wl-clipboard
@@ -27,6 +31,13 @@
     # compilers
     rust-bin.stable.latest.default
     gcc
+
+    # tools
+    binutils
+    pkg-config
+
+    # libs
+    openssl
   ];
 
   programs.vscode = {
