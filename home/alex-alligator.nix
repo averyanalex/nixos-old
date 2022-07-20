@@ -60,6 +60,7 @@
       "diffEditor.ignoreTrimWhitespace" = false;
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
+      "git.autofetch" = true;
     };
   };
 
