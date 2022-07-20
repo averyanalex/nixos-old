@@ -1,4 +1,4 @@
-{ config, pkgs, nixpkgs-unstable, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports = [ ./alex.nix ];
@@ -18,7 +18,7 @@
     gnome.gnome-keyring
 
     libreoffice-fresh
-    brave
+    unstable.brave
     unstable.tdesktop
   ];
 
