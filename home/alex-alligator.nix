@@ -44,6 +44,7 @@
       "nix.enableLanguageServer" = true;
       "files.autoSave" = "afterDelay";
       "diffEditor.ignoreTrimWhitespace" = false;
+      "git.confirmSync" = false;
     };
   };
 
