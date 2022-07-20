@@ -13,19 +13,11 @@
   };
 
   outputs = { self, nixpkgs, nixpkgs-unstable, agenix, home-manager }:
-    let
-      overlay-unstable = final: prev: {
-        unstable = nixpkgs-unstable.legacyPackages.${prev.system};
-      };
-    in
     {
       nixosConfigurations = {
         router = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ({ config, pkgs, ... }: {
-              nixpkgs.overlays = [ overlay-unstable ];
-            })
             ./router.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
@@ -39,9 +31,6 @@
         hawk = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ({ config, pkgs, ... }: {
-              nixpkgs.overlays = [ overlay-unstable ];
-            })
             ./hawk.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
@@ -55,9 +44,6 @@
         public = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ({ config, pkgs, ... }: {
-              nixpkgs.overlays = [ overlay-unstable ];
-            })
             ./public.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
@@ -71,9 +57,6 @@
         runner = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ({ config, pkgs, ... }: {
-              nixpkgs.overlays = [ overlay-unstable ];
-            })
             ./runner.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
@@ -87,9 +70,6 @@
         highterum = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ({ config, pkgs, ... }: {
-              nixpkgs.overlays = [ overlay-unstable ];
-            })
             ./highterum.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
@@ -103,9 +83,6 @@
         personal = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ({ config, pkgs, ... }: {
-              nixpkgs.overlays = [ overlay-unstable ];
-            })
             ./personal.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
@@ -119,9 +96,6 @@
         ferret = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ({ config, pkgs, ... }: {
-              nixpkgs.overlays = [ overlay-unstable ];
-            })
             ./ferret.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager
@@ -135,9 +109,7 @@
         alligator = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            ({ config, pkgs, ... }: {
-              nixpkgs.overlays = [ overlay-unstable ];
-            })
+            ./unstable.nix
             ./alligator.nix
             agenix.nixosModule
             home-manager.nixosModules.home-manager

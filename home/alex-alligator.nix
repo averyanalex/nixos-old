@@ -19,6 +19,7 @@
 
     libreoffice-fresh
     brave
+    # unstable.tdesktop
   ];
 
   programs.bash.enable = true;
@@ -81,6 +82,9 @@
       client.unfocused        #88c0d0 #2e3440 #d8dee9 #4c566a   #4c566a
       client.urgent           #ebcb8b #ebcb8b #2e3440 #8fbcbb   #ebcb8b
     '';
+    # extraSessionCommands = ''
+    #   eval $(gnome-keyring-daemon --start)
+    # '';
   };
 
   services.gnome-keyring.enable = true;

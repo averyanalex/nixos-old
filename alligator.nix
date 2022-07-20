@@ -12,6 +12,10 @@
 
   services.getty.autologinUser = "alex";
 
+  environment.systemPackages = with pkgs; [
+    unstable.lm_sensors
+  ];
+
   services.dbus.enable = true;
   xdg.portal = {
     enable = true;
