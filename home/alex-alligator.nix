@@ -131,6 +131,9 @@
       modifier = "Mod4"; # Super
     };
     extraConfig = ''
+      # polkit
+      exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
+
       # clipboard
       exec clipman restore
       exec wl-paste -t text --watch clipman store

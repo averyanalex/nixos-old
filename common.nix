@@ -46,6 +46,10 @@
 
   services.fstrim.enable = true;
 
+  environment.sessionVariables = {
+    XDG_CONFIG_HOME = "$HOME/.config";
+  };
+
   age.secrets.password-alex.file = ./secrets/passwords/alex.age;
   users = {
     mutableUsers = false;

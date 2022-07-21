@@ -16,8 +16,6 @@
     lm_sensors
   ];
 
-  programs.ssh.enableAskPassword = true;
-
   virtualisation.docker.enable = true;
 
   services.dbus.enable = true;
@@ -28,13 +26,6 @@
     gtkUsePortal = true;
   };
 
-  environment.sessionVariables = {
-    XDG_CONFIG_HOME = "$HOME/.config";
-    NIXOS_OZONE_WL = "1";
-  };
-
-  security.polkit.enable = true;
-  security.pam.services.swaylock = { };
   fonts.enableDefaultFonts = true;
   programs.dconf.enable = true;
 
