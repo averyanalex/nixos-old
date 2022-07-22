@@ -128,6 +128,9 @@
             })
             ./alligator.nix
             agenix.nixosModule
+            {
+              environment.systemPackages = [ agenix.defaultPackage.x86_64-linux ];
+            }
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

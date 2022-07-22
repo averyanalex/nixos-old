@@ -25,22 +25,26 @@ let
   systems = [ alligator ferret hawk router public runner highterum personal ];
 in
 {
-  "passwords/alex.age".publicKeys = users ++ systems;
-  "passwords/alexey.age".publicKeys = users ++ [ ferret ];
+  "secrets/passwords/alex.age".publicKeys = users ++ systems;
+  "secrets/passwords/alexey.age".publicKeys = users ++ [ ferret ];
 
-  "router-wg-key.age".publicKeys = users ++ [ router ];
-  "public-wg-key.age".publicKeys = users ++ [ public ];
-  "hawk-wg-key.age".publicKeys = users ++ [ hawk ];
-  "personal-wg-key.age".publicKeys = users ++ [ personal ];
-  "wireguard/highterum.age".publicKeys = users ++ [ highterum ];
+  "secrets/wayvnc.age".publicKeys = users ++ [ alligator ];
+  "secrets/wayvnc-key.age".publicKeys = users ++ [ alligator ];
+  "secrets/wayvnc-cert.age".publicKeys = users ++ [ alligator ];
 
-  "cloudflare-credentials.age".publicKeys = users ++ [ router public hawk ];
-  "cf-creds-frsqr.age".publicKeys = users ++ [ public hawk ];
+  "secrets/router-wg-key.age".publicKeys = users ++ [ router ];
+  "secrets/public-wg-key.age".publicKeys = users ++ [ public ];
+  "secrets/hawk-wg-key.age".publicKeys = users ++ [ hawk ];
+  "secrets/personal-wg-key.age".publicKeys = users ++ [ personal ];
+  "secrets/wireguard/highterum.age".publicKeys = users ++ [ highterum ];
 
-  "gitsrv-runner-token.age".publicKeys = users ++ [ runner ];
-  "highterum-pgsql.age".publicKeys = users ++ [ highterum ];
-  "crsrv-token.age".publicKeys = users ++ [ public highterum ];
-  "ht-cabinet-api.age".publicKeys = users ++ [ highterum ];
+  "secrets/cloudflare-credentials.age".publicKeys = users ++ [ router public hawk ];
+  "secrets/cf-creds-frsqr.age".publicKeys = users ++ [ public hawk ];
 
-  "docker-registries-ro.age".publicKeys = users ++ [ public highterum ];
+  "secrets/gitsrv-runner-token.age".publicKeys = users ++ [ runner ];
+  "secrets/highterum-pgsql.age".publicKeys = users ++ [ highterum ];
+  "secrets/crsrv-token.age".publicKeys = users ++ [ public highterum ];
+  "secrets/ht-cabinet-api.age".publicKeys = users ++ [ highterum ];
+
+  "secrets/docker-registries-ro.age".publicKeys = users ++ [ public highterum ];
 }
