@@ -10,13 +10,13 @@
   home.packages = with pkgs; [
     # sway
     wl-clipboard
-    clipman
-    wofi
-    bemenu
-    mako
+    clipman # clipboard manager
+    wofi # apps menu
+    mako # notifications
     gnome3.adwaita-icon-theme
-    alacritty
+    alacritty # terminal
 
+    # keyring
     gnome.seahorse
     gnome.gnome-keyring
     gcr
@@ -34,7 +34,6 @@
     rust-bin.stable.latest.default
     gcc
 
-    # tools
     binutils
     pkg-config
 
