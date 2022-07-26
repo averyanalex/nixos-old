@@ -85,6 +85,12 @@
         locations."/".proxyPass = "https://10.8.7.99:8006";
         locations."/".proxyWebsockets = true;
       };
+      "matomo.frsqr.xyz" = {
+        forceSSL = true;
+        useACMEHost = "frsqr.xyz";
+        locations."/".proxyPass = "http://10.8.7.101:9748/";
+        locations."/".proxyWebsockets = true;
+      };
       "api.firesquare.ru" = {
         forceSSL = true;
         useACMEHost = "firesquare.ru";
