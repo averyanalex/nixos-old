@@ -23,12 +23,6 @@
           modules = [
             ./router.nix
             agenix.nixosModule
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alex = import ./home/alex.nix;
-            }
           ];
         };
         hawk = nixpkgs.lib.nixosSystem {
@@ -36,12 +30,6 @@
           modules = [
             ./hawk.nix
             agenix.nixosModule
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alex = import ./home/alex.nix;
-            }
           ];
         };
         public = nixpkgs.lib.nixosSystem {
@@ -49,12 +37,13 @@
           modules = [
             ./public.nix
             agenix.nixosModule
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alex = import ./home/alex.nix;
-            }
+          ];
+        };
+        monitor = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./monitor.nix
+            agenix.nixosModule
           ];
         };
         runner = nixpkgs.lib.nixosSystem {
@@ -62,12 +51,6 @@
           modules = [
             ./runner.nix
             agenix.nixosModule
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alex = import ./home/alex.nix;
-            }
           ];
         };
         highterum = nixpkgs.lib.nixosSystem {
@@ -75,12 +58,6 @@
           modules = [
             ./highterum.nix
             agenix.nixosModule
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alex = import ./home/alex.nix;
-            }
           ];
         };
         personal = nixpkgs.lib.nixosSystem {
@@ -88,12 +65,6 @@
           modules = [
             ./personal.nix
             agenix.nixosModule
-            home-manager.nixosModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.users.alex = import ./home/alex.nix;
-            }
           ];
         };
         ferret = nixpkgs.lib.nixosSystem {
@@ -112,7 +83,6 @@
         alligator = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
-            # ./unstable.nix
             ({ config, pkgs, ... }:
               let
                 overlay-unstable = final: prev: {
