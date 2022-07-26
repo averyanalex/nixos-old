@@ -105,7 +105,7 @@
             {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.users.alex = import ./home/alex-alligator.nix;
+              home-manager.users.alex = import ./home/alligator.nix;
             }
           ];
         };
