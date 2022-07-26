@@ -13,4 +13,8 @@
     enableSshSupport = true;
     pinentryFlavor = "gnome3";
   };
+
+  home.packages = with pkgs; [
+    gnupg
+  ];
 }
