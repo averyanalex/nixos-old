@@ -10,6 +10,8 @@
     ./pipewire.nix
   ];
 
+  boot.kernelPackages = pkgs.unstable.linuxKernel.packages.linux_xanmod_tt;
+
   services.getty.autologinUser = "alex";
 
   environment.systemPackages = with pkgs; [
