@@ -7,4 +7,10 @@
     homeDirectory = "/home/alex";
     stateVersion = "22.05";
   };
+
+  services.gpg-agent = {
+    enable = true;
+    enableSshSupport = true;
+    pinentryFlavor = "gnome3";
+  };
 }
