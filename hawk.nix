@@ -85,10 +85,10 @@
         locations."/".proxyPass = "https://10.8.7.99:8006";
         locations."/".proxyWebsockets = true;
       };
-      "highterum.ru" = {
+      "api.firesquare.ru" = {
         forceSSL = true;
-        useACMEHost = "highterum.ru";
-        locations."/".proxyPass = "http://10.8.7.104:8086/";
+        useACMEHost = "firesquare.ru";
+        locations."/".proxyPass = "http://10.8.7.104:8173/";
         locations."/".proxyWebsockets = true;
       };
       "matrix-federation.averyan.ru" = {
@@ -199,6 +199,11 @@
       "highterum.ru" = { extraDomainNames = [ "*.highterum.ru" ]; };
       "frsqr.xyz" = {
         extraDomainNames = [ "*.frsqr.xyz" ];
+        email = "cofob@riseup.net";
+        credentialsFile = config.age.secrets.cf-creds-frsqr.path;
+      };
+      "firesquare.ru" = {
+        extraDomainNames = [ "*.firesquare.ru" ];
         email = "cofob@riseup.net";
         credentialsFile = config.age.secrets.cf-creds-frsqr.path;
       };
