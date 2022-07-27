@@ -20,9 +20,9 @@ in
   "secrets/passwords/alex.age".publicKeys = users ++ systems;
   "secrets/passwords/alexey.age".publicKeys = users ++ [ ferret ];
 
-  "secrets/wayvnc.age".publicKeys = users ++ [ alligator ];
-  "secrets/wayvnc-key.age".publicKeys = users ++ [ alligator ];
-  "secrets/wayvnc-cert.age".publicKeys = users ++ [ alligator ];
+  "secrets/wayvnc.age".publicKeys = users ++ [ alligator hamster ];
+  "secrets/wayvnc-key.age".publicKeys = users ++ [ alligator hamster ];
+  "secrets/wayvnc-cert.age".publicKeys = users ++ [ alligator hamster ];
 
   "secrets/router-wg-key.age".publicKeys = users ++ [ router ];
   "secrets/public-wg-key.age".publicKeys = users ++ [ public ];
