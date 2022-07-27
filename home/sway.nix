@@ -16,7 +16,14 @@
     gnome.gnome-keyring
     gcr
 
-    waypipe
+    # fonts
+    dejavu_fonts
+    freefont_ttf
+    gyre-fonts # TrueType substitutes for standard PostScript fonts
+    liberation_ttf
+    unifont
+    noto-fonts-emoji
+    (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
   ];
 
   programs.bash.enable = true;
@@ -25,6 +32,8 @@
       sway
     fi
   '';
+
+  fonts.fontconfig.enable = true;
 
   wayland.windowManager.sway = {
     enable = true;

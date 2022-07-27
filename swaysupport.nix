@@ -12,7 +12,6 @@
     gtkUsePortal = true;
   };
 
-  fonts.enableDefaultFonts = true;
   programs.dconf.enable = true;
 
   users.users.alex.extraGroups = [ "video" ];
