@@ -24,6 +24,12 @@
     noto-fonts-emoji
     meslo-lgs-nf
     # (nerdfonts.override { fonts = [ "Meslo" ]; })
+
+    xfce.thunar # file manager
+    xfce.thunar-volman
+    xfce.thunar-archive-plugin
+    xfce.thunar-media-tags-plugin
+    xfce.tumbler # previews
   ];
 
   programs.bash.enable = true;
@@ -61,12 +67,17 @@
         lib.mkOptionDefault {
           "${cfg.modifier}+h" = "exec clipman pick -t wofi";
           "${cfg.modifier}+q" = "kill";
+
           "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
           "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
           "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
           "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+
           "XF86MonBrightnessDown" = "exec light -U 10";
           "XF86MonBrightnessUp" = "exec light -A 10";
+
+          "Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | tee ~/Images/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
+          "Shift+Print" = ''exec ${pkgs.grim}/bin/grim - | tee ~/Images/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
         };
       terminal = "alacritty";
       menu = "wofi -c ~/.config/wofi/config -I";

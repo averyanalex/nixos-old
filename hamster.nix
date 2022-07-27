@@ -16,6 +16,8 @@
     lm_sensors
   ];
 
+  services.blueman.enable = true;
+
   virtualisation.docker.enable = true;
 
   services.yggdrasil = {
