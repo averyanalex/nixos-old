@@ -7,8 +7,9 @@
     clipman # clipboard manager
     wofi # apps menu
     mako # notifications
-    gnome3.adwaita-icon-theme
+    gnome3.adwaita-icon-theme # icons
     alacritty # terminal
+    pulseaudio # volume control
 
     # keyring
     gnome.seahorse
@@ -50,6 +51,11 @@
         lib.mkOptionDefault {
           "${cfg.modifier}+h" = "exec clipman pick -t wofi";
           "${cfg.modifier}+q" = "kill";
+          "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
+          "XF86AudioRaiseVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ +5%";
+          "XF86AudioLowerVolume" = "exec pactl set-sink-volume @DEFAULT_SINK@ -5%";
+          "XF86MonBrightnessDown" = "exec light -U 10";
+          "XF86MonBrightnessUp" = "exec light -A 10";
         };
       terminal = "alacritty";
       menu = "wofi -c ~/.config/wofi/config -I";
