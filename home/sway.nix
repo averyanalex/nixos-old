@@ -66,7 +66,7 @@
       exec ${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1
 
       # vnc
-      exec ${pkgs.unstable.wayvnc}/bin/wayvnc --gpu
+      # exec ${pkgs.unstable.wayvnc}/bin/wayvnc --gpu
 
       # clipboard
       exec clipman restore
