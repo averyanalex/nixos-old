@@ -8,7 +8,6 @@
     wofi # apps menu
     mako # notifications
     gnome3.adwaita-icon-theme # icons
-    alacritty # terminal
     pulseaudio # volume control
 
     # keyring
@@ -23,7 +22,8 @@
     liberation_ttf
     unifont
     noto-fonts-emoji
-    (nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+    meslo-lgs-nf
+    # (nerdfonts.override { fonts = [ "Meslo" ]; })
   ];
 
   programs.bash.enable = true;
@@ -96,6 +96,13 @@
     '';
   };
 
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font.normal.family = "MesloLGS NF";
+    };
+  };
+
   programs.waybar = {
     enable = true;
     systemd = {
@@ -105,8 +112,6 @@
   };
 
   services.gnome-keyring.enable = true;
-
-  xdg.configFile."alacritty/alacritty.yml".source = ./configs/alacritty.yml;
 
   xdg.configFile."wofi/config".source = ./configs/wofi/config;
   xdg.configFile."wofi/config.screenshot".source = ./configs/wofi/config.screenshot;

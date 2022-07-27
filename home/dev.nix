@@ -43,6 +43,8 @@
       "git.confirmSync" = false;
       "git.enableSmartCommit" = true;
       "git.autofetch" = true;
+
+      "terminal.integrated.fontFamily" = "MesloLGS NF";
     };
   };
 

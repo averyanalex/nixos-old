@@ -1,6 +1,8 @@
 { config, pkgs, ... }:
 
 {
+  imports = [ ./zsh.nix ];
+
   programs.home-manager.enable = true;
   home = {
     username = "alex";
