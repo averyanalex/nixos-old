@@ -50,6 +50,8 @@
     XDG_CONFIG_HOME = "$HOME/.config";
   };
 
+  environment.pathsToLink = [ "/share/zsh" ];
+
   age.secrets.password-alex.file = ./secrets/passwords/alex.age;
   users = {
     mutableUsers = false;
