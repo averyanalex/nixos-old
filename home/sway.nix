@@ -14,6 +14,8 @@
     gnome.seahorse
     gnome.gnome-keyring
     gcr
+
+    waypipe
   ];
 
   programs.bash.enable = true;
