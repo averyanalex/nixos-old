@@ -41,7 +41,7 @@
     oh-my-zsh = {
       enable = true;
       plugins = [
-        git-auto-fetch
+        "git-auto-fetch"
       ];
     };
 
