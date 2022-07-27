@@ -93,8 +93,8 @@
       for_window [shell="x_wayland"] title_format "%class - %title"
 
       # AUTOSTART
-      exec telegram-desktop -startintray
-      exec element-desktop --hidden
+      # exec telegram-desktop -startintray
+      # exec element-desktop --hidden
     '';
   };
 
