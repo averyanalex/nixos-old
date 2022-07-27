@@ -6,5 +6,7 @@
     unstable.brave
     unstable.tdesktop
     element-desktop
+
+    remmina # rdp
   ];
 }
