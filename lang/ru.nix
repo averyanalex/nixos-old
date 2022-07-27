@@ -3,7 +3,7 @@
 {
   i18n.defaultLocale = "ru_RU.UTF-8";
   console = {
-    font = "cyr-syn16";
+    font = "Lat2-Terminus16";
     keyMap = "us";
   };
 }
