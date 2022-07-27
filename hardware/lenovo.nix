@@ -3,6 +3,15 @@
 {
   imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
 
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    # driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+  };
+
   boot.initrd.availableKernelModules = [
     "xhci_pci"
     "thunderbolt"
