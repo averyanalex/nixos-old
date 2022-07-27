@@ -65,6 +65,12 @@
           modules = [
             ./personal.nix
             agenix.nixosModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/headless.nix;
+            }
           ];
         };
         ferret = nixpkgs.lib.nixosSystem {

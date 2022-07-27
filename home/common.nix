@@ -13,7 +13,6 @@
   services.gpg-agent = {
     enable = true;
     enableSshSupport = true;
-    pinentryFlavor = "gnome3";
   };
 
   home.packages = with pkgs; [

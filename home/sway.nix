@@ -112,6 +112,8 @@
     };
   };
 
+  services.gpg-agent.pinentryFlavor = "gnome3";
+
   services.gnome-keyring.enable = true;
 
   xdg.configFile."wofi/config".source = ./configs/wofi/config;
