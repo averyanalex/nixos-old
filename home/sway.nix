@@ -94,6 +94,7 @@
 
       # AUTOSTART
       exec telegram-desktop -startintray
+      exec element-desktop --hidden
     '';
   };
 
