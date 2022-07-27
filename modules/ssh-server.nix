@@ -8,5 +8,6 @@
       permitRootLogin = "no";
       passwordAuthentication = false;
     };
+    environment.systemPackages = [ pkgs.mosh ];
   };
 }
