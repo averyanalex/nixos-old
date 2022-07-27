@@ -44,6 +44,7 @@
           xkb_options = "grp:alt_shift_toggle";
         };
       };
+      bars = [ ];
       keybindings =
         let
           cfg = config.wayland.windowManager.sway.config;
@@ -84,6 +85,14 @@
       # AUTOSTART
       exec telegram-desktop -startintray
     '';
+  };
+
+  programs.waybar = {
+    enable = true;
+    systemd = {
+      enable = true;
+      target = "sway-session.target";
+    };
   };
 
   services.gnome-keyring.enable = true;
