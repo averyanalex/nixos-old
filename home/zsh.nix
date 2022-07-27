@@ -8,12 +8,40 @@
     fi
   '';
 
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
+  programs.exa = {
+    enable = true;
+  };
+
   programs.zsh = {
     enable = true;
+
+    enableAutosuggestions = true;
+    enableCompletion = true;
+    enableSyntaxHighlighting = true;
+    autocd = true;
+
+    shellAliases = {
+      ls = "${pkgs.exa}/bin/exa --icons -la";
+      lt = "${pkgs.exa}/bin/exa --icons --tree";
+
+      nixupd = ''sudo rm -rf /root/.cache && sudo nixos-rebuild switch --flake "github:averyanalex/nixos"'';
+      tnixupd = "sudo nixos-rebuild switch --flake .";
+    };
+
     oh-my-zsh = {
       enable = true;
-      # theme = "powerlevel10k";
     };
+
     plugins = [
       {
         name = "powerlevel10k";
