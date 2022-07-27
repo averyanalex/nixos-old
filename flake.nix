@@ -23,6 +23,12 @@
           modules = [
             ./router.nix
             agenix.nixosModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/headless.nix;
+            }
           ];
         };
         hawk = nixpkgs.lib.nixosSystem {
@@ -30,6 +36,12 @@
           modules = [
             ./hawk.nix
             agenix.nixosModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/headless.nix;
+            }
           ];
         };
         public = nixpkgs.lib.nixosSystem {
@@ -37,6 +49,12 @@
           modules = [
             ./public.nix
             agenix.nixosModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/headless.nix;
+            }
           ];
         };
         monitor = nixpkgs.lib.nixosSystem {
@@ -44,6 +62,12 @@
           modules = [
             ./monitor.nix
             agenix.nixosModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/headless.nix;
+            }
           ];
         };
         runner = nixpkgs.lib.nixosSystem {
@@ -51,6 +75,12 @@
           modules = [
             ./runner.nix
             agenix.nixosModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/headless.nix;
+            }
           ];
         };
         highterum = nixpkgs.lib.nixosSystem {
@@ -58,6 +88,12 @@
           modules = [
             ./highterum.nix
             agenix.nixosModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/headless.nix;
+            }
           ];
         };
         personal = nixpkgs.lib.nixosSystem {
