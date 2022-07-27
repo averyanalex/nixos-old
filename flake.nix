@@ -109,6 +109,35 @@
             }
           ];
         };
+        hamster = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ({ config, pkgs, ... }:
+              let
+                overlay-unstable = final: prev: {
+                  unstable = nixpkgs-unstable.legacyPackages.x86_64-linux;
+                };
+              in
+              {
+                nixpkgs.overlays = [ overlay-unstable ];
+              }
+            )
+            ({ pkgs, ... }: {
+              nixpkgs.overlays = [ rust-overlay.overlays.default ];
+            })
+            ./hamster.nix
+            agenix.nixosModule
+            {
+              environment.systemPackages = [ agenix.defaultPackage.x86_64-linux ];
+            }
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/hamster.nix;
+            }
+          ];
+        };
       };
     };
 }
