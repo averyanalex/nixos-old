@@ -13,7 +13,6 @@
     extensions = with pkgs.unstable.vscode-extensions; [
       serayuzgur.crates
       jnoortheen.nix-ide
-      matklad.rust-analyzer
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "even-better-toml";
@@ -21,12 +20,12 @@
         version = "0.16.5";
         sha256 = "pRUiXsZGhTIQx2Qx9NFQ7OGRros3KdzjUlq13nm4pAc=";
       }
-      # {
-      #   name = "nix-env-selector";
-      #   publisher = "arrterian";
-      #   version = "1.0.7";
-      #   sha256 = "DnaIXJ27bcpOrIp1hm7DcrlIzGSjo4RTJ9fD72ukKlc=";
-      # }
+      {
+        name = "rust-analyzer";
+        publisher = "rust-lang";
+        version = "0.4.1143";
+        sha256 = "nRtRSbGVsT47LYY6mdL0v9fvR8inj+benNJUPJdbVEs=";
+      }
       {
         name = "direnv";
         publisher = "mkhl";
@@ -36,6 +35,7 @@
     ];
     userSettings = {
       "nix.enableLanguageServer" = true;
+      "rust-analyzer.server.path" = "${pkgs.rust-analyzer}/bin/rust-analyzer";
 
       "files.autoSave" = "afterDelay";
       "diffEditor.ignoreTrimWhitespace" = false;
