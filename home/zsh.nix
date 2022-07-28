@@ -38,7 +38,8 @@
     autocd = true;
 
     shellAliases = {
-      ls = "${pkgs.exa}/bin/exa --icons -la";
+      ls = "${pkgs.exa}/bin/exa --icons -l";
+      la = "${pkgs.exa}/bin/exa --icons -la";
       lt = "${pkgs.exa}/bin/exa --icons --tree";
 
       nixupd = ''sudo rm -rf /root/.cache && sudo nixos-rebuild switch --flake "github:averyanalex/nixos"'';
