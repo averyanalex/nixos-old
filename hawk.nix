@@ -41,9 +41,9 @@
         locations."/".proxyWebsockets = true;
         locations."/api/".proxyWebsockets = true;
       };
-      "ptero.averyan.ru" = {
+      "ptero.frsqr.xyz" = {
         forceSSL = true;
-        useACMEHost = "averyan.ru";
+        useACMEHost = "frsqr.xyz";
         locations."/".proxyPass = "http://10.8.7.101:8055/";
         locations."/".proxyWebsockets = true;
       };
