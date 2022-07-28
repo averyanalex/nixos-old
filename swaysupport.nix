@@ -12,6 +12,8 @@
     gtkUsePortal = true;
   };
 
+  services.flatpak.enable = true;
+
   programs.dconf.enable = true;
 
   users.users.alex.extraGroups = [ "video" ];
