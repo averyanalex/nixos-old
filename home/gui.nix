@@ -4,7 +4,7 @@
   imports = [ ./sway.nix ./apps.nix ./dev.nix ];
 
   home.packages = with pkgs; [
-    cantata
+    mpc-cli
   ];
 
   services.mpd = {
