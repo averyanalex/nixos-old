@@ -1,7 +1,7 @@
 { args, config, lib, pkgs, ... }:
 
 {
-  imports = [ ./modules/modules.nix ];
+  imports = [ ./modules/modules.nix ./unfree.nix ];
   nix = {
     useSandbox = true;
     autoOptimiseStore = true;
