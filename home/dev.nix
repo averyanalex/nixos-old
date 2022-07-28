@@ -1,23 +1,9 @@
 { config, pkgs, lib, ... }:
 
 {
-  home.sessionVariables = {
-    PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
-  };
-
   home.packages = with pkgs; [
     # dev
     rnix-lsp
-
-    # compilers
-    rust-bin.stable.latest.default
-    gcc
-
-    binutils
-    pkg-config
-
-    # libs
-    openssl
   ];
 
   programs.vscode = {

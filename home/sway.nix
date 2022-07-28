@@ -78,6 +78,7 @@
 
           "Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | tee ~/Images/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
           "Shift+Print" = ''exec ${pkgs.grim}/bin/grim - | tee ~/Images/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
+          "Mod1+Print" = ''exec ${pkgs.grim}/bin/grim -g "$(swaymsg -t get_tree | ${pkgs.jq}/bin/jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | tee ~/Images/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
         };
       terminal = "alacritty";
       menu = "wofi -c ~/.config/wofi/config -I";
