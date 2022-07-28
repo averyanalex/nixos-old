@@ -3,12 +3,9 @@
 {
   home.packages = with pkgs; [
     libreoffice-fresh
-
     unstable.brave
-
     unstable.tdesktop
     element-desktop
-    discord
 
     remmina # rdp
   ];
