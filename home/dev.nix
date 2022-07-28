@@ -60,6 +60,8 @@
       "svelte.enable-ts-plugin" = true;
       "rust-analyzer.server.path" = "${pkgs.rust-analyzer}/bin/rust-analyzer";
 
+      "[svelte]"."editor.defaultFormatter" = "svelte.svelte-vscode";
+
       "files.autoSave" = "afterDelay";
       "diffEditor.ignoreTrimWhitespace" = false;
 
