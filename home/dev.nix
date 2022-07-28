@@ -62,6 +62,10 @@
 
       "[svelte]"."editor.defaultFormatter" = "svelte.svelte-vscode";
 
+      "editor.quickSuggestions" = {
+        "strings" = true;
+      };
+
       "files.autoSave" = "afterDelay";
       "diffEditor.ignoreTrimWhitespace" = false;
 
