@@ -5,6 +5,8 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    flake-utils.url = "github:numtide/flake-utils";
+
     home-manager.url = "github:nix-community/home-manager/release-22.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -15,7 +17,7 @@
     agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, home-manager, rust-overlay, agenix }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, home-manager, rust-overlay, agenix }:
     {
       nixosConfigurations = {
         router = nixpkgs.lib.nixosSystem {
@@ -140,9 +142,6 @@
             })
             ./alligator.nix
             agenix.nixosModule
-            {
-              environment.systemPackages = [ agenix.defaultPackage.x86_64-linux ];
-            }
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -169,9 +168,6 @@
             })
             ./hamster.nix
             agenix.nixosModule
-            {
-              environment.systemPackages = [ agenix.defaultPackage.x86_64-linux ];
-            }
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -181,5 +177,14 @@
           ];
         };
       };
-    };
+    } // flake-utils.lib.eachDefaultSystem (system:
+      let
+        pkgs = nixpkgs.legacyPackages.${system};
+      in
+      {
+        devShell = pkgs.mkShell {
+          nativeBuildInputs = [ agenix.defaultPackage.${system} ];
+          buildInputs = [ ];
+        };
+      });
 }
