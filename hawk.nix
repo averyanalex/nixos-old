@@ -332,7 +332,9 @@
 
             ip daddr 185.112.83.20 tcp dport { 22105 } dnat to 10.8.7.105 comment "personal"
 
-            ip daddr 185.112.83.20 tcp dport { 22109 } dnat to 10.8.7.109 comment "hosting"
+            ip daddr 185.112.83.20 tcp dport { 22109, 2245 } dnat to 10.8.7.109 comment "hosting"
+            ip daddr 185.112.83.20 tcp dport 35560-35575 dnat to 10.8.7.109 comment "hosting-servers-tcp"
+            ip daddr 185.112.83.20 udp dport 35560-35575 dnat to 10.8.7.109 comment "hosting-servers-udp"
           }
 
           chain postrouting {
