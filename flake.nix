@@ -72,6 +72,19 @@
             }
           ];
         };
+        hosting = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = [
+            ./hosting.nix
+            agenix.nixosModule
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.alex = import ./home/headless.nix;
+            }
+          ];
+        };
         runner = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           modules = [
@@ -182,7 +195,7 @@
         pkgs = nixpkgs.legacyPackages.${system};
       in
       {
-        devShell = pkgs.mkShell {
+        devShells.default = pkgs.mkShell {
           nativeBuildInputs = [ agenix.defaultPackage.${system} ];
           buildInputs = [ ];
         };
