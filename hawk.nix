@@ -47,6 +47,12 @@
         locations."/".proxyPass = "http://10.8.7.101:8055/";
         locations."/".proxyWebsockets = true;
       };
+      "whale-public-wings.frsqr.xyz" = {
+        forceSSL = true;
+        useACMEHost = "frsqr.xyz";
+        locations."/".proxyPass = "http://10.8.7.109:443/";
+        locations."/".proxyWebsockets = true;
+      };
       "git.averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
