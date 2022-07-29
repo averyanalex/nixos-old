@@ -8,15 +8,10 @@
     hostName = "hosting";
     id = 109;
 
-    # hawk-wg = {
-    #   enable = true;
-    #   gatewayIp = "192.168.20.1";
-    #   ipv4 = "10.8.7.102";
-    # };
-
-    defaultGateway = {
-      address = "192.168.20.1";
-      interface = "enp6s18";
+    hawk-wg = {
+      enable = true;
+      gatewayIp = "192.168.20.1";
+      ipv4 = "10.8.7.109";
     };
 
     nat.enable = false;

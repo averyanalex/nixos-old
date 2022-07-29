@@ -151,6 +151,10 @@
           publicKey = "uPn+dOrj6M0ebtGC5hlJY5FvBiiycqjfEEy6lsRJRRE=";
           allowedIPs = [ "10.8.7.105/32" ];
         }
+        {
+          publicKey = "6ddIn1u1JicddhDcTru9XN2OCn+c4TJVzH/UzBDF2wI=";
+          allowedIPs = [ "10.8.7.109/32" ];
+        }
       ];
     };
     wg1 = {
@@ -321,6 +325,8 @@
             ip daddr 185.112.83.20 udp dport { 4001, 9096, 9093 } dnat to 10.8.7.101 comment "ipfs udp"
 
             ip daddr 185.112.83.20 tcp dport { 22105 } dnat to 10.8.7.105 comment "personal"
+
+            ip daddr 185.112.83.20 tcp dport { 22109 } dnat to 10.8.7.109 comment "hosting"
           }
 
           chain postrouting {

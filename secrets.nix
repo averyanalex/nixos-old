@@ -30,6 +30,7 @@ in
   "secrets/hawk-wg-key.age".publicKeys = users ++ [ hawk ];
   "secrets/personal-wg-key.age".publicKeys = users ++ [ personal ];
   "secrets/wireguard/highterum.age".publicKeys = users ++ [ highterum ];
+  "secrets/wireguard/hosting.age".publicKeys = users ++ [ hosting ];
 
   "secrets/cloudflare-credentials.age".publicKeys = users ++ [ router public hawk ];
   "secrets/cf-creds-frsqr.age".publicKeys = users ++ [ public hawk ];
