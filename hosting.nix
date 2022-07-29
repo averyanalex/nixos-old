@@ -4,6 +4,8 @@
   imports =
     [ ./hardware/qemu.nix ./mounts/hosting.nix ./common.nix ./lang/en.nix ];
 
+  virtualisation.docker.enable = true;
+
   networking = {
     hostName = "hosting";
     id = 109;
