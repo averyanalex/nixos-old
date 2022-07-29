@@ -13,8 +13,9 @@ let
   runner = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEt5lXWlcNxeS/dZtKiJDyzHXnLlVFUe9iC0LPHPly6X";
   highterum = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBioDhlj6H4xSK8K2sr9uxz1g9y6OD87mNrpQX0NL9OW";
   personal = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHYfrCDEFDQJBdL76VsAf1rFdGDuwrfDkd3fjHQNQgci";
+  hosting = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDpNWreXHAg08uB6AtQOsxHGvEgGiiMjqu9fzDNN0U2c";
 
-  systems = [ alligator hamster ferret hawk router public runner highterum personal ];
+  systems = [ alligator hamster ferret hawk router public runner highterum personal hosting ];
 in
 {
   "secrets/passwords/alex.age".publicKeys = users ++ systems;
