@@ -18,6 +18,9 @@
 
   services.blueman.enable = true;
 
+  hardware.rtl-sdr.enable = true;
+  users.users.alex.extraGroups = [ "plugdev" ];
+
   virtualisation.docker.enable = true;
 
   services.yggdrasil = {
