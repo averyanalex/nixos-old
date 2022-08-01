@@ -19,6 +19,9 @@
 
   outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, home-manager, rust-overlay, agenix }:
     {
+      nixosModules = {
+        home-headless = import ./home/headless.nix;
+      };
       nixosConfigurations = {
         router = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
