@@ -79,6 +79,7 @@
 
   programs.git = {
     enable = true;
+
     userName = "averyanalex";
     userEmail = "alex@averyan.ru";
     signing = {
@@ -88,5 +89,7 @@
     extraConfig = {
       init.defaultBranch = "main";
     };
+
+    lfs.enable = true;
   };
 }
