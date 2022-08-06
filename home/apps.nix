@@ -8,5 +8,8 @@
     element-desktop
 
     remmina # rdp
+
+    qbittorrent
+    mpv
   ];
 }
