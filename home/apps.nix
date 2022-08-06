@@ -11,5 +11,8 @@
 
     qbittorrent
     mpv
+
+    # games
+    polymc
   ];
 }
