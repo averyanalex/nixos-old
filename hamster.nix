@@ -18,6 +18,14 @@
 
   services.blueman.enable = true;
 
+  services.ipfs = {
+    enable = true;
+    localDiscovery = true;
+    enableGC = true;
+    autoMount = true;
+    emptyRepo = true;
+  };
+
   hardware.rtl-sdr.enable = true;
   users.users.alex.extraGroups = [ "plugdev" ];
 
