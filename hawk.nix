@@ -103,6 +103,12 @@
         locations."/".proxyPass = "http://10.8.7.104:8173/";
         locations."/".proxyWebsockets = true;
       };
+      "tech-map.firesquare.ru" = {
+         forceSSL = true;
+         useACMEHost = "firesquare.ru";
+         locations."/".proxyPass = "http://10.8.7.104:8164/";
+         locations."/".proxyWebsockets = true;
+      };
       "matrix-federation.averyan.ru" = {
         serverName = "averyan.ru";
         onlySSL = true;
