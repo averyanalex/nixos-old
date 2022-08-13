@@ -13,11 +13,13 @@
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs-unstable";
 
+    nur.url = "github:nix-community/NUR";
+
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, home-manager, rust-overlay, agenix }:
+  outputs = { self, nixpkgs, nixpkgs-unstable, flake-utils, home-manager, rust-overlay, nur, agenix }:
     {
       nixosModules = {
         home-headless = import ./home/headless.nix;
@@ -156,8 +158,12 @@
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ rust-overlay.overlays.default ];
             })
+            {
+              nixpkgs.overlays = [ nur.overlay ];
+            }
             ./alligator.nix
             agenix.nixosModule
+            nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;
@@ -182,8 +188,12 @@
             ({ pkgs, ... }: {
               nixpkgs.overlays = [ rust-overlay.overlays.default ];
             })
+            {
+              nixpkgs.overlays = [ nur.overlay ];
+            }
             ./hamster.nix
             agenix.nixosModule
+            nur.nixosModules.nur
             home-manager.nixosModules.home-manager
             {
               home-manager.useGlobalPkgs = true;

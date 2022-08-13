@@ -1,6 +1,8 @@
 { config, pkgs, lib, ... }:
 
 {
+  imports = [ ./firefox.nix ];
+
   home.packages = with pkgs; [
     libreoffice-fresh
     unstable.brave
