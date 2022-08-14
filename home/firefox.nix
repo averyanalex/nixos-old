@@ -5,19 +5,13 @@
     enable = true;
     package = pkgs.firefox-wayland;
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      # AdBlock
       adnauseam
-
-      # Privacy
       foxyproxy-standard
-      privacy-badger
 
-      # Optimizations
       auto-tab-discard
       decentraleyes
       clearurls
 
-      # Other
       i-dont-care-about-cookies
       ipfs-companion
       bitwarden
@@ -41,7 +35,7 @@
           "app.update.auto" = false;
 
           # Strict protection
-          "browser.contentblocking.category" = "strict";
+          "browser.contentblocking.category" = "standard";
 
           # Disable login saving
           "signon.management.page.breach-alerts.enabled" = false;
