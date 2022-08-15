@@ -16,5 +16,7 @@
 
     # games
     polymc
+
+    cantata
   ];
 }
