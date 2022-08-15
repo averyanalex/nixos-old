@@ -22,6 +22,7 @@
     liberation_ttf
     unifont
     noto-fonts-emoji
+    noto-fonts-cjk
     meslo-lgs-nf
     # (nerdfonts.override { fonts = [ "Meslo" ]; })
 
