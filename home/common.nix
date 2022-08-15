@@ -1,21 +1,13 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./zsh.nix ];
+  imports = [ ./zsh.nix ./gpg.nix ];
 
   programs.home-manager.enable = true;
+
   home = {
     username = "alex";
     homeDirectory = "/home/alex";
     stateVersion = "22.05";
   };
-
-  services.gpg-agent = {
-    enable = true;
-    enableSshSupport = true;
-  };
-
-  home.packages = with pkgs; [
-    gnupg
-  ];
 }

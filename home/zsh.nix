@@ -8,6 +8,8 @@
     fi
   '';
 
+  programs.bat.enable = true;
+
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
@@ -42,6 +44,8 @@
       la = "${pkgs.exa}/bin/exa --icons -la";
       lt = "${pkgs.exa}/bin/exa --icons --tree";
 
+      cd = "z";
+
       nixupd = ''sudo rm -rf /root/.cache && sudo nixos-rebuild switch --flake "github:averyanalex/nixos"'';
       tnixupd = "sudo nixos-rebuild switch --flake .";
     };
@@ -49,8 +53,9 @@
     oh-my-zsh = {
       enable = true;
       plugins = [
-        "git"
+        "zsh-interactive-cd"
         "git-auto-fetch"
+        "git"
       ];
     };
 
