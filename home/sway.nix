@@ -126,7 +126,7 @@
     };
   };
 
-  services.gpg-agent.pinentryFlavor = "gnome3";
+  services.gpg-agent.pinentryFlavor = "qt"; # TODO: fix gnome3 pinentry
 
   services.gnome-keyring.enable = true;
 
