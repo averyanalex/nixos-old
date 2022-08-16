@@ -5,14 +5,9 @@
     enable = true;
     package = pkgs.firefox-wayland;
     extensions = with pkgs.nur.repos.rycee.firefox-addons; [
-      # adnauseam
-      # foxyproxy-standard
-
-      # auto-tab-discard
       decentraleyes
-      # clearurls
+      ublock-origin
       canvasblocker
-
       i-dont-care-about-cookies
       ipfs-companion
       bitwarden
@@ -56,8 +51,8 @@
 
           # Cleanup
           "privacy.clearOnShutdown.offlineApps" = true;
-          "privacy.sanitize.sanitizeOnShutdown" = false; # lw: true
-          "privacy.sanitize.timeSpan" = 1; # lw: 0
+          "privacy.sanitize.sanitizeOnShutdown" = true;
+          "privacy.sanitize.timeSpan" = 0;
 
           # Cache and storage
           "browser.cache.disk.enable" = true; # lw: false. disable disk cache
