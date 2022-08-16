@@ -44,6 +44,8 @@
       la = "${pkgs.exa}/bin/exa --icons -la";
       lt = "${pkgs.exa}/bin/exa --icons --tree";
 
+      ip = "ip --color=auto";
+
       cd = "z";
 
       nixupd = ''sudo rm -rf /root/.cache && sudo nixos-rebuild switch --flake "github:averyanalex/nixos"'';
