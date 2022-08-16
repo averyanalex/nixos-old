@@ -41,4 +41,8 @@ in
   "secrets/ht-cabinet-api.age".publicKeys = users ++ [ highterum ];
 
   "secrets/docker-registries-ro.age".publicKeys = users ++ [ public highterum ];
+
+  "secrets/nebula/ca-crt.age".publicKeys = users ++ systems;
+  "secrets/nebula/hamster-crt.age".publicKeys = users ++ systems;
+  "secrets/nebula/hamster-key.age".publicKeys = users ++ [ hamster ];
 }
