@@ -12,7 +12,7 @@
   config = lib.mkMerge [
     (lib.mkIf config.virtualisation.docker.enable {
       # auto cleanup
-      virtualisation.docker.autoPrune.enable = true;
+      virtualisation.docker.autoPrune.enable = lib.mkDefault true;
       virtualisation.docker.autoPrune.dates = "daily";
       virtualisation.docker.autoPrune.flags = [ "--all" ];
 

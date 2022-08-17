@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
   imports =
     [ ./hardware/qemu.nix ./mounts/hosting.nix ./common.nix ./lang/en.nix ];
 
   virtualisation.docker.enable = true;
+  virtualisation.docker.autoPrune.enable = lib.mkOverride false;
 
   networking = {
     hostName = "hosting";
