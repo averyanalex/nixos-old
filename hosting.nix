@@ -5,7 +5,7 @@
     [ ./hardware/qemu.nix ./mounts/hosting.nix ./common.nix ./lang/en.nix ];
 
   virtualisation.docker.enable = true;
-  virtualisation.docker.autoPrune.enable = lib.mkOverride false;
+  virtualisation.docker.autoPrune.enable = false;
 
   networking = {
     hostName = "hosting";
