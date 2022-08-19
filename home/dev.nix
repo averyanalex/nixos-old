@@ -17,6 +17,8 @@
       editorconfig.editorconfig
       dbaeumer.vscode-eslint
       esbenp.prettier-vscode
+      ms-python.python
+      ms-toolsai.jupyter
     ] ++ pkgs.vscode-utils.extensionsFromVscodeMarketplace [
       {
         name = "svelte-vscode";
