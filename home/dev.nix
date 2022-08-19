@@ -83,7 +83,7 @@
     enable = true;
     lfs.enable = true;
 
-    userName = "averyanalex";
+    userName = "AveryanAlex";
     userEmail = "alex@averyan.ru";
 
     signing = {
