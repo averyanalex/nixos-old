@@ -138,7 +138,7 @@
           "security.ssl.require_safe_negotiation" = true;
           "security.ssl.treat_unsafe_negotiation_as_broken" = true;
           "security.remote_settings.crlite_filters.enabled" = true;
-          "security.OCSP.require" = true;
+          "security.OCSP.require" = false;
 
           # TLS/SSL
           "security.tls.enable_0rtt_data" = false; # disable 0 RTT to improve tls 1.3 security

@@ -56,6 +56,12 @@
         version = "0.6.1";
         sha256 = "5/Tqpn/7byl+z2ATflgKV1+rhdqj+XMEZNbGwDmGwLQ=";
       }
+      {
+        name = "autodocstring";
+        publisher = "njpwerner";
+        version = "0.6.1";
+        sha256 = "NI0cbjsZPW8n6qRTRKoqznSDhLZRUguP7Sa/d0feeoc=";
+      }
     ];
     userSettings = {
       "nix.enableLanguageServer" = true;
