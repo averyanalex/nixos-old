@@ -47,8 +47,8 @@
       {
         name = "rust-analyzer";
         publisher = "rust-lang";
-        version = "0.4.1143";
-        sha256 = "nRtRSbGVsT47LYY6mdL0v9fvR8inj+benNJUPJdbVEs=";
+        version = "0.4.1181";
+        sha256 = "9uAwNQ/LyewhwJ19IMnD4bnpRW5kN470hnnJNI3awEU=";
       }
       {
         name = "direnv";
