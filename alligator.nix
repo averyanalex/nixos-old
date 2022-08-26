@@ -29,6 +29,8 @@
     };
   };
 
+  services.syncthing.enable = true;
+
   networking = {
     hostName = "alligator";
     id = 60;
