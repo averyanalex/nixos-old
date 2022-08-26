@@ -1,6 +1,6 @@
 { lib, config, pkgs, ... }:
 let
-  allDevices = [ "alligator" ];
+  allDevices = [ "alligator" "hamster" ];
 in
 {
   config.services.syncthing = lib.mkIf config.services.syncthing.enable {
