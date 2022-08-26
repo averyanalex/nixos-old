@@ -4,8 +4,10 @@
   home.packages = with pkgs; [
     # sway
     wl-clipboard # clipboard support
+    # TODO: change clipboard manager (CopyQ?)
     clipman # clipboard manager
-    wofi # apps menu
+    # rofi-wayland # apps menu
+    # TODO: setup dunst
     mako # notifications
     gnome3.adwaita-icon-theme # icons
     pulseaudio # volume control
@@ -30,7 +32,7 @@
     xfce.thunar-volman
     xfce.thunar-archive-plugin
     xfce.thunar-media-tags-plugin
-    # xfce.tumbler # previews
+    xfce.tumbler # previews
   ];
 
   programs.bash.enable = true;
@@ -43,6 +45,7 @@
   fonts.fontconfig.enable = true;
 
   wayland.windowManager.sway = {
+    # TODO: random wallpaper from ~/Pictures/Wallpapers/3440x1440
     enable = true;
     systemdIntegration = true;
     wrapperFeatures.gtk = true;
@@ -66,8 +69,14 @@
           cfg = config.wayland.windowManager.sway.config;
         in
         lib.mkOptionDefault {
-          "${cfg.modifier}+h" = "exec clipman pick -t wofi";
           "${cfg.modifier}+q" = "kill";
+
+          # TODO: clipboard history
+          # "${cfg.modifier}+h" = "exec clipman pick -t rofi";
+          # TODO: run in terminal
+          # "${cfg.modifier}+Shift+d" = "exec rofi -show run -run-shell-command \'{terminal} -e zsh -ic \"{cmd} && read\"\'";
+
+          "Mod4+m" = "exec rofi -show emoji";
 
           "XF86AudioMute" = "exec pactl set-sink-mute @DEFAULT_SINK@ toggle";
           "XF86AudioMicMute" = "exec pactl set-source-mute @DEFAULT_SOURCE@ toggle";
@@ -79,10 +88,12 @@
 
           "Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp -d)" - | tee ~/Pictures/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
           "Shift+Print" = ''exec ${pkgs.grim}/bin/grim - | tee ~/Pictures/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
-          "Mod1+Print" = ''exec ${pkgs.grim}/bin/grim -g "$(swaymsg -t get_tree | ${pkgs.jq}/bin/jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | tee ~/Pictures/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
+          # TODO: screenshot focused window
+          # "Mod1+Print" = ''exec ${pkgs.grim}/bin/grim -g "$(${pkgs.sway}/bin/swaymsg -t get_tree | ${pkgs.jq}/bin/jq -j '.. | select(.type?) | select(.focused).rect | "\(.x),\(.y) \(.width)x\(.height)"')" - | tee ~/Pictures/Screenshots/$(date +%H_%M_%S-%d_%m_%Y).png | wl-copy -t image/png'';
+          # TODO: setup flameshot
         };
       terminal = "alacritty";
-      menu = "wofi -c ~/.config/wofi/config -I";
+      menu = "rofi -show drun";
       modifier = "Mod4"; # Super
     };
     extraConfig = ''
@@ -118,6 +129,17 @@
     };
   };
 
+  programs.rofi = {
+    enable = true;
+    package = pkgs.rofi-wayland;
+    plugins = [ pkgs.rofi-emoji ];
+    terminal = "alacritty";
+    extraConfig = {
+      modi = "drun,run,emoji,ssh";
+      show-icons = true;
+    };
+  };
+
   programs.waybar = {
     enable = true;
     systemd = {
@@ -129,9 +151,4 @@
   services.gpg-agent.pinentryFlavor = "qt"; # TODO: fix gnome3 pinentry
 
   services.gnome-keyring.enable = true;
-
-  xdg.configFile."wofi/config".source = ./configs/wofi/config;
-  xdg.configFile."wofi/config.screenshot".source = ./configs/wofi/config.screenshot;
-  xdg.configFile."wofi/style.css".source = ./configs/wofi/style.css;
-  xdg.configFile."wofi/style.widgets.css".source = ./configs/wofi/style.widgets.css;
 }
