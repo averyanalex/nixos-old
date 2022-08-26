@@ -22,6 +22,10 @@ in
         id = "music";
         devices = allDevices;
       };
+      "/home/alex/Documents" = {
+        id = "documents";
+        devices = allDevices;
+      };
     };
   };
 }
