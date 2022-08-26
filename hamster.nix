@@ -26,6 +26,8 @@
     emptyRepo = true;
   };
 
+  services.syncthing.enable = true;
+
   hardware.rtl-sdr.enable = true;
   users.users.alex.extraGroups = [ "plugdev" ];
 
