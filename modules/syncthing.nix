@@ -26,6 +26,10 @@ in
         id = "documents";
         devices = allDevices;
       };
+      "/home/alex/Pictures" = {
+        id = "pictures";
+        devices = allDevices;
+      };
     };
   };
 }
