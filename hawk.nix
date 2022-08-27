@@ -82,6 +82,12 @@
         locations."/".proxyPass = "http://10.8.7.105:2342/";
         locations."/".proxyWebsockets = true;
       };
+      "mt.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/public".proxyPass = "http://10.8.7.101:29317";
+        locations."/public".proxyWebsockets = true;
+      };
       "averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
