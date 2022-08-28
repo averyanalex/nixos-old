@@ -88,6 +88,12 @@
         locations."/public".proxyPass = "http://10.8.7.101:29317";
         locations."/public".proxyWebsockets = true;
       };
+      "wp.frsqr.xyz" = {
+        forceSSL = true;
+        useACMEHost = "frsqr.xyz";
+        locations."/".proxyPass = "http://10.8.7.101:8652";
+        locations."/".proxyWebsockets = true;
+      };
       "averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
