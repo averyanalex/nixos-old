@@ -142,6 +142,22 @@
 
   programs.waybar = {
     enable = true;
+    # settings = {
+    #   mainBar = {
+    #     "network" = {
+    #       interval = 10;
+    #       format = "{ifname}";
+    #       format-wifi = "{essid} ({signalStrength}%)";
+    #       format-ethernet = "{ifname}";
+  	#       format-disconnected = "SUS";
+    #       tooltip-format = "{ifname}";
+  	#       tooltip-format-wifi = "{essid} ({signalStrength}%)";
+  	#       tooltip-format-ethernet = "{ifname}";
+  	#       tooltip-format-disconnected = "Disconnected";
+    #     };
+    #   };
+    # };
+
     systemd = {
       enable = true;
       target = "sway-session.target";
