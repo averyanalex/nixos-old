@@ -103,6 +103,14 @@
         locations."/_synapse/".proxyPass = "http://10.8.7.101:5056";
         locations."/_synapse/".proxyWebsockets = true;
       };
+      "matrix.averyan.ru" = {
+        forceSSL = true;
+        useACMEHost = "averyan.ru";
+        locations."/_matrix/".proxyPass = "http://10.8.7.101:5056";
+        locations."/_matrix/".proxyWebsockets = true;
+        locations."/_synapse/".proxyPass = "http://10.8.7.101:5056";
+        locations."/_synapse/".proxyWebsockets = true;
+      };
       "pve.averyan.ru" = {
         forceSSL = true;
         useACMEHost = "averyan.ru";
