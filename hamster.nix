@@ -48,6 +48,7 @@
   age.secrets.nebula-key.file = ./secrets/nebula/${config.networking.hostName}-key.age;
   age.secrets.nebula-crt.file = ./secrets/nebula/${config.networking.hostName}-crt.age;
   services.nebula.networks.global = {
+    package = pkgs.unstable.nebula;
     key = config.age.secrets.nebula-key.path;
     cert = config.age.secrets.nebula-crt.path;
     ca = config.age.secrets.nebula-ca.path;
@@ -59,6 +60,16 @@
       "10.3.7.11" = [
         "89.208.104.77:4242"
       ];
+    };
+    settings = {
+      punchy = {
+        punch = true;
+        respond = true;
+      };
+      relay = {
+        am_relay = false;
+        relays = [ "10.3.7.10" "10.3.7.11" ];
+      };
     };
     firewall = {
       inbound = [{
