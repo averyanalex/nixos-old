@@ -30,6 +30,13 @@
   };
 
   services.syncthing.enable = true;
+  services.ipfs = {
+    enable = true;
+    localDiscovery = true;
+    enableGC = true;
+    autoMount = true;
+    emptyRepo = true;
+  };
 
   networking = {
     hostName = "alligator";
